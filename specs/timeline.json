@@ -1,0 +1,30 @@
+{
+  "$comment": "Shot list of the reference (frames at 30 fps). Detailed per-frame notes: analysis/notes/frames_000_255.md and frames_256_plus.md. A runnable recreation is examples/reference-recreation.json.",
+  "persistent": [
+    { "element": "counter", "frames": [0, 942], "behaviour": "Big centre counter in shot 1; flies to the top-right torn tag f133-f142; ticks floor(shown*2570.168); fades out f910-f915 when the end total appears; end total freezes at f930 ($2,390,256)." },
+    { "element": "sourceLine", "frames": [177, 942], "behaviour": "Tiny grey typewriter citation bottom-left, text swapped per scene." },
+    { "element": "yearChip", "frames": [703, 810], "behaviour": "'2048 PROJECTED' chip docks top-left after shot 6." }
+  ],
+  "shots": [
+    { "id": 1, "frames": [0, 134], "narration": "Before this video ends, America will borrow over two million dollars.",
+      "elements": ["typewriter 'BEFORE THIS VIDEO ENDS,' f0-27", "label 'BORROWED SINCE YOU HIT PLAY'", "big counter (red f69-87)", "progress bar draw-on f0-12, flag f7-12, knob from f16", "headline words America f49 / will f60 / borrow f69 (bold + highlighter f72-75)", "Capitol cutout pop f51", "red sticker 'BY THE END / OVER $2 MILLION' pop f87-93", "red arrow draw f102-111"] },
+    { "id": "T1", "frames": [132, 144], "type": "blurOut + counter flyToCorner" },
+    { "id": 2, "frames": [135, 233], "narration": "The U.S. national debt is now over forty trillion dollars.",
+      "elements": ["typewriter 'THE U.S. NATIONAL DEBT' f135-153", "money stack row 1 f135-147", "row 2 f175-189", "'$40 TRILLION' mask-rise f177-188", "source line f177", "stacks shrink f209-216", "person grid + bill burst f214-233", "'$117,000' red mask-rise f225-234", "centre person turns red f231"] },
+    { "id": 3, "frames": [234, 302], "narration": "That's about $117,000 for every American.",
+      "elements": ["grid split + push-in on red person f234-240", "others grey", "red circle draw f243-247", "sub-line 'for' f270 / 'every' f279 / 'American' f283 bold", "crowd rejoins, turns black, pull back to full grid f270-288"] },
+    { "id": "A", "frames": [303, 313], "type": "pagePush from right, ~10 frames ease-in-out, old scene blurs" },
+    { "id": 4, "frames": [306, 486], "narration": "And it's speeding up. It took over two centuries to reach twenty trillion, and under nine years to hit forty.",
+      "elements": ["headline 'And it's speeding up.' with highlight f330-336", "axes draw f309-315", "line 1790-2017 f348-396 with year chip at tip", "event markers", "$20T rule", "bracket 'over 2 centuries' f396-408", "rescale to 2017-2026 f430-447", "$40T rule", "line 2017-2026 f447-468, PANDEMIC marker", "bracket 'under 9 years' f453-468"] },
+    { "id": "B", "frames": [486, 495], "type": "pagePush from bottom" },
+    { "id": 5, "frames": [490, 639], "narration": "The real problem is the interest. It's now over a trillion dollars a year, more than we spend on defense.",
+      "elements": ["headline 'The real problem is'", "budget card slide up f499-508", "'THE INTEREST' red mask-rise f513-525", "'$1 TRILLION / YEAR' reveal f552-576", "row highlight f580-582", "card slides left f583-594", "INTEREST bar grows f586-594 with money stack", "DEFENSE bar grows f612-618 with jet"] },
+    { "id": "C", "frames": [639, 646], "type": "pagePush from right (7 frames)" },
+    { "id": 6, "frames": [643, 705], "narration": "By 2048,", "elements": ["'BY' + split-flap year 2037 to 2048 f643-663 (ease-out)", "'PROJECTED' stamp slam f691-699", "chip flies to top-left f703-715"] },
+    { "id": 7, "frames": [705, 810], "narration": "it's projected to be the government's biggest bill, bigger than Social Security.",
+      "elements": ["headline 'the government's biggest bill' (highlight on biggest/bill)", "hbars SOCIAL SECURITY / MEDICARE / DEFENSE / INTEREST grow f705-733", "'BIGGEST BILL' tag f730", "sub-line 'bigger than Social Security.' f756-792", "re-sort INTEREST to #1 f759-771", "#1 badge pop f768-772", "Social Security label highlight f778-792"] },
+    { "id": "D", "frames": [810, 819], "type": "black pagePush from bottom" },
+    { "id": 8, "frames": [819, 942], "narration": "We're not paying for the future. We're paying for the past.",
+      "elements": ["black bg", "hourglass cutout right", "headline 'We're not paying for the' (bold not)", "'FUTURE' white mask-rise f846-852", "red strike f852-858", "dim to 45% f861-867", "line 2 'We're paying for the' f891-909", "yellow label pop f909-918 with 'PAST' mask-rise", "'BORROWED WHILE YOU WATCHED*' + red total f915-918, freezes f930", "footnote f921"] }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "lineChart": {
+    "frame": "y axis x≈250 from y 245 to 893; x axis y≈893 from x 250 to 1740; ink 3 px; both draw on with the page (4 frames each)",
+    "ticks": "tiny grey typewriter labels under the baseline, fade in over ~10 frames",
+    "line": "red #D2251D 4-5 px, drawn by progress along the data (not by dash), ease-in-out over ~48 frames",
+    "tip": "red dot (10 px) plus a black rounded chip above with white Anton year (current x value), updates every shown frame",
+    "referenceRule": "dashed grey line across with Anton label ($20 TRILLION ink at left, $40 TRILLION red)",
+    "events": "typewriter caps label on a thin grey tick rising from the curve; appears when the tip passes",
+    "bracket": "thin bracket under the axis between two x values with end labels and a white tag in the middle ('• over 2 centuries'); red variant for the second segment",
+    "rescale": "to zoom into a sub-range, events and bracket fade (5 frames), then x and y domains animate ease-in-out over ~15 frames; the drawn line re-maps live",
+    "measuredYearToX": "x = 252 + (year - 1790) * 1388 / 227",
+    "measured": { "draw1": [348, 396], "bracket1": [396, 408], "rescale": [430, 447], "draw2": [447, 468], "bracket2": [453, 468] }
+  },
+  "verticalBars": {
+    "look": "torn-paper bars (red for the subject, ink for the comparison), width ~220 px, baseline ink line y≈875; object cutout rides on top; typewriter label under the baseline",
+    "grow": "from baseline up over ~8 frames ease-out with ~6 px overshoot; second bar starts ~25 frames later on its narration word",
+    "measured": { "INTEREST": [586, 594], "DEFENSE": [612, 618] }
+  },
+  "horizontalBars": {
+    "look": "torn-paper bars height ~80 px, pitch 140 px, start x≈526; white-outline round icon and white tiny typewriter label at the left inside the bar",
+    "grow": "left -> right over 8-10 frames ease-out, stagger 3-4 frames; subject bar is red and waits for its narration word",
+    "reorder": "subject bar lifts (scale 1.04) and moves to slot 1 over ~12 frames ease-in-out while the others shift down one slot",
+    "measured": { "grow": [705, 733], "reorder": [759, 771] }
+  },
+  "budgetCard": {
+    "look": "white torn-edge card #F7F3EB, drop shadow, typewriter title + right-aligned small caption, rows with leader lines and grey placeholder bars; subject row red",
+    "entry": "slides up from below with ease-out over ~9 frames, tilt -3° -> -1°",
+    "value": "row value revealed left -> right (clip wipe ~24 frames) in Anton",
+    "move": "slides left to make room for a chart over ~11 frames ease-out",
+    "measured": { "slideIn": [499, 508], "value": [552, 576], "rowHighlight": [580, 582], "slideLeft": [583, 594] }
+  }
+}

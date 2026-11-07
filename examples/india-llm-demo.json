@@ -1,0 +1,132 @@
+{
+  "title": "What if India built the best AI",
+  "cadence": "on-threes",
+  "wpm": 205,
+  "counter": {
+    "label": "BABIES BORN IN INDIA SINCE YOU HIT PLAY",
+    "ratePerSecond": 0.73,
+    "prefix": "",
+    "flash": { "from": "india", "to": "india+24" },
+    "y": 360
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "narration": "Every AI you use today, ChatGPT, Claude, Gemini, was built in America. So what if the most powerful AI on Earth came from India?",
+      "elements": [
+        { "type": "typewriter", "text": "WHAT IF INDIA BUILT THE WORLD'S BEST AI?", "at": 0 },
+        { "type": "headline", "text": "Every AI you use was built in ==America.==", "y": 118, "size": 80 },
+        { "type": "progressBar", "at": 0 },
+        { "type": "tag", "text": "CHATGPT", "color": "white", "x": 170, "y": 575, "size": 40, "rotate": -4, "at": "chatgpt", "exitAt": "india" },
+        { "type": "tag", "text": "CLAUDE", "color": "white", "x": 430, "y": 560, "size": 40, "rotate": 3, "at": "claude", "exitAt": "india" },
+        { "type": "tag", "text": "GEMINI", "color": "white", "x": 670, "y": 580, "size": 40, "rotate": -2, "at": "gemini", "exitAt": "india" },
+        { "type": "sticker", "top": "WHAT IF THE BEST AI WAS", "main": "MADE IN INDIA?", "x": 1352, "y": 470, "rotate": -2.5, "at": "india" },
+        { "type": "arrow", "from": [1150, 600], "to": [1335, 545], "bend": -0.18, "at": "india+6" }
+      ]
+    },
+    {
+      "id": "people",
+      "transition": "blur",
+      "narration": "India has 1.4 billion people. They speak 22 official languages and hundreds of dialects, and most AI still struggles with them.",
+      "source": "Sources: UN World Population Prospects · Constitution of India, Eighth Schedule",
+      "elements": [
+        { "type": "typewriter", "text": "THE NEXT BILLION USERS", "at": 0 },
+        { "type": "bigNumber", "text": "1.4 BILLION", "at": "1.4", "exitAt": "22-2", "y": 110 },
+        { "type": "personGrid", "at": "billion" },
+        { "type": "bigNumber", "text": "22 LANGUAGES", "color": "red", "at": "22", "y": 110 },
+        { "type": "headline", "variant": "subline", "text": "and hundreds of dialects", "y": 345 },
+        { "type": "stamp", "text": "LOST IN TRANSLATION", "x": 1290, "y": 355, "rotate": -8, "at": "struggles" }
+      ]
+    },
+    {
+      "id": "base",
+      "transition": "pushRight",
+      "narration": "But India is not starting from zero. It has 32 million developers on GitHub, second only to America. And the IndiaAI Mission has committed over 10,000 crore rupees to compute, datasets and homegrown models.",
+      "source": "Sources: GitHub Octoverse 2026 · IndiaAI Mission, Cabinet approval (Mar 2024)",
+      "elements": [
+        { "type": "headline", "text": "But India is not starting from **zero.**", "y": 50, "size": 64 },
+        { "type": "bigNumber", "text": "32 MILLION", "color": "red", "at": "32", "y": 190, "size": 230, "exitAt": "indiaai-3" },
+        { "type": "label", "text": "DEVELOPERS ON GITHUB · #2 IN THE WORLD", "x": 960, "y": 470, "size": 26, "align": "center", "at": "github", "exitAt": "indiaai-3" },
+        { "type": "cutout", "asset": "person", "x": 860, "y": 560, "w": 200, "h": 240, "at": "developers", "exitAt": "indiaai-3" },
+        { "type": "card", "at": "indiaai", "title": "INDIAAI MISSION", "caption": "APPROVED MARCH 2024", "y": 300,
+          "rows": [
+            { "label": "COMPUTE" }, { "label": "DATASETS (AIKOSH)" }, { "label": "FOUNDATION MODELS", "color": "red" },
+            { "label": "TOTAL OUTLAY", "value": "10,372 CRORE RUPEES", "valueAt": "10,000" }
+          ],
+          "highlightRow": { "index": 2, "at": "homegrown" } }
+      ]
+    },
+    {
+      "id": "whatif",
+      "transition": "pushBottom",
+      "narration": "Now imagine it is 2030. An Indian model, trained on every Indian language, tops the global rankings, ahead of ChatGPT and Claude.",
+      "source": "Hypothetical scenario · illustrative ranking, not real benchmark results",
+      "elements": [
+        { "type": "yearFlip", "from": 2026, "to": 2030, "frames": 18, "at": "now", "stamp": { "text": "WHAT IF", "at": "2030+3" }, "dockAt": "an-4" },
+        { "type": "headline", "text": "An Indian model ==tops the global rankings==", "y": 175, "size": 64 },
+        { "type": "hbarChart", "at": "trained",
+          "bars": [
+            { "label": "CHATGPT", "value": 1.55, "icon": "none", "color": "ink", "at": "trained" },
+            { "label": "CLAUDE", "value": 1.5, "icon": "none", "color": "ink", "at": "trained+3" },
+            { "label": "GEMINI", "value": 1.42, "icon": "none", "color": "ink", "at": "trained+6" },
+            { "label": "INDIA'S MODEL", "value": 1.72, "icon": "none", "color": "red", "at": "tops" }
+          ],
+          "tag": { "bar": 3, "text": "MADE IN INDIA", "at": "rankings" },
+          "reorderAt": "ahead",
+          "badge": { "bar": 3, "text": "#1", "at": "ahead+10" } },
+        { "type": "headline", "variant": "subline", "text": "ahead of ChatGPT and Claude.", "y": 262 }
+      ]
+    },
+    {
+      "id": "impact",
+      "transition": "pushRight",
+      "narration": "A farmer in Bihar asks about crop prices in Bhojpuri. A student in Kerala learns calculus in Malayalam. Hundreds of millions use AI for the first time.",
+      "elements": [
+        { "type": "typewriter", "text": "WHAT CHANGES", "at": 0 },
+        { "type": "personGrid", "at": 0, "highlightAt": "farmer", "focusAt": "farmer+2", "circleAt": "bihar", "pullBackAt": "hundreds" },
+        { "type": "headline", "text": "A farmer asks in **Bhojpuri.**", "y": 110, "size": 66, "exitAt": "a#2-2" },
+        { "type": "tag", "text": "BHOJPURI", "color": "yellow", "x": 1050, "y": 560, "size": 44, "rotate": -5, "at": "bhojpuri", "exitAt": "a#2-2" },
+        { "type": "headline", "text": "A student learns in **Malayalam.**", "y": 110, "size": 66, "wordAt": ["a#2", "student", "learns", "in#4", "malayalam"], "exitAt": "hundreds-2" },
+        { "type": "tag", "text": "MALAYALAM", "color": "yellow", "x": 1050, "y": 560, "size": 44, "rotate": 4, "at": "malayalam", "exitAt": "hundreds-2" },
+        { "type": "bigNumber", "text": "HUNDREDS OF MILLIONS", "color": "red", "at": "hundreds", "y": 100, "size": 150 },
+        { "type": "headline", "variant": "subline", "text": "use AI for the first time.", "y": 280, "size": 40 }
+      ]
+    },
+    {
+      "id": "power",
+      "transition": "pushBottom",
+      "narration": "Whoever builds the smartest AI shapes how billions of people work, learn and think. Right now, that power sits with a handful of companies, mostly in America and China.",
+      "source": "Frontier AI labs as of 2026 · examples, not a complete list",
+      "elements": [
+        { "type": "headline", "text": "Whoever builds the ==smartest AI==", "y": 50, "size": 66 },
+        { "type": "bigNumber", "text": "BILLIONS", "color": "red", "at": "billions", "y": 160, "size": 260, "exitAt": "right-2" },
+        { "type": "headline", "variant": "subline", "text": "of people work, learn and think.", "y": 450, "size": 44, "exitAt": "right-2" },
+        { "type": "card", "at": "right", "title": "WHO BUILDS THE TOP MODELS", "caption": "2026", "y": 260,
+          "rows": [
+            { "label": "AMERICA", "value": "OPENAI · ANTHROPIC · GOOGLE", "valueAt": "handful" },
+            { "label": "CHINA", "value": "DEEPSEEK · ALIBABA", "valueAt": "china" },
+            { "label": "INDIA", "color": "red", "value": "NOT YET", "valueAt": "china+12" }
+          ],
+          "highlightRow": { "index": 2, "at": "china+22" } }
+      ]
+    },
+    {
+      "id": "end",
+      "transition": "pushBottom",
+      "background": "black",
+      "minDuration": 150,
+      "narration": "The babies born while you watched will grow up with whichever AI wins. The question isn't whether India can build it. It's whether India will.",
+      "elements": [
+        { "type": "cutout", "asset": "hourglass", "x": 1316, "y": 245, "w": 428, "h": 734, "at": "start+1" },
+        { "type": "totalCounter", "label": "BABIES BORN IN INDIA WHILE YOU WATCHED*", "at": "babies", "freezeAt": "watched", "x": 128, "y": 838 },
+        { "type": "headline", "text": "Babies will grow up with whichever AI ==wins.==", "align": "left", "x": 153, "y": 128, "size": 54, "exitAt": "question-3" },
+        { "type": "headline", "text": "The question isn't whether India", "align": "left", "x": 153, "y": 128, "size": 54, "at": "the#2", "wordAt": ["the#2", "question", "isn't", "whether", "india"], "dimAt": "it's-2" },
+        { "type": "bigNumber", "text": "CAN", "align": "left", "x": 135, "y": 205, "size": 215, "at": "can", "dimAt": "it's-2" },
+        { "type": "strike", "x1": 118, "x2": 440, "y": 312, "at": "can+6", "dimAt": "it's-2" },
+        { "type": "headline", "text": "It's whether India", "align": "left", "x": 153, "y": 476, "size": 56, "at": "it's", "wordAt": ["it's", "whether#2", "india#2"] },
+        { "type": "tag", "text": "WILL", "x": 120, "y": 556, "size": 196, "rotate": 0, "color": "yellow", "at": "will#2" },
+        { "type": "label", "text": "*at about 23 million births a year in India (UN World Population Prospects)", "x": 122, "y": 1000, "size": 14, "color": "#6B6762", "font": "typewriter", "at": "babies+9" }
+      ]
+    }
+  ]
+}

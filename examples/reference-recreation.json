@@ -1,0 +1,135 @@
+{
+  "title": "The Debt Clock (reference recreation)",
+  "cadence": "on-threes",
+  "wpm": 205,
+  "counter": {
+    "label": "BORROWED SINCE YOU HIT PLAY",
+    "ratePerSecond": 77105.04,
+    "flash": { "from": "borrow", "to": "over" },
+    "y": 360
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "narration": "Before this video ends, America will borrow over $2 million.",
+      "elements": [
+        { "type": "typewriter", "text": "BEFORE THIS VIDEO ENDS,", "at": 0 },
+        { "type": "headline", "text": "America will ==borrow==", "y": 118, "size": 96 },
+        { "type": "progressBar", "at": 0 },
+        { "type": "cutout", "asset": "capitol", "x": 100, "y": 415, "w": 390, "h": 250, "rotate": 0, "at": "america+2" },
+        { "type": "sticker", "top": "BY THE END", "main": "OVER $2 MILLION", "x": 1352, "y": 470, "rotate": -2.5, "at": "over" },
+        { "type": "arrow", "from": [1150, 600], "to": [1335, 585], "bend": -0.18, "at": "million" }
+      ]
+    },
+    {
+      "id": "debt",
+      "transition": "blur",
+      "narration": "The U.S. national debt is now over $40 trillion. That's about $117,000 for every American.",
+      "source": "Sources: U.S. Treasury, Debt to the Penny (Oct 2025) · Census Bureau",
+      "elements": [
+        { "type": "typewriter", "text": "THE U.S. NATIONAL DEBT", "at": 0 },
+        { "type": "moneyStacks", "rows": ["start+1", "$40-2"], "shrinkAt": "that's-5", "at": "start+1" },
+        { "type": "bigNumber", "text": "$40 TRILLION", "at": "$40", "exitAt": "about", "y": 110 },
+        { "type": "personGrid", "at": "that's", "bills": true, "highlightAt": "$117,000+4", "focusAt": "$117,000+7", "circleAt": "$117,000+15", "pullBackAt": "for" },
+        { "type": "bigNumber", "text": "$117,000", "color": "red", "at": "$117,000", "y": 110 },
+        { "type": "headline", "text": "for every **American**", "y": 340, "size": 50 }
+      ]
+    },
+    {
+      "id": "speed",
+      "transition": "pushRight",
+      "narration": "And it's speeding up. It took over two centuries to reach $20 trillion, and under nine years to hit forty.",
+      "source": "Sources: U.S. Treasury (Historical Debt Outstanding · Debt to the Penny)",
+      "elements": [
+        { "type": "headline", "text": "And it's ==speeding up.==", "y": 62 },
+        {
+          "type": "lineChart", "at": 0,
+          "data": [[1790, 0.00007], [1835, 0.00004], [1860, 0.00006], [1866, 0.0027], [1900, 0.0013], [1916, 0.0012], [1919, 0.025], [1930, 0.016], [1940, 0.043], [1946, 0.27], [1960, 0.29], [1970, 0.37], [1980, 0.91], [1990, 3.2], [2000, 5.7], [2008, 10.0], [2010, 13.5], [2012, 16.1], [2014, 17.8], [2016, 19.5], [2017.7, 20.2], [2018.5, 21.5], [2019.5, 22.7], [2020.1, 23.4], [2020.5, 26.5], [2021.5, 28.4], [2022.5, 30.9], [2023.5, 33.2], [2024.5, 35.5], [2025.5, 37.6], [2026.6, 40.0]],
+          "xDomain": [1790, 2035], "yDomain": [0, 41],
+          "xTicks": [1800, 1850, 1900, 1950, 2000],
+          "draws": [
+            { "at": "took", "toX": 2017.7, "frames": 48 },
+            { "at": "nine", "toX": 2026.6, "frames": 22 }
+          ],
+          "zooms": [
+            { "at": "and#2-4", "xDomain": [2015.6, 2027.1], "yDomain": [14, 44.5], "xTicks": [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "frames": 16 }
+          ],
+          "rules": [
+            { "y": 20, "label": "$20 TRILLION", "at": "$20", "side": "left", "sideAfterZoom": "right" },
+            { "y": 40, "label": "$40 TRILLION", "color": "red", "at": "and#2+8" }
+          ],
+          "events": [
+            { "x": 1861, "label": "CIVIL WAR" },
+            { "x": 1917, "label": "WORLD WAR I" },
+            { "x": 1942, "label": "WORLD WAR II" },
+            { "x": 2020.2, "label": "PANDEMIC" }
+          ],
+          "brackets": [
+            { "x1": 1790, "x2": 2017.7, "left": "1790", "right": "2017", "label": "over 2 centuries", "at": "centuries" },
+            { "x1": 2017.7, "x2": 2026.6, "left": "SEP 2017", "right": "AUG 2026", "label": "under 9 years", "at": "nine+8", "color": "red" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interest",
+      "transition": "pushBottom",
+      "narration": "The real problem is the interest. It's now over $1 trillion a year, more than we spend on defense.",
+      "source": "Source: Congressional Budget Office (Feb 2026) · Fiscal year 2026",
+      "elements": [
+        { "type": "headline", "text": "The real problem is", "y": 50, "size": 58 },
+        { "type": "card", "at": "real+2", "title": "U.S. FEDERAL BUDGET", "caption": "FISCAL YEAR 2026", "y": 345,
+          "rows": [
+            { "label": "SOCIAL SECURITY" }, { "label": "MEDICARE" }, { "label": "DEFENSE" },
+            { "label": "INTEREST", "color": "red", "value": "$1 TRILLION / YEAR", "valueAt": "$1" }
+          ],
+          "highlightRow": { "index": 3, "at": "year" },
+          "moveAt": "more", "moveToX": 135 },
+        { "type": "bigNumber", "text": "THE INTEREST", "color": "red", "size": 170, "y": 128, "at": "the#2" },
+        { "type": "barChart", "at": "more",
+          "bars": [
+            { "label": "DEFENSE", "value": 0.9, "color": "ink", "at": "defense", "asset": "jet" },
+            { "label": "INTEREST", "value": 1.0, "color": "red", "at": "more+2", "asset": "moneyStack" }
+          ] }
+      ]
+    },
+    {
+      "id": "projection",
+      "transition": "pushRight",
+      "narration": "By 2048, it's projected to be the government's biggest bill, bigger than Social Security.",
+      "source": "Projections: CBO, The Long-Term Budget Outlook 2026–2056 · order only, not to scale",
+      "elements": [
+        { "type": "yearFlip", "from": 2037, "to": 2048, "frames": 20, "at": 0, "stamp": { "text": "PROJECTED", "at": "projected" }, "dockAt": "the-4" },
+        { "type": "headline", "text": "the government's ==biggest bill==", "y": 62 },
+        { "type": "hbarChart", "at": "the",
+          "bars": [
+            { "label": "SOCIAL SECURITY", "value": 1.6, "icon": "person", "color": "ink", "at": "the" },
+            { "label": "MEDICARE", "value": 1.3, "icon": "cross", "color": "ink", "at": "the+3" },
+            { "label": "DEFENSE", "value": 0.82, "icon": "shield", "color": "ink", "at": "the+6" },
+            { "label": "INTEREST", "value": 1.72, "icon": "percent", "color": "red", "at": "biggest" }
+          ],
+          "tag": { "bar": 3, "text": "BIGGEST BILL", "at": "bill" },
+          "reorderAt": "bigger",
+          "badge": { "bar": 3, "text": "#1", "at": "than" },
+          "labelHighlight": { "bar": 0, "at": "social" } },
+        { "type": "headline", "variant": "subline", "text": "bigger than Social Security.", "y": 142 }
+      ]
+    },
+    {
+      "id": "future",
+      "transition": "pushBottom",
+      "background": "black",
+      "narration": "We're not paying for the future. We're paying for the past.",
+      "elements": [
+        { "type": "cutout", "asset": "hourglass", "x": 1316, "y": 245, "w": 428, "h": 734, "at": "start+1" },
+        { "type": "headline", "text": "We're **not** paying for the", "align": "left", "x": 153, "y": 128, "size": 50, "dimAt": "future+16" },
+        { "type": "bigNumber", "text": "FUTURE", "align": "left", "x": 135, "y": 205, "size": 215, "at": "future", "dimAt": "future+16" },
+        { "type": "strike", "x1": 118, "x2": 690, "y": 312, "at": "future+6", "dimAt": "future+16" },
+        { "type": "headline", "text": "We're paying for the", "align": "left", "x": 153, "y": 476, "size": 56, "at": "we're#2" },
+        { "type": "tag", "text": "PAST", "x": 120, "y": 556, "size": 196, "rotate": 0, "color": "yellow", "at": "past" },
+        { "type": "totalCounter", "label": "BORROWED WHILE YOU WATCHED*", "at": "past+3", "freezeAt": "past+18", "x": 128, "y": 838 },
+        { "type": "label", "text": "*at the average rate the U.S. borrowed over the last 12 months (Treasury)", "x": 122, "y": 1000, "size": 14, "color": "#6B6762", "font": "typewriter", "at": "past+9" }
+      ]
+    }
+  ]
+}
