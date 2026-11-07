@@ -1,0 +1,12 @@
+node_modules/
+.tools/
+out/
+dist/
+.env
+*.mp4
+!examples/**/*.mp4
+analysis/sheets_all/
+analysis/sheets_dense/
+analysis/keyframes/
+analysis/audio/*.wav
+public/

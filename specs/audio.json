@@ -1,0 +1,37 @@
+{
+  "$comment": "From analysis/scripts/audio_env.mjs, ffmpeg ebur128 and silencedetect on the reference audio (AAC 48 kHz stereo, 31.409 s).",
+  "master": { "integratedLufs": -14.0, "loudnessRangeLu": 3.0, "truePeakDbfs": -2.1, "lraLowLufs": -16.0, "lraHighLufs": -13.0 },
+  "bed": "Voice only. Every inter-phrase gap measures -64 to -85 dB mean with minima near -90 dB, so there is no music bed or room tone. Transient onsets line up with syllables, so no separate SFX layer is detectable.",
+  "voice": {
+    "character": "single narrator, close-mic, dry (no reverb), fast confident explainer read",
+    "wordsTotal": 95,
+    "wpmOverall": 183,
+    "wpmWhileSpeaking": 205,
+    "elevenlabsSuggestion": { "model_id": "eleven_multilingual_v2", "voice_settings": { "stability": 0.45, "similarity_boost": 0.8, "style": 0.25, "use_speaker_boost": true, "speed": 1.08 } }
+  },
+  "phrases": [
+    { "start": 0.04, "end": 1.38, "text": "Before this video ends," },
+    { "start": 1.68, "end": 4.20, "text": "America will borrow over two million dollars." },
+    { "start": 4.46, "end": 6.80, "text": "The U.S. national debt is now over forty trillion dollars." },
+    { "start": 7.14, "end": 10.40, "text": "That's about a hundred and seventeen thousand dollars for every American." },
+    { "start": 10.56, "end": 11.40, "text": "And it's speeding up." },
+    { "start": 11.66, "end": 13.92, "text": "It took over two centuries to reach twenty trillion," },
+    { "start": 14.34, "end": 16.10, "text": "and under nine years to hit forty." },
+    { "start": 16.36, "end": 17.72, "text": "The real problem is the interest." },
+    { "start": 17.94, "end": 19.54, "text": "It's now over a trillion dollars a year," },
+    { "start": 19.74, "end": 22.56, "text": "more than we spend on defense. By 2048," },
+    { "start": 22.90, "end": 24.86, "text": "it's projected to be the government's biggest bill," },
+    { "start": 25.26, "end": 26.76, "text": "bigger than Social Security." },
+    { "start": 27.18, "end": 29.02, "text": "We're not paying for the future." },
+    { "start": 29.74, "end": 31.14, "text": "We're paying for the past." }
+  ],
+  "phraseTextConfidence": "Reconstructed from on-screen words and phrase timing; not transcribed. Run elevenlabs speech-to-text on the reference once a key is set to confirm.",
+  "pauses": { "comma": 0.2, "sentence": 0.25, "beatChange": 0.42, "finalBeat": 0.72 },
+  "syncRules": [
+    "Visual word appears 0-3 frames before or on its spoken onset.",
+    "Emphasis words (bold + highlighter) land exactly on the stressed syllable.",
+    "Big numbers start their mask-rise on the first syllable of the number.",
+    "Scene transitions start in the pause before the next phrase."
+  ],
+  "mixTarget": { "integratedLufs": -14, "truePeakDbfs": -1.5 }
+}

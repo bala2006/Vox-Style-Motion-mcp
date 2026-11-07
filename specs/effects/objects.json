@@ -1,0 +1,44 @@
+{
+  "cutoutPopIn": {
+    "use": "Photo cutouts (Capitol, hourglass, jet, money stacks) with a soft drop shadow.",
+    "look": "greyscale or lightly desaturated photo cutout, 3-4 px white rim optional, shadow 0 8px 18px rgba(0,0,0,0.28)",
+    "entry": "frame 1 ghost (opacity 0.35); frame 2 solid at rotation -8° scale 0.9; settles to final rotation with 5% overshoot over 4-5 frames",
+    "measured": { "capitol": [51, 56], "hourglass": [818, 819] },
+    "idle": "hourglass has subtle continuous animation (sand); everything else is static"
+  },
+  "sticker": {
+    "use": "Torn red paper callout with the payoff number.",
+    "look": "red #D2251D torn paper, white tiny typewriter top line, white Anton main line; final tilt -2..-3°",
+    "pop": { "f87": { "scale": 0.7, "rot": -12 }, "f89": { "scale": 0.85, "rot": -8 }, "f91": { "scale": 0.98, "rot": -4 }, "f92": { "scale": 1.05, "rot": -3 }, "f93": { "scale": 1.0, "rot": -2.5 } },
+    "position": "x 1352-1840, y 500-640 (overlapping the progress-bar end)"
+  },
+  "paperTag": {
+    "use": "Yellow or white paper label behind a word/number (BIGGEST BILL, PAST, corner counter).",
+    "look": "flat paper colour, 2 px ink outline for yellow tags, rotated -4..-6°",
+    "pop": "starts ~1.3x, settles to 1.0 in 2-3 shown frames"
+  },
+  "handStroke": {
+    "use": "Red marker arrow, circle and strike-through.",
+    "look": "red #D2251D, 5-6 px, round caps, slight wobble (hand-drawn path, not geometric)",
+    "draw": "stroke-dashoffset reveal over 5-8 frames, ease-out; circle starts at top and goes clockwise and overshoots ~10°; strike extends ~30 px past the text",
+    "measured": { "arrow": [102, 111], "circle": [243, 247], "strike": [852, 858] }
+  },
+  "progressBar": {
+    "geometry": "capsule outline 3 px ink, height ~34 px, x 320-1610, y≈730; labels NOW / END tiny typewriter below at y≈775",
+    "drawOn": "right end extends from x≈1372 to ≈1610 over f0-12, ease-out; flag on a pole fades in f7-12 at the right end",
+    "fill": "red fill grows linearly with elapsed/total frames from f16; white knob with ink outline at the fill end"
+  },
+  "moneyStackRow": {
+    "look": "green banknote bundles (greens #385127..#8AB582) with a paper band, soft shadow",
+    "layout": "7 per row, pitch 211 px, x 220-1700; row 1 baseline y≈910, row 2 sits on top",
+    "entry": "left -> right, one every 1.5-2 frames, ghost frame then solid, last items drop ~20 px",
+    "exit": "whole group scales toward (960, 690) with ease-in over 6 frames (0.97, 0.9, 0.75, 0.45, 0.2, 0)"
+  },
+  "personGrid": {
+    "look": "head-and-shoulders pictogram, ink #191410 (others grey #756F6A when one is singled out), one red person",
+    "layout": "21 x 7, pitch ≈70 px, x 260-1740, y 410-932",
+    "entry": "icons start as dots and scale up in a radial wave from the centre over ~8 frames",
+    "billBurst": "cluster of bills at the centre bursts outward and each settles above a person's head over ~10 frames",
+    "focus": "grid splits (halves slide out), push-in 1x -> 3x on the red person over 6 frames, others grey and bills desaturate; reverse when pulling back"
+  }
+}
