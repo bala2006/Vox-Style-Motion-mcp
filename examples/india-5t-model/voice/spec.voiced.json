@@ -1,0 +1,8530 @@
+{
+  "title": "What if India builds a 5 trillion parameter model?",
+  "fps": 60,
+  "width": 1920,
+  "height": 1080,
+  "cadence": "smooth",
+  "fade": {
+    "in": 12,
+    "out": 22
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "narration": "Right now, the best AI model on Earth is Claude Fable 5.2. Now imagine a model built in India, with five trillion parameters, that beats it on the major tests. This video is a scenario, not a news report. Here is what it would change, and where the facts end and the projections begin.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "SCENARIO · NOVEMBER 2026"
+        },
+        {
+          "type": "headline",
+          "text": "Imagine a model built in India",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "5T",
+          "color": "red",
+          "at": "five",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Scenario. Facts are sourced on each scene."
+    },
+    {
+      "id": "leaderboard",
+      "narration": "Start with the facts. On November 20, 2026, the BenchLeader index ranks Claude Fable 5.2 first, with a score of 70.1. GPT-6.2 Astra sits second at 68.2, and Gemini 4 Carbon third at 68.0.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHAT IS REAL TODAY"
+        },
+        {
+          "type": "headline",
+          "text": "Claude Fable 5.2 leads",
+          "y": 110
+        },
+        {
+          "type": "hbarChart",
+          "x": 420,
+          "y": 360,
+          "maxWidth": 1000,
+          "bars": [
+            {
+              "label": "Claude Fable 5.2",
+              "value": 70.1,
+              "color": "red",
+              "at": "70.1"
+            },
+            {
+              "label": "GPT-6.2 Astra",
+              "value": 68.2,
+              "color": "ink",
+              "at": "Astra"
+            },
+            {
+              "label": "Gemini 4 Carbon",
+              "value": 68,
+              "color": "grey",
+              "at": "Carbon"
+            }
+          ]
+        }
+      ],
+      "source": "Source: BenchLeader Index, standings as of 20 Nov 2026 (benchleader.com)."
+    },
+    {
+      "id": "catch",
+      "narration": "Here is the catch. Neither OpenAI nor Anthropic publishes the parameter counts of its newest models. Parameters are the learned numbers inside a model, and outside estimates are all anyone has.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE SIZE PROBLEM"
+        },
+        {
+          "type": "headline",
+          "text": "Nobody publishes parameter counts",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "?",
+          "color": "red",
+          "at": "catch",
+          "y": 330,
+          "size": 300
+        }
+      ],
+      "source": "Source: kingy.ai model comparison, 2026 (vendors disclosed no parameter counts for GPT-5.5 or Claude Opus 4.7)."
+    },
+    {
+      "id": "biggest-open",
+      "narration": "The biggest open-weight model you can download is DeepSeek V4-Pro. It has about 1.6 trillion parameters, and it activates about 49 billion of them for each token it generates.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE LARGEST OPEN MODEL"
+        },
+        {
+          "type": "headline",
+          "text": "DeepSeek V4-Pro",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "1.6T",
+          "color": "ink",
+          "at": "1.6",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Source: aiwiki.ai parameter comparison, reported specs for the April 2026 MIT-licensed release."
+    },
+    {
+      "id": "three-x",
+      "narration": "So a five trillion parameter model would be about three times the size of DeepSeek V4-Pro. That is the scale this video is about.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE SCALE"
+        },
+        {
+          "type": "headline",
+          "text": "about three times the size",
+          "y": 110
+        },
+        {
+          "type": "barChart",
+          "x": 560,
+          "w": 800,
+          "baselineY": 900,
+          "maxHeight": 480,
+          "bars": [
+            {
+              "label": "DeepSeek V4-Pro",
+              "value": 1.6,
+              "color": "ink",
+              "at": "DeepSeek"
+            },
+            {
+              "label": "India 5T (scenario)",
+              "value": 5,
+              "color": "red",
+              "at": "three"
+            }
+          ]
+        }
+      ],
+      "source": "Source: parameter counts as reported. Scenario figure: 5 trillion."
+    },
+    {
+      "id": "memory",
+      "narration": "Holding five trillion numbers takes memory. At one byte per parameter, the weights alone need five terabytes. At standard 16-bit precision, that doubles to ten terabytes.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHAT IT TAKES"
+        },
+        {
+          "type": "headline",
+          "text": "five terabytes",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "WEIGHTS ONLY",
+          "x": 560,
+          "y": 380,
+          "w": 800,
+          "rows": [
+            {
+              "label": "8-bit (1 byte per parameter)",
+              "value": "5 TB",
+              "valueAt": "five",
+              "color": "red"
+            },
+            {
+              "label": "16-bit (2 bytes per parameter)",
+              "value": "10 TB",
+              "valueAt": "ten",
+              "color": "ink"
+            }
+          ]
+        }
+      ],
+      "source": "Arithmetic: 5 trillion parameters times bytes per parameter. Excludes activations and cache."
+    },
+    {
+      "id": "sparse",
+      "narration": "The trick is sparse design. A mixture of experts model wakes only a slice of its network for each token. If five trillion parameters activate around one hundred billion per token, the model runs far cheaper than a dense model of the same size.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHY IT COULD BE FAST"
+        },
+        {
+          "type": "headline",
+          "text": "wakes only a slice",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "100B",
+          "color": "red",
+          "at": "hundred",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Scenario assumption: 100 billion active parameters per token, versus 49 billion for DeepSeek V4-Pro."
+    },
+    {
+      "id": "eka",
+      "narration": "India is not starting from zero. On November 3, 2026, the IndiaAI Mission released EKA-1, a 26.3 billion parameter model from Soket Labs, trained on about 7.5 trillion tokens.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "INDIA IS ALREADY BUILDING"
+        },
+        {
+          "type": "headline",
+          "text": "EKA-1",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "26.3B",
+          "color": "ink",
+          "at": "26.3",
+          "y": 330,
+          "size": 260
+        }
+      ],
+      "source": "Source: Press Information Bureau release, 3 Nov 2026 (via newsonair.gov.in)."
+    },
+    {
+      "id": "dhir",
+      "narration": "Two smaller models arrived the same day. Dhir 2B and Dhir 5B run fully offline, even on a laptop. Their four-bit files weigh about one and three gigabytes, and they carry an open Apache license. That is proof that sovereign AI does not need a data center to start.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE SMALL MODELS ALREADY WORK"
+        },
+        {
+          "type": "headline",
+          "text": "run fully offline",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "DHIR MODELS",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "Dhir 2B, 4-bit file",
+              "value": "1.21 GB",
+              "valueAt": "one",
+              "color": "ink"
+            },
+            {
+              "label": "Dhir 5B, 4-bit file",
+              "value": "2.95 GB",
+              "valueAt": "three",
+              "color": "ink"
+            },
+            {
+              "label": "Laptop speed, Dhir 2B (vendor test)",
+              "value": "18.6 tokens per second",
+              "valueAt": "laptop",
+              "color": "red"
+            }
+          ]
+        }
+      ],
+      "source": "Source: ZenteiQ vendor figures, summarised in a Nov 2026 IndiaAI release write-up. Single-user speeds, not independently verified."
+    },
+    {
+      "id": "plan",
+      "narration": "The plan goes further. Officials have said India will build twelve foundation models, each with fifty to one hundred twenty billion parameters.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE NATIONAL PLAN"
+        },
+        {
+          "type": "headline",
+          "text": "twelve foundation models",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "IndiaAI FOUNDATION MODEL PLAN",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "Foundation models planned",
+              "value": "12",
+              "valueAt": "twelve",
+              "color": "red"
+            },
+            {
+              "label": "Parameters per model",
+              "value": "50B to 120B",
+              "valueAt": "fifty",
+              "color": "ink"
+            }
+          ]
+        }
+      ],
+      "source": "Source: Union Budget 2026 remarks by Ashwini Vaishnaw, reported by Analytics India Magazine."
+    },
+    {
+      "id": "jump",
+      "narration": "Going from 26 billion to five trillion is a jump of about 190 times. That is the leap this scenario asks you to imagine.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE JUMP"
+        },
+        {
+          "type": "headline",
+          "text": "190 times",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "190x",
+          "color": "red",
+          "at": "190",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Arithmetic: 5,000 billion divided by 26.3 billion."
+    },
+    {
+      "id": "day-one",
+      "narration": "Picture the morning it launches. Indian engineers release a model that tops the leaderboard. It is cheaper to run, quicker to answer, and open to download.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "DAY ONE"
+        },
+        {
+          "type": "headline",
+          "text": "tops the leaderboard",
+          "y": 110
+        },
+        {
+          "type": "hbarChart",
+          "x": 420,
+          "y": 360,
+          "maxWidth": 1000,
+          "bars": [
+            {
+              "label": "India 5T (scenario)",
+              "value": 71,
+              "color": "red",
+              "at": "tops"
+            },
+            {
+              "label": "Claude Fable 5.2",
+              "value": 70.1,
+              "color": "ink",
+              "at": "leaderboard"
+            }
+          ],
+          "tag": {
+            "bar": 0,
+            "text": "#1",
+            "at": "tops"
+          }
+        }
+      ],
+      "source": "Scenario score, not a measurement. Current leader: Claude Fable 5.2 at 70.1 (BenchLeader, 20 Nov 2026)."
+    },
+    {
+      "id": "speed",
+      "narration": "Speed and price matter as much as the score. A fast model answers in moments, so banks, hospitals and schools can use it at scale. Cheap tokens let a small startup do what only a giant could afford before.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHAT CHANGES"
+        },
+        {
+          "type": "headline",
+          "text": "Speed and price",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "WHO GAINS",
+          "title": "Cheap, fast AI",
+          "items": [
+            {
+              "text": "Banks and clinics run it on their own servers",
+              "at": "banks"
+            },
+            {
+              "text": "Startups stop paying a giant's prices",
+              "at": "startup"
+            },
+            {
+              "text": "Students get a tutor in their own language",
+              "at": "hospitals"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario projection."
+    },
+    {
+      "id": "money-spend",
+      "narration": "Now the money. Start with the spending. The four largest cloud companies plan roughly seven hundred billion dollars of capital spending on AI in 2026.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 2 · THE MONEY"
+        },
+        {
+          "type": "headline",
+          "text": "seven hundred billion dollars",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "$700B",
+          "color": "red",
+          "at": "seven",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Source: JP Morgan estimate of $697 billion for 2026 hyperscaler capex (reported by intellectia.ai). Axis Intelligence puts it at $725 billion."
+    },
+    {
+      "id": "chips",
+      "narration": "Most of that money buys chips, power and buildings. A model from India does not shrink that bill. It moves some demand to new buyers, and it changes which companies capture the revenue.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHERE THE MONEY GOES"
+        },
+        {
+          "type": "headline",
+          "text": "chips, power and buildings",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "SPENDING SPLIT",
+          "title": "Who collects",
+          "items": [
+            {
+              "text": "Chip makers",
+              "at": "chips"
+            },
+            {
+              "text": "Power companies and grid builders",
+              "at": "power"
+            },
+            {
+              "text": "Data center builders",
+              "at": "buildings"
+            },
+            {
+              "text": "Model sellers, if they keep their prices",
+              "at": "revenue"
+            }
+          ]
+        }
+      ],
+      "source": "Qualitative projection based on where AI capex is currently spent."
+    },
+    {
+      "id": "api-prices",
+      "narration": "Here is the first real effect. When a strong open model is free to download, the price of closed models falls. Every company that sells access to AI has to justify its margin again.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE PRICE PRESSURE"
+        },
+        {
+          "type": "headline",
+          "text": "the price of closed models falls",
+          "y": 110
+        },
+        {
+          "type": "barChart",
+          "x": 560,
+          "w": 800,
+          "baselineY": 900,
+          "maxHeight": 460,
+          "bars": [
+            {
+              "label": "Claude Fable 5.2",
+              "value": 16,
+              "color": "red",
+              "at": "closed"
+            },
+            {
+              "label": "Gemini 4 Carbon",
+              "value": 4,
+              "color": "ink",
+              "at": "justify"
+            },
+            {
+              "label": "Gemini 4 Hydrogen",
+              "value": 3,
+              "color": "grey",
+              "at": "margin"
+            }
+          ]
+        }
+      ],
+      "source": "Source: BenchLeader blended price per 1M tokens, 20 Nov 2026. Price falls under the scenario are a projection."
+    },
+    {
+      "id": "retention",
+      "narration": "Here is the part most people miss. One model does not set the exchange rate. Interest rates, oil prices and capital flows do most of the work. Keep that in mind as we go through the money.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE PART MOST PEOPLE MISS"
+        },
+        {
+          "type": "headline",
+          "text": "The part most people miss",
+          "y": 110
+        },
+        {
+          "type": "stamp",
+          "text": "READ THIS",
+          "x": 620,
+          "y": 470,
+          "size": 110,
+          "color": "red",
+          "rotate": -4,
+          "at": "miss"
+        }
+      ],
+      "source": "General explanation of exchange rate drivers."
+    },
+    {
+      "id": "dollar",
+      "narration": "Next, the currency. The US dollar is strong right now. The dollar index sits near 104, close to a nineteen month high, because markets expect the Federal Reserve to keep raising rates.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 3 · THE DOLLAR"
+        },
+        {
+          "type": "headline",
+          "text": "The dollar index sits near 104",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "104",
+          "color": "red",
+          "at": "104",
+          "y": 330,
+          "size": 280
+        }
+      ],
+      "source": "Source: FXStreet and Reuters market reports, 19 to 20 Nov 2026. Index level near 103.8 to 104.0."
+    },
+    {
+      "id": "why-dollar",
+      "narration": "Why does the dollar stay strong? Because US markets are the deepest in the world, and most global trade and debt is priced in dollars. A rival model does not change that quickly. It takes years of trust, not one benchmark.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHY THE DOLLAR STILL WINS"
+        },
+        {
+          "type": "headline",
+          "text": "deepest in the world",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "WHY THE DOLLAR HOLDS",
+          "title": "Slow to change",
+          "items": [
+            {
+              "text": "Deepest financial markets",
+              "at": "deepest"
+            },
+            {
+              "text": "Most trade and debt priced in dollars",
+              "at": "priced"
+            },
+            {
+              "text": "Years of trust, not one benchmark",
+              "at": "years"
+            }
+          ]
+        }
+      ],
+      "source": "General explanation. Dollar index context from FXStreet, 19 to 20 Nov 2026."
+    },
+    {
+      "id": "rupee",
+      "narration": "The rupee trades near ninety three to the dollar. Its recent record low, around ninety six point nine six, came in October.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE RUPEE"
+        },
+        {
+          "type": "headline",
+          "text": "The rupee trades near",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "RUPEE PER US DOLLAR",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "20 Nov 2026",
+              "value": "about 93",
+              "valueAt": "ninety",
+              "color": "ink"
+            },
+            {
+              "label": "Record low, October 2026",
+              "value": "about 96.96",
+              "valueAt": "record",
+              "color": "red"
+            }
+          ]
+        }
+      ],
+      "source": "Source: Wise mid-market history (20 Nov 2026); BusinessWorld (October record low of 96.96)."
+    },
+    {
+      "id": "rupee-forces",
+      "narration": "A breakthrough model pulls the rupee two ways. Foreign money chases Indian AI, and exporters earn more dollars from software and services. But India imports chips priced in dollars, and that spending pulls the other way.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "TWO FORCES"
+        },
+        {
+          "type": "headline",
+          "text": "pulls the rupee two ways",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "SCENARIO MECHANISM",
+          "title": "Rupee: two pulls",
+          "items": [
+            {
+              "text": "More dollars in: foreign investment in Indian AI",
+              "at": "chases"
+            },
+            {
+              "text": "More dollars in: software and services exports",
+              "at": "exporters"
+            },
+            {
+              "text": "More dollars out: imported chips and servers",
+              "at": "imports"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario mechanism. Direction only, not a measured effect."
+    },
+    {
+      "id": "rupee-guess",
+      "narration": "Our projection is that the rupee gains some ground, perhaps a few percent over a year. The dollar index stays firm while the Fed tightens. Treat this as a range, not a forecast.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "OUR BEST GUESS"
+        },
+        {
+          "type": "headline",
+          "text": "gains some ground",
+          "y": 110
+        },
+        {
+          "type": "stamp",
+          "text": "SCENARIO, NOT FORECAST",
+          "x": 520,
+          "y": 460,
+          "size": 84,
+          "color": "red",
+          "rotate": -4,
+          "at": "forecast"
+        }
+      ],
+      "source": "Scenario judgement, based on the two forces above. Not financial advice."
+    },
+    {
+      "id": "growth",
+      "narration": "The IMF says global growth slows to about three percent in 2026. India is the fastest growing major economy, with 7.0 percent forecast for 2026 and 2027.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 4 · GROWTH"
+        },
+        {
+          "type": "headline",
+          "text": "fastest growing major economy",
+          "y": 110
+        },
+        {
+          "type": "barChart",
+          "x": 560,
+          "w": 800,
+          "baselineY": 900,
+          "maxHeight": 460,
+          "bars": [
+            {
+              "label": "World",
+              "value": 3,
+              "color": "grey",
+              "at": "three"
+            },
+            {
+              "label": "China",
+              "value": 4.5,
+              "color": "ink",
+              "at": "fastest"
+            },
+            {
+              "label": "India",
+              "value": 7,
+              "color": "red",
+              "at": "7.0"
+            }
+          ]
+        }
+      ],
+      "source": "Source: IMF forecasts as reported by Financial Express (July 2026 update) and NDTV (October 2026). China figure from Rio Times."
+    },
+    {
+      "id": "rank",
+      "narration": "India is now the sixth largest economy, according to the IMF. Its projected path puts it fourth by 2027, with about four point five two trillion dollars of GDP.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE RANKING"
+        },
+        {
+          "type": "headline",
+          "text": "sixth largest economy",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "INDIA'S ECONOMY",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "Rank in 2026",
+              "value": "6th",
+              "valueAt": "sixth",
+              "color": "ink"
+            },
+            {
+              "label": "Projected rank in 2027",
+              "value": "4th",
+              "valueAt": "fourth",
+              "color": "red"
+            },
+            {
+              "label": "Projected 2027 GDP",
+              "value": "$4.52T",
+              "valueAt": "four",
+              "color": "ink"
+            }
+          ]
+        }
+      ],
+      "source": "Source: IMF projections as reported by Financial Express (2026)."
+    },
+    {
+      "id": "hardware",
+      "narration": "Who wins the hardware race? A five trillion parameter model needs huge memory and fast links between chips. That pulls demand toward chip makers, data centers and power grids, wherever they sit.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE HARDWARE RACE"
+        },
+        {
+          "type": "headline",
+          "text": "huge memory",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "WHO SUPPLIES IT",
+          "title": "Hardware demand",
+          "items": [
+            {
+              "text": "Memory: 5 to 10 terabytes of weights",
+              "at": "memory"
+            },
+            {
+              "text": "Fast chip-to-chip links",
+              "at": "links"
+            },
+            {
+              "text": "Data centers and power grids",
+              "at": "grids"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario projection. Memory figures from the arithmetic shown earlier."
+    },
+    {
+      "id": "jobs",
+      "narration": "For India, the biggest change may be in jobs. IT firms that sell outsourced coding could lose clients to a home-grown model. But demand for people who build, check and deploy AI could rise fast.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "JOBS AND SERVICES"
+        },
+        {
+          "type": "headline",
+          "text": "outsourced coding",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "JOBS",
+          "title": "Who feels it",
+          "items": [
+            {
+              "text": "Outsourced coding: under pressure",
+              "at": "outsourced"
+            },
+            {
+              "text": "AI deployment and safety engineers: demand up",
+              "at": "deploy"
+            },
+            {
+              "text": "Data checking and evaluation: new work",
+              "at": "check"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario projection."
+    },
+    {
+      "id": "diplomacy",
+      "narration": "Now diplomacy. A sovereign model changes how countries bargain. A government that does not need to rent foreign AI can refuse conditions it dislikes.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 5 · DIPLOMACY"
+        },
+        {
+          "type": "headline",
+          "text": "changes how countries bargain",
+          "y": 110
+        },
+        {
+          "type": "stamp",
+          "text": "LEVERAGE",
+          "x": 620,
+          "y": 470,
+          "size": 120,
+          "color": "red",
+          "rotate": -5,
+          "at": "refuse"
+        }
+      ],
+      "source": "Scenario projection."
+    },
+    {
+      "id": "us-trade",
+      "narration": "The US and India agreed a trade framework in February, with an eighteen percent tariff on Indian goods. The Supreme Court then struck down the emergency tariffs that framework relied on, and signing is on hold until Washington sets a new tariff structure.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE TRADE TALKS"
+        },
+        {
+          "type": "headline",
+          "text": "trade framework",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "US AND INDIA TRADE",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "February 2026 framework",
+              "value": "18% tariff",
+              "valueAt": "eighteen",
+              "color": "ink"
+            },
+            {
+              "label": "Status, November 2026",
+              "value": "Signing on hold",
+              "valueAt": "signing",
+              "color": "red"
+            },
+            {
+              "label": "Trigger",
+              "value": "Supreme Court ruling",
+              "valueAt": "Supreme",
+              "color": "ink"
+            }
+          ]
+        }
+      ],
+      "source": "Source: ANI and The Hindu, 18 Nov 2026, quoting Commerce Secretary Rajesh Agrawal."
+    },
+    {
+      "id": "export-rules",
+      "narration": "Export controls decide who can buy the best chips. If the US tightens them, India's model still trains, but more slowly. If Washington eases them, India gets a faster path, and the US gains a partner instead of a rival.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "CHIPS AND EXPORT RULES"
+        },
+        {
+          "type": "headline",
+          "text": "Export controls",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "IF WASHINGTON...",
+          "title": "Two paths",
+          "items": [
+            {
+              "text": "Tightens: India trains more slowly",
+              "at": "tightens"
+            },
+            {
+              "text": "Eases: India moves faster, and the US gains a partner",
+              "at": "eases"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario projection."
+    },
+    {
+      "id": "china",
+      "narration": "China is the wild card. US President Donald Trump arrived in China this week for talks with Xi Jinping. A capable Indian model would add a third option for countries that want AI without picking a side.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE WILD CARD"
+        },
+        {
+          "type": "headline",
+          "text": "a third option",
+          "y": 110
+        },
+        {
+          "type": "stamp",
+          "text": "A THIRD OPTION",
+          "x": 560,
+          "y": 470,
+          "size": 110,
+          "color": "ink",
+          "rotate": -3,
+          "at": "third"
+        }
+      ],
+      "source": "Source: Outlook India live update, 18 Nov 2026, on Trump's trip to China."
+    },
+    {
+      "id": "global-south",
+      "narration": "Many countries in Africa, Southeast Asia and Latin America need affordable AI in local languages. An open Indian model with strong Indic language skills could become their default. That shifts influence toward New Delhi.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE GLOBAL SOUTH"
+        },
+        {
+          "type": "headline",
+          "text": "affordable AI",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "22",
+          "color": "red",
+          "at": "affordable",
+          "y": 330,
+          "size": 300
+        }
+      ],
+      "source": "Source: PIB via newsonair.gov.in. EKA-1 covers all 22 scheduled Indian languages plus English. Influence shift is a scenario."
+    },
+    {
+      "id": "losers",
+      "narration": "Every shift creates losers. Closed model sellers would face price pressure. Countries that bet heavily on one supplier would need to rethink. And any open model can be misused, so safety rules and audits become a diplomatic topic.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "WHO LOSES"
+        },
+        {
+          "type": "headline",
+          "text": "Every shift creates losers",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "LOSERS",
+          "title": "Pressure points",
+          "items": [
+            {
+              "text": "Closed model sellers: price pressure",
+              "at": "pressure"
+            },
+            {
+              "text": "Single-supplier bets: need to rethink",
+              "at": "rethink"
+            },
+            {
+              "text": "Safety and audit rules: become a treaty topic",
+              "at": "audits"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario projection."
+    },
+    {
+      "id": "reality",
+      "narration": "Now the reality check. EKA-1 is announced, but its weights are not public yet. The release is planned within a month, with a waitlist first.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 6 · THE REALITY CHECK"
+        },
+        {
+          "type": "headline",
+          "text": "not public yet",
+          "y": 110
+        },
+        {
+          "type": "card",
+          "title": "EKA-1 STATUS",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "rows": [
+            {
+              "label": "Parameters",
+              "value": "26.3B",
+              "valueAt": "announced",
+              "color": "ink"
+            },
+            {
+              "label": "Weights",
+              "value": "Waitlist, not public",
+              "valueAt": "public",
+              "color": "red"
+            },
+            {
+              "label": "Planned open release",
+              "value": "Within a month",
+              "valueAt": "month",
+              "color": "ink"
+            }
+          ]
+        }
+      ],
+      "source": "Source: PIB and Soket Labs, reported by TheTechBag, 3 to 20 Nov 2026."
+    },
+    {
+      "id": "timeline",
+      "narration": "Here is one way the timeline could run. In 2027, independent labs test the Indian model and publish scores. In 2028, open weights spread, and a price war starts among API sellers. By 2030, a five trillion parameter system could sit inside banks, courts and classrooms across Asia.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE SCENARIO TIMELINE"
+        },
+        {
+          "type": "headline",
+          "text": "one way the timeline could run",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "SCENARIO, NOT FORECAST",
+          "title": "2027 to 2030",
+          "items": [
+            {
+              "text": "2027: independent tests and published scores",
+              "at": "2027"
+            },
+            {
+              "text": "2028: open weights spread, prices fall",
+              "at": "2028"
+            },
+            {
+              "text": "2030: banks, courts and classrooms adopt it",
+              "at": "2030"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario timeline. Not a prediction of dates."
+    },
+    {
+      "id": "myths",
+      "narration": "Three myths spread fast when a headline like this lands. Myth one: the dollar collapses overnight. Myth two: US AI companies disappear. Myth three: every job vanishes next year. None of these follows from a single model.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THREE MYTHS"
+        },
+        {
+          "type": "headline",
+          "text": "Three myths",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "MYTHS",
+          "title": "Not how it works",
+          "items": [
+            {
+              "text": "The dollar collapses overnight",
+              "value": "NO",
+              "valueColor": "red",
+              "at": "collapses"
+            },
+            {
+              "text": "US AI companies disappear",
+              "value": "NO",
+              "valueColor": "red",
+              "at": "disappear"
+            },
+            {
+              "text": "Every job vanishes next year",
+              "value": "NO",
+              "valueColor": "red",
+              "at": "vanishes"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario reasoning. Each claim needs far more than one model to be true."
+    },
+    {
+      "id": "not-built",
+      "narration": "I found no announcement of a five trillion parameter Indian model. Building one would take many months of training on a very large number of top chips, and funding at a scale India has not yet committed.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE HONEST GAP"
+        },
+        {
+          "type": "headline",
+          "text": "no announcement",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "0",
+          "color": "red",
+          "at": "found",
+          "y": 330,
+          "size": 300
+        }
+      ],
+      "source": "Source: search of November 2026 coverage. The training scale is a judgement, not a measured figure."
+    },
+    {
+      "id": "likely",
+      "narration": "Here is the most likely path. Indian models get better each year. Open models narrow the gap with closed ones. Prices fall. The rupee and the dollar move with interest rates more than with AI.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE MOST LIKELY PATH"
+        },
+        {
+          "type": "headline",
+          "text": "most likely path",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "PROJECTION",
+          "title": "Most likely",
+          "items": [
+            {
+              "text": "Indian models improve every year",
+              "at": "Indian"
+            },
+            {
+              "text": "Open models close the gap",
+              "at": "narrow"
+            },
+            {
+              "text": "Prices fall",
+              "at": "fall"
+            },
+            {
+              "text": "Rates, not AI, drive the rupee and dollar",
+              "at": "rates"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario judgement."
+    },
+    {
+      "id": "watch",
+      "narration": "Watch three signals. First, independent benchmarks of EKA-1. Second, the signing of the US and India trade deal. Third, the dollar index and the Federal Reserve's next decision.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THREE THINGS TO WATCH"
+        },
+        {
+          "type": "headline",
+          "text": "Watch three signals",
+          "y": 110
+        },
+        {
+          "type": "steps",
+          "x": 460,
+          "y": 380,
+          "w": 1000,
+          "items": [
+            {
+              "text": "Independent benchmarks of EKA-1",
+              "tool": "1",
+              "at": "First"
+            },
+            {
+              "text": "US and India trade deal signed",
+              "tool": "2",
+              "at": "Second"
+            },
+            {
+              "text": "Dollar index and Fed decisions",
+              "tool": "3",
+              "at": "Third",
+              "highlight": true
+            }
+          ]
+        }
+      ],
+      "source": "Signals to watch, not predictions."
+    },
+    {
+      "id": "you",
+      "narration": "If you build products, your costs could fall fast. If you work in services, your skills need to move up the stack. If you save in rupees, watch the exchange rate, not the headlines.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "PART 7 · YOU"
+        },
+        {
+          "type": "headline",
+          "text": "watch the exchange rate",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "3",
+          "color": "red",
+          "at": "build",
+          "y": 330,
+          "size": 300
+        }
+      ],
+      "source": "General guidance. Not financial advice."
+    },
+    {
+      "id": "summary",
+      "narration": "So what happens if India builds a five trillion parameter model that tops the charts? Prices fall, India gains leverage in diplomacy, and the rupee gets some support. The dollar stays strong while the Fed tightens.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "THE SUMMARY"
+        },
+        {
+          "type": "headline",
+          "text": "Prices fall",
+          "y": 110
+        },
+        {
+          "type": "paperCard",
+          "x": 460,
+          "y": 360,
+          "w": 1000,
+          "h": 480,
+          "kicker": "IF INDIA BUILDS IT",
+          "title": "The scenario in four lines",
+          "items": [
+            {
+              "text": "Prices fall",
+              "at": "Prices"
+            },
+            {
+              "text": "India gains diplomatic leverage",
+              "at": "leverage"
+            },
+            {
+              "text": "The rupee gets some support",
+              "at": "rupee"
+            },
+            {
+              "text": "The dollar stays strong while the Fed tightens",
+              "at": "dollar"
+            }
+          ]
+        }
+      ],
+      "source": "Scenario summary. Not a forecast."
+    },
+    {
+      "id": "close",
+      "narration": "Facts first, projections clearly labelled. If you want the next scenario, from China or from the US, tell us in the comments. And subscribe, so you do not miss it.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "FACTS FIRST"
+        },
+        {
+          "type": "headline",
+          "text": "Facts first",
+          "y": 110
+        },
+        {
+          "type": "bigNumber",
+          "text": "SUBSCRIBE",
+          "color": "red",
+          "at": "subscribe",
+          "y": 330,
+          "size": 240
+        }
+      ],
+      "background": "black",
+      "transition": "cut"
+    }
+  ],
+  "voiceover": {
+    "hook": {
+      "audio": "hook.mp3",
+      "duration": 19.114,
+      "words": [
+        {
+          "text": "Right",
+          "start": 0,
+          "end": 0.29
+        },
+        {
+          "text": "now,",
+          "start": 0.348,
+          "end": 0.65
+        },
+        {
+          "text": "the",
+          "start": 0.697,
+          "end": 0.789
+        },
+        {
+          "text": "best",
+          "start": 0.848,
+          "end": 1.08
+        },
+        {
+          "text": "AI",
+          "start": 1.138,
+          "end": 1.451
+        },
+        {
+          "text": "model",
+          "start": 1.509,
+          "end": 1.776
+        },
+        {
+          "text": "on",
+          "start": 1.834,
+          "end": 1.927
+        },
+        {
+          "text": "Earth",
+          "start": 1.985,
+          "end": 2.206
+        },
+        {
+          "text": "is",
+          "start": 2.276,
+          "end": 2.368
+        },
+        {
+          "text": "Claude",
+          "start": 2.426,
+          "end": 2.752
+        },
+        {
+          "text": "Fable",
+          "start": 2.798,
+          "end": 3.158
+        },
+        {
+          "text": "5.2.",
+          "start": 3.216,
+          "end": 4.261
+        },
+        {
+          "text": "Now",
+          "start": 4.702,
+          "end": 4.841
+        },
+        {
+          "text": "imagine",
+          "start": 4.911,
+          "end": 5.283
+        },
+        {
+          "text": "a",
+          "start": 5.306,
+          "end": 5.329
+        },
+        {
+          "text": "model",
+          "start": 5.375,
+          "end": 5.619
+        },
+        {
+          "text": "built",
+          "start": 5.677,
+          "end": 5.898
+        },
+        {
+          "text": "in",
+          "start": 5.944,
+          "end": 6.002
+        },
+        {
+          "text": "India,",
+          "start": 6.06,
+          "end": 6.525
+        },
+        {
+          "text": "with",
+          "start": 6.571,
+          "end": 6.757
+        },
+        {
+          "text": "five",
+          "start": 6.815,
+          "end": 7.07
+        },
+        {
+          "text": "trillion",
+          "start": 7.105,
+          "end": 7.43
+        },
+        {
+          "text": "parameters,",
+          "start": 7.5,
+          "end": 8.208
+        },
+        {
+          "text": "that",
+          "start": 8.382,
+          "end": 8.557
+        },
+        {
+          "text": "beats",
+          "start": 8.615,
+          "end": 8.882
+        },
+        {
+          "text": "it",
+          "start": 8.928,
+          "end": 9.009
+        },
+        {
+          "text": "on",
+          "start": 9.056,
+          "end": 9.125
+        },
+        {
+          "text": "the",
+          "start": 9.16,
+          "end": 9.23
+        },
+        {
+          "text": "major",
+          "start": 9.276,
+          "end": 9.555
+        },
+        {
+          "text": "tests.",
+          "start": 9.601,
+          "end": 10.252
+        },
+        {
+          "text": "This",
+          "start": 10.948,
+          "end": 11.157
+        },
+        {
+          "text": "video",
+          "start": 11.227,
+          "end": 11.552
+        },
+        {
+          "text": "is",
+          "start": 11.61,
+          "end": 11.691
+        },
+        {
+          "text": "a",
+          "start": 11.738,
+          "end": 11.773
+        },
+        {
+          "text": "scenario,",
+          "start": 11.819,
+          "end": 12.527
+        },
+        {
+          "text": "not",
+          "start": 12.62,
+          "end": 12.806
+        },
+        {
+          "text": "a",
+          "start": 12.852,
+          "end": 12.875
+        },
+        {
+          "text": "news",
+          "start": 12.945,
+          "end": 13.154
+        },
+        {
+          "text": "report.",
+          "start": 13.212,
+          "end": 13.735
+        },
+        {
+          "text": "Here",
+          "start": 13.978,
+          "end": 14.234
+        },
+        {
+          "text": "is",
+          "start": 14.28,
+          "end": 14.35
+        },
+        {
+          "text": "what",
+          "start": 14.396,
+          "end": 14.524
+        },
+        {
+          "text": "it",
+          "start": 14.571,
+          "end": 14.617
+        },
+        {
+          "text": "would",
+          "start": 14.64,
+          "end": 14.779
+        },
+        {
+          "text": "change,",
+          "start": 14.814,
+          "end": 15.325
+        },
+        {
+          "text": "and",
+          "start": 15.441,
+          "end": 15.58
+        },
+        {
+          "text": "where",
+          "start": 15.615,
+          "end": 15.789
+        },
+        {
+          "text": "the",
+          "start": 15.813,
+          "end": 15.882
+        },
+        {
+          "text": "facts",
+          "start": 15.94,
+          "end": 16.254
+        },
+        {
+          "text": "end",
+          "start": 16.335,
+          "end": 16.66
+        },
+        {
+          "text": "and",
+          "start": 16.776,
+          "end": 16.974
+        },
+        {
+          "text": "the",
+          "start": 17.02,
+          "end": 17.09
+        },
+        {
+          "text": "projections",
+          "start": 17.124,
+          "end": 17.658
+        },
+        {
+          "text": "begin.",
+          "start": 17.717,
+          "end": 18.994
+        }
+      ]
+    },
+    "leaderboard": {
+      "audio": "leaderboard.mp3",
+      "duration": 18.324,
+      "words": [
+        {
+          "text": "Start",
+          "start": 0,
+          "end": 0.372
+        },
+        {
+          "text": "with",
+          "start": 0.406,
+          "end": 0.522
+        },
+        {
+          "text": "the",
+          "start": 0.557,
+          "end": 0.627
+        },
+        {
+          "text": "facts.",
+          "start": 0.673,
+          "end": 1.207
+        },
+        {
+          "text": "On",
+          "start": 1.451,
+          "end": 1.591
+        },
+        {
+          "text": "November",
+          "start": 1.637,
+          "end": 1.985
+        },
+        {
+          "text": "20,",
+          "start": 2.055,
+          "end": 2.473
+        },
+        {
+          "text": "2026,",
+          "start": 2.543,
+          "end": 3.657
+        },
+        {
+          "text": "the",
+          "start": 3.808,
+          "end": 3.901
+        },
+        {
+          "text": "BenchLeader",
+          "start": 3.959,
+          "end": 4.458
+        },
+        {
+          "text": "index",
+          "start": 4.528,
+          "end": 4.957
+        },
+        {
+          "text": "ranks",
+          "start": 5.05,
+          "end": 5.341
+        },
+        {
+          "text": "Claude",
+          "start": 5.399,
+          "end": 5.724
+        },
+        {
+          "text": "Fable",
+          "start": 5.77,
+          "end": 6.107
+        },
+        {
+          "text": "5.2",
+          "start": 6.177,
+          "end": 6.792
+        },
+        {
+          "text": "first,",
+          "start": 6.908,
+          "end": 7.454
+        },
+        {
+          "text": "with",
+          "start": 7.663,
+          "end": 7.825
+        },
+        {
+          "text": "a",
+          "start": 7.86,
+          "end": 7.883
+        },
+        {
+          "text": "score",
+          "start": 7.93,
+          "end": 8.231
+        },
+        {
+          "text": "of",
+          "start": 8.266,
+          "end": 8.301
+        },
+        {
+          "text": "70.1.",
+          "start": 8.359,
+          "end": 9.497
+        },
+        {
+          "text": "GPT-6.2",
+          "start": 10.008,
+          "end": 11.331
+        },
+        {
+          "text": "Astra",
+          "start": 11.447,
+          "end": 11.842
+        },
+        {
+          "text": "sits",
+          "start": 11.9,
+          "end": 12.132
+        },
+        {
+          "text": "second",
+          "start": 12.167,
+          "end": 12.504
+        },
+        {
+          "text": "at",
+          "start": 12.55,
+          "end": 12.62
+        },
+        {
+          "text": "68.2,",
+          "start": 12.678,
+          "end": 13.92
+        },
+        {
+          "text": "and",
+          "start": 14.036,
+          "end": 14.176
+        },
+        {
+          "text": "Gemini",
+          "start": 14.222,
+          "end": 14.594
+        },
+        {
+          "text": "4",
+          "start": 14.71,
+          "end": 14.919
+        },
+        {
+          "text": "Carbon",
+          "start": 15.012,
+          "end": 15.406
+        },
+        {
+          "text": "third",
+          "start": 15.523,
+          "end": 15.952
+        },
+        {
+          "text": "at",
+          "start": 15.999,
+          "end": 16.126
+        },
+        {
+          "text": "68.0.",
+          "start": 16.161,
+          "end": 18.204
+        }
+      ]
+    },
+    "catch": {
+      "audio": "catch.mp3",
+      "duration": 12.845,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "is",
+          "start": 0.313,
+          "end": 0.395
+        },
+        {
+          "text": "the",
+          "start": 0.441,
+          "end": 0.511
+        },
+        {
+          "text": "catch.",
+          "start": 0.557,
+          "end": 1.08
+        },
+        {
+          "text": "Neither",
+          "start": 1.591,
+          "end": 1.939
+        },
+        {
+          "text": "OpenAI",
+          "start": 2.02,
+          "end": 2.624
+        },
+        {
+          "text": "nor",
+          "start": 2.694,
+          "end": 2.868
+        },
+        {
+          "text": "Anthropic",
+          "start": 2.937,
+          "end": 3.541
+        },
+        {
+          "text": "publishes",
+          "start": 3.657,
+          "end": 4.145
+        },
+        {
+          "text": "the",
+          "start": 4.191,
+          "end": 4.261
+        },
+        {
+          "text": "parameter",
+          "start": 4.307,
+          "end": 4.737
+        },
+        {
+          "text": "counts",
+          "start": 4.783,
+          "end": 5.097
+        },
+        {
+          "text": "of",
+          "start": 5.143,
+          "end": 5.201
+        },
+        {
+          "text": "its",
+          "start": 5.248,
+          "end": 5.364
+        },
+        {
+          "text": "newest",
+          "start": 5.445,
+          "end": 5.747
+        },
+        {
+          "text": "models.",
+          "start": 5.817,
+          "end": 6.397
+        },
+        {
+          "text": "Parameters",
+          "start": 6.838,
+          "end": 7.407
+        },
+        {
+          "text": "are",
+          "start": 7.454,
+          "end": 7.546
+        },
+        {
+          "text": "the",
+          "start": 7.57,
+          "end": 7.639
+        },
+        {
+          "text": "learned",
+          "start": 7.709,
+          "end": 8.034
+        },
+        {
+          "text": "numbers",
+          "start": 8.104,
+          "end": 8.44
+        },
+        {
+          "text": "inside",
+          "start": 8.51,
+          "end": 8.963
+        },
+        {
+          "text": "a",
+          "start": 8.986,
+          "end": 9.009
+        },
+        {
+          "text": "model,",
+          "start": 9.056,
+          "end": 9.543
+        },
+        {
+          "text": "and",
+          "start": 9.787,
+          "end": 9.938
+        },
+        {
+          "text": "outside",
+          "start": 10.008,
+          "end": 10.426
+        },
+        {
+          "text": "estimates",
+          "start": 10.472,
+          "end": 10.925
+        },
+        {
+          "text": "are",
+          "start": 10.971,
+          "end": 11.122
+        },
+        {
+          "text": "all",
+          "start": 11.157,
+          "end": 11.32
+        },
+        {
+          "text": "anyone",
+          "start": 11.378,
+          "end": 11.68
+        },
+        {
+          "text": "has.",
+          "start": 11.726,
+          "end": 12.725
+        }
+      ]
+    },
+    "biggest-open": {
+      "audio": "biggest-open.mp3",
+      "duration": 11.916,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.163
+        },
+        {
+          "text": "biggest",
+          "start": 0.221,
+          "end": 0.546
+        },
+        {
+          "text": "open-weight",
+          "start": 0.604,
+          "end": 1.115
+        },
+        {
+          "text": "model",
+          "start": 1.161,
+          "end": 1.416
+        },
+        {
+          "text": "you",
+          "start": 1.486,
+          "end": 1.556
+        },
+        {
+          "text": "can",
+          "start": 1.602,
+          "end": 1.718
+        },
+        {
+          "text": "download",
+          "start": 1.765,
+          "end": 2.229
+        },
+        {
+          "text": "is",
+          "start": 2.31,
+          "end": 2.461
+        },
+        {
+          "text": "DeepSeek",
+          "start": 2.519,
+          "end": 2.995
+        },
+        {
+          "text": "V4-Pro.",
+          "start": 3.088,
+          "end": 4.087
+        },
+        {
+          "text": "It",
+          "start": 4.528,
+          "end": 4.656
+        },
+        {
+          "text": "has",
+          "start": 4.69,
+          "end": 4.807
+        },
+        {
+          "text": "about",
+          "start": 4.853,
+          "end": 5.085
+        },
+        {
+          "text": "1.6",
+          "start": 5.143,
+          "end": 5.817
+        },
+        {
+          "text": "trillion",
+          "start": 5.898,
+          "end": 6.281
+        },
+        {
+          "text": "parameters,",
+          "start": 6.339,
+          "end": 7.07
+        },
+        {
+          "text": "and",
+          "start": 7.221,
+          "end": 7.361
+        },
+        {
+          "text": "it",
+          "start": 7.419,
+          "end": 7.488
+        },
+        {
+          "text": "activates",
+          "start": 7.535,
+          "end": 7.988
+        },
+        {
+          "text": "about",
+          "start": 8.022,
+          "end": 8.231
+        },
+        {
+          "text": "49",
+          "start": 8.301,
+          "end": 8.8
+        },
+        {
+          "text": "billion",
+          "start": 8.87,
+          "end": 9.195
+        },
+        {
+          "text": "of",
+          "start": 9.23,
+          "end": 9.288
+        },
+        {
+          "text": "them",
+          "start": 9.346,
+          "end": 9.497
+        },
+        {
+          "text": "for",
+          "start": 9.578,
+          "end": 9.694
+        },
+        {
+          "text": "each",
+          "start": 9.752,
+          "end": 9.961
+        },
+        {
+          "text": "token",
+          "start": 10.008,
+          "end": 10.321
+        },
+        {
+          "text": "it",
+          "start": 10.368,
+          "end": 10.426
+        },
+        {
+          "text": "generates.",
+          "start": 10.484,
+          "end": 11.796
+        }
+      ]
+    },
+    "three-x": {
+      "audio": "three-x.mp3",
+      "duration": 8.851,
+      "words": [
+        {
+          "text": "So",
+          "start": 0,
+          "end": 0.163
+        },
+        {
+          "text": "a",
+          "start": 0.221,
+          "end": 0.244
+        },
+        {
+          "text": "five",
+          "start": 0.313,
+          "end": 0.569
+        },
+        {
+          "text": "trillion",
+          "start": 0.604,
+          "end": 0.929
+        },
+        {
+          "text": "parameter",
+          "start": 0.987,
+          "end": 1.451
+        },
+        {
+          "text": "model",
+          "start": 1.486,
+          "end": 1.788
+        },
+        {
+          "text": "would",
+          "start": 1.962,
+          "end": 2.171
+        },
+        {
+          "text": "be",
+          "start": 2.206,
+          "end": 2.287
+        },
+        {
+          "text": "about",
+          "start": 2.322,
+          "end": 2.554
+        },
+        {
+          "text": "three",
+          "start": 2.612,
+          "end": 2.868
+        },
+        {
+          "text": "times",
+          "start": 2.914,
+          "end": 3.239
+        },
+        {
+          "text": "the",
+          "start": 3.286,
+          "end": 3.355
+        },
+        {
+          "text": "size",
+          "start": 3.413,
+          "end": 3.738
+        },
+        {
+          "text": "of",
+          "start": 3.773,
+          "end": 3.82
+        },
+        {
+          "text": "DeepSeek",
+          "start": 3.878,
+          "end": 4.354
+        },
+        {
+          "text": "V4-Pro.",
+          "start": 4.435,
+          "end": 5.48
+        },
+        {
+          "text": "That",
+          "start": 6.177,
+          "end": 6.409
+        },
+        {
+          "text": "is",
+          "start": 6.467,
+          "end": 6.548
+        },
+        {
+          "text": "the",
+          "start": 6.594,
+          "end": 6.664
+        },
+        {
+          "text": "scale",
+          "start": 6.711,
+          "end": 7.07
+        },
+        {
+          "text": "this",
+          "start": 7.105,
+          "end": 7.233
+        },
+        {
+          "text": "video",
+          "start": 7.303,
+          "end": 7.593
+        },
+        {
+          "text": "is",
+          "start": 7.651,
+          "end": 7.732
+        },
+        {
+          "text": "about.",
+          "start": 7.779,
+          "end": 8.731
+        }
+      ]
+    },
+    "memory": {
+      "audio": "memory.mp3",
+      "duration": 11.916,
+      "words": [
+        {
+          "text": "Holding",
+          "start": 0,
+          "end": 0.383
+        },
+        {
+          "text": "five",
+          "start": 0.453,
+          "end": 0.72
+        },
+        {
+          "text": "trillion",
+          "start": 0.755,
+          "end": 1.103
+        },
+        {
+          "text": "numbers",
+          "start": 1.173,
+          "end": 1.509
+        },
+        {
+          "text": "takes",
+          "start": 1.567,
+          "end": 1.811
+        },
+        {
+          "text": "memory.",
+          "start": 1.881,
+          "end": 2.461
+        },
+        {
+          "text": "At",
+          "start": 2.902,
+          "end": 3.077
+        },
+        {
+          "text": "one",
+          "start": 3.146,
+          "end": 3.344
+        },
+        {
+          "text": "byte",
+          "start": 3.39,
+          "end": 3.634
+        },
+        {
+          "text": "per",
+          "start": 3.669,
+          "end": 3.785
+        },
+        {
+          "text": "parameter,",
+          "start": 3.843,
+          "end": 4.423
+        },
+        {
+          "text": "the",
+          "start": 4.493,
+          "end": 4.586
+        },
+        {
+          "text": "weights",
+          "start": 4.644,
+          "end": 4.888
+        },
+        {
+          "text": "alone",
+          "start": 4.934,
+          "end": 5.224
+        },
+        {
+          "text": "need",
+          "start": 5.259,
+          "end": 5.433
+        },
+        {
+          "text": "five",
+          "start": 5.492,
+          "end": 5.735
+        },
+        {
+          "text": "terabytes.",
+          "start": 5.77,
+          "end": 6.548
+        },
+        {
+          "text": "At",
+          "start": 7.152,
+          "end": 7.314
+        },
+        {
+          "text": "standard",
+          "start": 7.372,
+          "end": 7.779
+        },
+        {
+          "text": "16-bit",
+          "start": 7.814,
+          "end": 8.452
+        },
+        {
+          "text": "precision,",
+          "start": 8.499,
+          "end": 9.114
+        },
+        {
+          "text": "that",
+          "start": 9.265,
+          "end": 9.462
+        },
+        {
+          "text": "doubles",
+          "start": 9.52,
+          "end": 9.868
+        },
+        {
+          "text": "to",
+          "start": 9.915,
+          "end": 9.985
+        },
+        {
+          "text": "ten",
+          "start": 10.043,
+          "end": 10.228
+        },
+        {
+          "text": "terabytes.",
+          "start": 10.286,
+          "end": 11.796
+        }
+      ]
+    },
+    "sparse": {
+      "audio": "sparse.mp3",
+      "duration": 15.445,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.151
+        },
+        {
+          "text": "trick",
+          "start": 0.209,
+          "end": 0.453
+        },
+        {
+          "text": "is",
+          "start": 0.522,
+          "end": 0.604
+        },
+        {
+          "text": "sparse",
+          "start": 0.65,
+          "end": 1.045
+        },
+        {
+          "text": "design.",
+          "start": 1.091,
+          "end": 1.718
+        },
+        {
+          "text": "A",
+          "start": 1.892,
+          "end": 1.974
+        },
+        {
+          "text": "mixture",
+          "start": 2.043,
+          "end": 2.368
+        },
+        {
+          "text": "of",
+          "start": 2.403,
+          "end": 2.45
+        },
+        {
+          "text": "experts",
+          "start": 2.508,
+          "end": 2.937
+        },
+        {
+          "text": "model",
+          "start": 3.007,
+          "end": 3.332
+        },
+        {
+          "text": "wakes",
+          "start": 3.541,
+          "end": 3.808
+        },
+        {
+          "text": "only",
+          "start": 3.866,
+          "end": 4.098
+        },
+        {
+          "text": "a",
+          "start": 4.145,
+          "end": 4.168
+        },
+        {
+          "text": "slice",
+          "start": 4.238,
+          "end": 4.574
+        },
+        {
+          "text": "of",
+          "start": 4.598,
+          "end": 4.644
+        },
+        {
+          "text": "its",
+          "start": 4.69,
+          "end": 4.795
+        },
+        {
+          "text": "network",
+          "start": 4.865,
+          "end": 5.271
+        },
+        {
+          "text": "for",
+          "start": 5.317,
+          "end": 5.422
+        },
+        {
+          "text": "each",
+          "start": 5.468,
+          "end": 5.677
+        },
+        {
+          "text": "token.",
+          "start": 5.735,
+          "end": 6.351
+        },
+        {
+          "text": "If",
+          "start": 7.047,
+          "end": 7.21
+        },
+        {
+          "text": "five",
+          "start": 7.268,
+          "end": 7.57
+        },
+        {
+          "text": "trillion",
+          "start": 7.605,
+          "end": 7.941
+        },
+        {
+          "text": "parameters",
+          "start": 7.999,
+          "end": 8.51
+        },
+        {
+          "text": "activate",
+          "start": 8.591,
+          "end": 9.102
+        },
+        {
+          "text": "around",
+          "start": 9.125,
+          "end": 9.381
+        },
+        {
+          "text": "one",
+          "start": 9.497,
+          "end": 9.659
+        },
+        {
+          "text": "hundred",
+          "start": 9.706,
+          "end": 9.973
+        },
+        {
+          "text": "billion",
+          "start": 10.019,
+          "end": 10.333
+        },
+        {
+          "text": "per",
+          "start": 10.403,
+          "end": 10.577
+        },
+        {
+          "text": "token,",
+          "start": 10.646,
+          "end": 11.146
+        },
+        {
+          "text": "the",
+          "start": 11.355,
+          "end": 11.447
+        },
+        {
+          "text": "model",
+          "start": 11.505,
+          "end": 11.772
+        },
+        {
+          "text": "runs",
+          "start": 11.854,
+          "end": 12.097
+        },
+        {
+          "text": "far",
+          "start": 12.167,
+          "end": 12.399
+        },
+        {
+          "text": "cheaper",
+          "start": 12.481,
+          "end": 12.817
+        },
+        {
+          "text": "than",
+          "start": 12.852,
+          "end": 12.968
+        },
+        {
+          "text": "a",
+          "start": 13.015,
+          "end": 13.038
+        },
+        {
+          "text": "dense",
+          "start": 13.119,
+          "end": 13.409
+        },
+        {
+          "text": "model",
+          "start": 13.467,
+          "end": 13.723
+        },
+        {
+          "text": "of",
+          "start": 13.781,
+          "end": 13.839
+        },
+        {
+          "text": "the",
+          "start": 13.885,
+          "end": 13.955
+        },
+        {
+          "text": "same",
+          "start": 14.001,
+          "end": 14.245
+        },
+        {
+          "text": "size.",
+          "start": 14.292,
+          "end": 15.325
+        }
+      ]
+    },
+    "eka": {
+      "audio": "eka.mp3",
+      "duration": 15.259,
+      "words": [
+        {
+          "text": "India",
+          "start": 0,
+          "end": 0.372
+        },
+        {
+          "text": "is",
+          "start": 0.43,
+          "end": 0.522
+        },
+        {
+          "text": "not",
+          "start": 0.592,
+          "end": 0.731
+        },
+        {
+          "text": "starting",
+          "start": 0.778,
+          "end": 1.184
+        },
+        {
+          "text": "from",
+          "start": 1.231,
+          "end": 1.358
+        },
+        {
+          "text": "zero.",
+          "start": 1.428,
+          "end": 2.02
+        },
+        {
+          "text": "On",
+          "start": 2.624,
+          "end": 2.763
+        },
+        {
+          "text": "November",
+          "start": 2.81,
+          "end": 3.17
+        },
+        {
+          "text": "3,",
+          "start": 3.251,
+          "end": 3.634
+        },
+        {
+          "text": "2026,",
+          "start": 3.704,
+          "end": 4.818
+        },
+        {
+          "text": "the",
+          "start": 4.934,
+          "end": 5.027
+        },
+        {
+          "text": "IndiaAI",
+          "start": 5.108,
+          "end": 5.735
+        },
+        {
+          "text": "Mission",
+          "start": 5.805,
+          "end": 6.177
+        },
+        {
+          "text": "released",
+          "start": 6.293,
+          "end": 6.641
+        },
+        {
+          "text": "EKA-1,",
+          "start": 6.711,
+          "end": 7.721
+        },
+        {
+          "text": "a",
+          "start": 8.046,
+          "end": 8.115
+        },
+        {
+          "text": "26.3",
+          "start": 8.197,
+          "end": 9.114
+        },
+        {
+          "text": "billion",
+          "start": 9.242,
+          "end": 9.601
+        },
+        {
+          "text": "parameter",
+          "start": 9.671,
+          "end": 10.124
+        },
+        {
+          "text": "model",
+          "start": 10.17,
+          "end": 10.426
+        },
+        {
+          "text": "from",
+          "start": 10.484,
+          "end": 10.623
+        },
+        {
+          "text": "Soket",
+          "start": 10.693,
+          "end": 11.018
+        },
+        {
+          "text": "Labs,",
+          "start": 11.076,
+          "end": 11.575
+        },
+        {
+          "text": "trained",
+          "start": 11.854,
+          "end": 12.225
+        },
+        {
+          "text": "on",
+          "start": 12.26,
+          "end": 12.33
+        },
+        {
+          "text": "about",
+          "start": 12.376,
+          "end": 12.608
+        },
+        {
+          "text": "7.5",
+          "start": 12.69,
+          "end": 13.433
+        },
+        {
+          "text": "trillion",
+          "start": 13.502,
+          "end": 13.886
+        },
+        {
+          "text": "tokens.",
+          "start": 13.955,
+          "end": 15.139
+        }
+      ]
+    },
+    "dhir": {
+      "audio": "dhir.mp3",
+      "duration": 18.464,
+      "words": [
+        {
+          "text": "Two",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "smaller",
+          "start": 0.337,
+          "end": 0.708
+        },
+        {
+          "text": "models",
+          "start": 0.755,
+          "end": 1.103
+        },
+        {
+          "text": "arrived",
+          "start": 1.149,
+          "end": 1.556
+        },
+        {
+          "text": "the",
+          "start": 1.591,
+          "end": 1.66
+        },
+        {
+          "text": "same",
+          "start": 1.707,
+          "end": 1.939
+        },
+        {
+          "text": "day.",
+          "start": 1.985,
+          "end": 2.496
+        },
+        {
+          "text": "Dhir",
+          "start": 3.007,
+          "end": 3.239
+        },
+        {
+          "text": "2B",
+          "start": 3.332,
+          "end": 3.622
+        },
+        {
+          "text": "and",
+          "start": 3.831,
+          "end": 3.936
+        },
+        {
+          "text": "Dhir",
+          "start": 4.005,
+          "end": 4.191
+        },
+        {
+          "text": "5B",
+          "start": 4.307,
+          "end": 4.667
+        },
+        {
+          "text": "run",
+          "start": 5.178,
+          "end": 5.375
+        },
+        {
+          "text": "fully",
+          "start": 5.445,
+          "end": 5.677
+        },
+        {
+          "text": "offline,",
+          "start": 5.735,
+          "end": 6.351
+        },
+        {
+          "text": "even",
+          "start": 6.502,
+          "end": 6.745
+        },
+        {
+          "text": "on",
+          "start": 6.792,
+          "end": 6.861
+        },
+        {
+          "text": "a",
+          "start": 6.908,
+          "end": 6.943
+        },
+        {
+          "text": "laptop.",
+          "start": 7.001,
+          "end": 7.651
+        },
+        {
+          "text": "Their",
+          "start": 8.255,
+          "end": 8.464
+        },
+        {
+          "text": "four-bit",
+          "start": 8.522,
+          "end": 8.893
+        },
+        {
+          "text": "files",
+          "start": 8.963,
+          "end": 9.346
+        },
+        {
+          "text": "weigh",
+          "start": 9.416,
+          "end": 9.625
+        },
+        {
+          "text": "about",
+          "start": 9.659,
+          "end": 9.88
+        },
+        {
+          "text": "one",
+          "start": 9.95,
+          "end": 10.194
+        },
+        {
+          "text": "and",
+          "start": 10.228,
+          "end": 10.31
+        },
+        {
+          "text": "three",
+          "start": 10.368,
+          "end": 10.6
+        },
+        {
+          "text": "gigabytes,",
+          "start": 10.646,
+          "end": 11.355
+        },
+        {
+          "text": "and",
+          "start": 11.505,
+          "end": 11.622
+        },
+        {
+          "text": "they",
+          "start": 11.668,
+          "end": 11.773
+        },
+        {
+          "text": "carry",
+          "start": 11.831,
+          "end": 12.121
+        },
+        {
+          "text": "an",
+          "start": 12.167,
+          "end": 12.237
+        },
+        {
+          "text": "open",
+          "start": 12.307,
+          "end": 12.585
+        },
+        {
+          "text": "Apache",
+          "start": 12.631,
+          "end": 13.015
+        },
+        {
+          "text": "license.",
+          "start": 13.084,
+          "end": 13.758
+        },
+        {
+          "text": "That",
+          "start": 14.268,
+          "end": 14.477
+        },
+        {
+          "text": "is",
+          "start": 14.535,
+          "end": 14.617
+        },
+        {
+          "text": "proof",
+          "start": 14.675,
+          "end": 14.93
+        },
+        {
+          "text": "that",
+          "start": 14.988,
+          "end": 15.116
+        },
+        {
+          "text": "sovereign",
+          "start": 15.162,
+          "end": 15.499
+        },
+        {
+          "text": "AI",
+          "start": 15.557,
+          "end": 15.871
+        },
+        {
+          "text": "does",
+          "start": 15.929,
+          "end": 16.068
+        },
+        {
+          "text": "not",
+          "start": 16.103,
+          "end": 16.219
+        },
+        {
+          "text": "need",
+          "start": 16.265,
+          "end": 16.416
+        },
+        {
+          "text": "a",
+          "start": 16.451,
+          "end": 16.474
+        },
+        {
+          "text": "data",
+          "start": 16.532,
+          "end": 16.799
+        },
+        {
+          "text": "center",
+          "start": 16.846,
+          "end": 17.113
+        },
+        {
+          "text": "to",
+          "start": 17.159,
+          "end": 17.229
+        },
+        {
+          "text": "start.",
+          "start": 17.287,
+          "end": 18.344
+        }
+      ]
+    },
+    "plan": {
+      "audio": "plan.mp3",
+      "duration": 9.083,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.116
+        },
+        {
+          "text": "plan",
+          "start": 0.174,
+          "end": 0.464
+        },
+        {
+          "text": "goes",
+          "start": 0.522,
+          "end": 0.72
+        },
+        {
+          "text": "further.",
+          "start": 0.778,
+          "end": 1.335
+        },
+        {
+          "text": "Officials",
+          "start": 1.846,
+          "end": 2.31
+        },
+        {
+          "text": "have",
+          "start": 2.345,
+          "end": 2.461
+        },
+        {
+          "text": "said",
+          "start": 2.496,
+          "end": 2.717
+        },
+        {
+          "text": "India",
+          "start": 2.786,
+          "end": 3.1
+        },
+        {
+          "text": "will",
+          "start": 3.146,
+          "end": 3.274
+        },
+        {
+          "text": "build",
+          "start": 3.309,
+          "end": 3.518
+        },
+        {
+          "text": "twelve",
+          "start": 3.553,
+          "end": 3.866
+        },
+        {
+          "text": "foundation",
+          "start": 3.913,
+          "end": 4.435
+        },
+        {
+          "text": "models,",
+          "start": 4.493,
+          "end": 5.027
+        },
+        {
+          "text": "each",
+          "start": 5.236,
+          "end": 5.445
+        },
+        {
+          "text": "with",
+          "start": 5.492,
+          "end": 5.631
+        },
+        {
+          "text": "fifty",
+          "start": 5.677,
+          "end": 6.014
+        },
+        {
+          "text": "to",
+          "start": 6.084,
+          "end": 6.165
+        },
+        {
+          "text": "one",
+          "start": 6.258,
+          "end": 6.42
+        },
+        {
+          "text": "hundred",
+          "start": 6.467,
+          "end": 6.734
+        },
+        {
+          "text": "twenty",
+          "start": 6.769,
+          "end": 7.059
+        },
+        {
+          "text": "billion",
+          "start": 7.117,
+          "end": 7.419
+        },
+        {
+          "text": "parameters.",
+          "start": 7.477,
+          "end": 8.963
+        }
+      ]
+    },
+    "jump": {
+      "audio": "jump.mp3",
+      "duration": 8.897,
+      "words": [
+        {
+          "text": "Going",
+          "start": 0,
+          "end": 0.325
+        },
+        {
+          "text": "from",
+          "start": 0.372,
+          "end": 0.511
+        },
+        {
+          "text": "26",
+          "start": 0.58,
+          "end": 1.033
+        },
+        {
+          "text": "billion",
+          "start": 1.103,
+          "end": 1.405
+        },
+        {
+          "text": "to",
+          "start": 1.451,
+          "end": 1.521
+        },
+        {
+          "text": "five",
+          "start": 1.591,
+          "end": 1.858
+        },
+        {
+          "text": "trillion",
+          "start": 1.881,
+          "end": 2.287
+        },
+        {
+          "text": "is",
+          "start": 2.461,
+          "end": 2.624
+        },
+        {
+          "text": "a",
+          "start": 2.659,
+          "end": 2.694
+        },
+        {
+          "text": "jump",
+          "start": 2.752,
+          "end": 2.961
+        },
+        {
+          "text": "of",
+          "start": 3.019,
+          "end": 3.077
+        },
+        {
+          "text": "about",
+          "start": 3.123,
+          "end": 3.344
+        },
+        {
+          "text": "190",
+          "start": 3.413,
+          "end": 4.075
+        },
+        {
+          "text": "times.",
+          "start": 4.145,
+          "end": 4.725
+        },
+        {
+          "text": "That",
+          "start": 5.108,
+          "end": 5.329
+        },
+        {
+          "text": "is",
+          "start": 5.387,
+          "end": 5.468
+        },
+        {
+          "text": "the",
+          "start": 5.515,
+          "end": 5.584
+        },
+        {
+          "text": "leap",
+          "start": 5.642,
+          "end": 5.84
+        },
+        {
+          "text": "this",
+          "start": 5.909,
+          "end": 6.049
+        },
+        {
+          "text": "scenario",
+          "start": 6.084,
+          "end": 6.618
+        },
+        {
+          "text": "asks",
+          "start": 6.699,
+          "end": 6.989
+        },
+        {
+          "text": "you",
+          "start": 7.024,
+          "end": 7.105
+        },
+        {
+          "text": "to",
+          "start": 7.163,
+          "end": 7.221
+        },
+        {
+          "text": "imagine.",
+          "start": 7.303,
+          "end": 8.777
+        }
+      ]
+    },
+    "day-one": {
+      "audio": "day-one.mp3",
+      "duration": 9.129,
+      "words": [
+        {
+          "text": "Picture",
+          "start": 0,
+          "end": 0.372
+        },
+        {
+          "text": "the",
+          "start": 0.406,
+          "end": 0.476
+        },
+        {
+          "text": "morning",
+          "start": 0.522,
+          "end": 0.778
+        },
+        {
+          "text": "it",
+          "start": 0.824,
+          "end": 0.894
+        },
+        {
+          "text": "launches.",
+          "start": 0.952,
+          "end": 1.591
+        },
+        {
+          "text": "Indian",
+          "start": 1.834,
+          "end": 2.252
+        },
+        {
+          "text": "engineers",
+          "start": 2.31,
+          "end": 2.775
+        },
+        {
+          "text": "release",
+          "start": 2.844,
+          "end": 3.123
+        },
+        {
+          "text": "a",
+          "start": 3.158,
+          "end": 3.181
+        },
+        {
+          "text": "model",
+          "start": 3.239,
+          "end": 3.495
+        },
+        {
+          "text": "that",
+          "start": 3.541,
+          "end": 3.669
+        },
+        {
+          "text": "tops",
+          "start": 3.715,
+          "end": 3.982
+        },
+        {
+          "text": "the",
+          "start": 4.017,
+          "end": 4.087
+        },
+        {
+          "text": "leaderboard.",
+          "start": 4.145,
+          "end": 4.83
+        },
+        {
+          "text": "It",
+          "start": 5.213,
+          "end": 5.341
+        },
+        {
+          "text": "is",
+          "start": 5.387,
+          "end": 5.468
+        },
+        {
+          "text": "cheaper",
+          "start": 5.526,
+          "end": 5.828
+        },
+        {
+          "text": "to",
+          "start": 5.875,
+          "end": 5.933
+        },
+        {
+          "text": "run,",
+          "start": 6.014,
+          "end": 6.351
+        },
+        {
+          "text": "quicker",
+          "start": 6.432,
+          "end": 6.711
+        },
+        {
+          "text": "to",
+          "start": 6.757,
+          "end": 6.803
+        },
+        {
+          "text": "answer,",
+          "start": 6.896,
+          "end": 7.291
+        },
+        {
+          "text": "and",
+          "start": 7.314,
+          "end": 7.442
+        },
+        {
+          "text": "open",
+          "start": 7.512,
+          "end": 7.732
+        },
+        {
+          "text": "to",
+          "start": 7.779,
+          "end": 7.837
+        },
+        {
+          "text": "download.",
+          "start": 7.906,
+          "end": 9.009
+        }
+      ]
+    },
+    "speed": {
+      "audio": "speed.mp3",
+      "duration": 13.588,
+      "words": [
+        {
+          "text": "Speed",
+          "start": 0,
+          "end": 0.418
+        },
+        {
+          "text": "and",
+          "start": 0.464,
+          "end": 0.546
+        },
+        {
+          "text": "price",
+          "start": 0.615,
+          "end": 0.917
+        },
+        {
+          "text": "matter",
+          "start": 0.964,
+          "end": 1.254
+        },
+        {
+          "text": "as",
+          "start": 1.3,
+          "end": 1.382
+        },
+        {
+          "text": "much",
+          "start": 1.451,
+          "end": 1.637
+        },
+        {
+          "text": "as",
+          "start": 1.672,
+          "end": 1.741
+        },
+        {
+          "text": "the",
+          "start": 1.8,
+          "end": 1.869
+        },
+        {
+          "text": "score.",
+          "start": 1.916,
+          "end": 2.461
+        },
+        {
+          "text": "A",
+          "start": 2.972,
+          "end": 3.053
+        },
+        {
+          "text": "fast",
+          "start": 3.17,
+          "end": 3.471
+        },
+        {
+          "text": "model",
+          "start": 3.541,
+          "end": 3.808
+        },
+        {
+          "text": "answers",
+          "start": 3.878,
+          "end": 4.238
+        },
+        {
+          "text": "in",
+          "start": 4.284,
+          "end": 4.354
+        },
+        {
+          "text": "moments,",
+          "start": 4.423,
+          "end": 4.899
+        },
+        {
+          "text": "so",
+          "start": 4.992,
+          "end": 5.12
+        },
+        {
+          "text": "banks,",
+          "start": 5.19,
+          "end": 5.515
+        },
+        {
+          "text": "hospitals",
+          "start": 5.55,
+          "end": 6.026
+        },
+        {
+          "text": "and",
+          "start": 6.06,
+          "end": 6.142
+        },
+        {
+          "text": "schools",
+          "start": 6.2,
+          "end": 6.606
+        },
+        {
+          "text": "can",
+          "start": 6.664,
+          "end": 6.792
+        },
+        {
+          "text": "use",
+          "start": 6.861,
+          "end": 7.047
+        },
+        {
+          "text": "it",
+          "start": 7.082,
+          "end": 7.152
+        },
+        {
+          "text": "at",
+          "start": 7.198,
+          "end": 7.268
+        },
+        {
+          "text": "scale.",
+          "start": 7.314,
+          "end": 7.883
+        },
+        {
+          "text": "Cheap",
+          "start": 8.487,
+          "end": 8.777
+        },
+        {
+          "text": "tokens",
+          "start": 8.835,
+          "end": 9.242
+        },
+        {
+          "text": "let",
+          "start": 9.3,
+          "end": 9.439
+        },
+        {
+          "text": "a",
+          "start": 9.485,
+          "end": 9.509
+        },
+        {
+          "text": "small",
+          "start": 9.567,
+          "end": 9.845
+        },
+        {
+          "text": "startup",
+          "start": 9.915,
+          "end": 10.403
+        },
+        {
+          "text": "do",
+          "start": 10.577,
+          "end": 10.751
+        },
+        {
+          "text": "what",
+          "start": 10.797,
+          "end": 10.937
+        },
+        {
+          "text": "only",
+          "start": 10.995,
+          "end": 11.227
+        },
+        {
+          "text": "a",
+          "start": 11.285,
+          "end": 11.32
+        },
+        {
+          "text": "giant",
+          "start": 11.401,
+          "end": 11.749
+        },
+        {
+          "text": "could",
+          "start": 11.807,
+          "end": 11.947
+        },
+        {
+          "text": "afford",
+          "start": 11.97,
+          "end": 12.283
+        },
+        {
+          "text": "before.",
+          "start": 12.33,
+          "end": 13.468
+        }
+      ]
+    },
+    "money-spend": {
+      "audio": "money-spend.mp3",
+      "duration": 10.058,
+      "words": [
+        {
+          "text": "Now",
+          "start": 0,
+          "end": 0.197
+        },
+        {
+          "text": "the",
+          "start": 0.255,
+          "end": 0.325
+        },
+        {
+          "text": "money.",
+          "start": 0.383,
+          "end": 0.801
+        },
+        {
+          "text": "Start",
+          "start": 0.894,
+          "end": 1.184
+        },
+        {
+          "text": "with",
+          "start": 1.219,
+          "end": 1.335
+        },
+        {
+          "text": "the",
+          "start": 1.37,
+          "end": 1.44
+        },
+        {
+          "text": "spending.",
+          "start": 1.474,
+          "end": 2.067
+        },
+        {
+          "text": "The",
+          "start": 2.345,
+          "end": 2.45
+        },
+        {
+          "text": "four",
+          "start": 2.519,
+          "end": 2.74
+        },
+        {
+          "text": "largest",
+          "start": 2.81,
+          "end": 3.228
+        },
+        {
+          "text": "cloud",
+          "start": 3.286,
+          "end": 3.553
+        },
+        {
+          "text": "companies",
+          "start": 3.611,
+          "end": 4.005
+        },
+        {
+          "text": "plan",
+          "start": 4.052,
+          "end": 4.296
+        },
+        {
+          "text": "roughly",
+          "start": 4.377,
+          "end": 4.69
+        },
+        {
+          "text": "seven",
+          "start": 4.76,
+          "end": 5.027
+        },
+        {
+          "text": "hundred",
+          "start": 5.074,
+          "end": 5.341
+        },
+        {
+          "text": "billion",
+          "start": 5.387,
+          "end": 5.724
+        },
+        {
+          "text": "dollars",
+          "start": 5.782,
+          "end": 6.107
+        },
+        {
+          "text": "of",
+          "start": 6.153,
+          "end": 6.211
+        },
+        {
+          "text": "capital",
+          "start": 6.269,
+          "end": 6.653
+        },
+        {
+          "text": "spending",
+          "start": 6.711,
+          "end": 7.129
+        },
+        {
+          "text": "on",
+          "start": 7.372,
+          "end": 7.546
+        },
+        {
+          "text": "AI",
+          "start": 7.628,
+          "end": 8.127
+        },
+        {
+          "text": "in",
+          "start": 8.185,
+          "end": 8.255
+        },
+        {
+          "text": "2026.",
+          "start": 8.324,
+          "end": 9.938
+        }
+      ]
+    },
+    "chips": {
+      "audio": "chips.mp3",
+      "duration": 11.544,
+      "words": [
+        {
+          "text": "Most",
+          "start": 0,
+          "end": 0.29
+        },
+        {
+          "text": "of",
+          "start": 0.337,
+          "end": 0.383
+        },
+        {
+          "text": "that",
+          "start": 0.43,
+          "end": 0.557
+        },
+        {
+          "text": "money",
+          "start": 0.615,
+          "end": 0.813
+        },
+        {
+          "text": "buys",
+          "start": 0.882,
+          "end": 1.115
+        },
+        {
+          "text": "chips,",
+          "start": 1.173,
+          "end": 1.637
+        },
+        {
+          "text": "power",
+          "start": 1.707,
+          "end": 2.043
+        },
+        {
+          "text": "and",
+          "start": 2.101,
+          "end": 2.206
+        },
+        {
+          "text": "buildings.",
+          "start": 2.264,
+          "end": 2.949
+        },
+        {
+          "text": "A",
+          "start": 3.39,
+          "end": 3.46
+        },
+        {
+          "text": "model",
+          "start": 3.553,
+          "end": 3.796
+        },
+        {
+          "text": "from",
+          "start": 3.855,
+          "end": 3.982
+        },
+        {
+          "text": "India",
+          "start": 4.052,
+          "end": 4.342
+        },
+        {
+          "text": "does",
+          "start": 4.4,
+          "end": 4.54
+        },
+        {
+          "text": "not",
+          "start": 4.586,
+          "end": 4.714
+        },
+        {
+          "text": "shrink",
+          "start": 4.76,
+          "end": 5.039
+        },
+        {
+          "text": "that",
+          "start": 5.097,
+          "end": 5.259
+        },
+        {
+          "text": "bill.",
+          "start": 5.329,
+          "end": 5.805
+        },
+        {
+          "text": "It",
+          "start": 5.956,
+          "end": 6.095
+        },
+        {
+          "text": "moves",
+          "start": 6.165,
+          "end": 6.444
+        },
+        {
+          "text": "some",
+          "start": 6.478,
+          "end": 6.653
+        },
+        {
+          "text": "demand",
+          "start": 6.687,
+          "end": 7.012
+        },
+        {
+          "text": "to",
+          "start": 7.059,
+          "end": 7.117
+        },
+        {
+          "text": "new",
+          "start": 7.198,
+          "end": 7.326
+        },
+        {
+          "text": "buyers,",
+          "start": 7.384,
+          "end": 7.918
+        },
+        {
+          "text": "and",
+          "start": 8.069,
+          "end": 8.197
+        },
+        {
+          "text": "it",
+          "start": 8.255,
+          "end": 8.313
+        },
+        {
+          "text": "changes",
+          "start": 8.359,
+          "end": 8.766
+        },
+        {
+          "text": "which",
+          "start": 8.824,
+          "end": 9.033
+        },
+        {
+          "text": "companies",
+          "start": 9.091,
+          "end": 9.497
+        },
+        {
+          "text": "capture",
+          "start": 9.555,
+          "end": 9.892
+        },
+        {
+          "text": "the",
+          "start": 9.927,
+          "end": 9.996
+        },
+        {
+          "text": "revenue.",
+          "start": 10.043,
+          "end": 11.424
+        }
+      ]
+    },
+    "api-prices": {
+      "audio": "api-prices.mp3",
+      "duration": 12.798,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "is",
+          "start": 0.313,
+          "end": 0.383
+        },
+        {
+          "text": "the",
+          "start": 0.441,
+          "end": 0.511
+        },
+        {
+          "text": "first",
+          "start": 0.58,
+          "end": 0.848
+        },
+        {
+          "text": "real",
+          "start": 0.906,
+          "end": 1.091
+        },
+        {
+          "text": "effect.",
+          "start": 1.138,
+          "end": 1.73
+        },
+        {
+          "text": "When",
+          "start": 2.113,
+          "end": 2.299
+        },
+        {
+          "text": "a",
+          "start": 2.334,
+          "end": 2.357
+        },
+        {
+          "text": "strong",
+          "start": 2.415,
+          "end": 2.728
+        },
+        {
+          "text": "open",
+          "start": 2.821,
+          "end": 3.111
+        },
+        {
+          "text": "model",
+          "start": 3.181,
+          "end": 3.471
+        },
+        {
+          "text": "is",
+          "start": 3.553,
+          "end": 3.657
+        },
+        {
+          "text": "free",
+          "start": 3.727,
+          "end": 3.947
+        },
+        {
+          "text": "to",
+          "start": 3.982,
+          "end": 4.052
+        },
+        {
+          "text": "download,",
+          "start": 4.122,
+          "end": 4.725
+        },
+        {
+          "text": "the",
+          "start": 4.841,
+          "end": 4.934
+        },
+        {
+          "text": "price",
+          "start": 4.992,
+          "end": 5.271
+        },
+        {
+          "text": "of",
+          "start": 5.306,
+          "end": 5.364
+        },
+        {
+          "text": "closed",
+          "start": 5.433,
+          "end": 5.77
+        },
+        {
+          "text": "models",
+          "start": 5.828,
+          "end": 6.142
+        },
+        {
+          "text": "falls.",
+          "start": 6.211,
+          "end": 6.85
+        },
+        {
+          "text": "Every",
+          "start": 7.291,
+          "end": 7.593
+        },
+        {
+          "text": "company",
+          "start": 7.651,
+          "end": 8.022
+        },
+        {
+          "text": "that",
+          "start": 8.069,
+          "end": 8.197
+        },
+        {
+          "text": "sells",
+          "start": 8.255,
+          "end": 8.557
+        },
+        {
+          "text": "access",
+          "start": 8.638,
+          "end": 9.114
+        },
+        {
+          "text": "to",
+          "start": 9.149,
+          "end": 9.218
+        },
+        {
+          "text": "AI",
+          "start": 9.3,
+          "end": 9.81
+        },
+        {
+          "text": "has",
+          "start": 10.089,
+          "end": 10.286
+        },
+        {
+          "text": "to",
+          "start": 10.344,
+          "end": 10.414
+        },
+        {
+          "text": "justify",
+          "start": 10.495,
+          "end": 11.029
+        },
+        {
+          "text": "its",
+          "start": 11.088,
+          "end": 11.204
+        },
+        {
+          "text": "margin",
+          "start": 11.273,
+          "end": 11.645
+        },
+        {
+          "text": "again.",
+          "start": 11.691,
+          "end": 12.678
+        }
+      ]
+    },
+    "retention": {
+      "audio": "retention.mp3",
+      "duration": 12.566,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "is",
+          "start": 0.302,
+          "end": 0.383
+        },
+        {
+          "text": "the",
+          "start": 0.43,
+          "end": 0.499
+        },
+        {
+          "text": "part",
+          "start": 0.546,
+          "end": 0.801
+        },
+        {
+          "text": "most",
+          "start": 0.882,
+          "end": 1.08
+        },
+        {
+          "text": "people",
+          "start": 1.126,
+          "end": 1.405
+        },
+        {
+          "text": "miss.",
+          "start": 1.451,
+          "end": 1.95
+        },
+        {
+          "text": "One",
+          "start": 2.763,
+          "end": 2.984
+        },
+        {
+          "text": "model",
+          "start": 3.019,
+          "end": 3.274
+        },
+        {
+          "text": "does",
+          "start": 3.332,
+          "end": 3.483
+        },
+        {
+          "text": "not",
+          "start": 3.529,
+          "end": 3.657
+        },
+        {
+          "text": "set",
+          "start": 3.704,
+          "end": 3.878
+        },
+        {
+          "text": "the",
+          "start": 3.924,
+          "end": 3.994
+        },
+        {
+          "text": "exchange",
+          "start": 4.063,
+          "end": 4.528
+        },
+        {
+          "text": "rate.",
+          "start": 4.574,
+          "end": 4.969
+        },
+        {
+          "text": "Interest",
+          "start": 5.143,
+          "end": 5.573
+        },
+        {
+          "text": "rates,",
+          "start": 5.642,
+          "end": 5.944
+        },
+        {
+          "text": "oil",
+          "start": 6.014,
+          "end": 6.235
+        },
+        {
+          "text": "prices",
+          "start": 6.304,
+          "end": 6.699
+        },
+        {
+          "text": "and",
+          "start": 6.734,
+          "end": 6.815
+        },
+        {
+          "text": "capital",
+          "start": 6.885,
+          "end": 7.268
+        },
+        {
+          "text": "flows",
+          "start": 7.338,
+          "end": 7.755
+        },
+        {
+          "text": "do",
+          "start": 7.999,
+          "end": 8.15
+        },
+        {
+          "text": "most",
+          "start": 8.22,
+          "end": 8.429
+        },
+        {
+          "text": "of",
+          "start": 8.464,
+          "end": 8.522
+        },
+        {
+          "text": "the",
+          "start": 8.568,
+          "end": 8.638
+        },
+        {
+          "text": "work.",
+          "start": 8.684,
+          "end": 9.149
+        },
+        {
+          "text": "Keep",
+          "start": 9.659,
+          "end": 9.88
+        },
+        {
+          "text": "that",
+          "start": 9.927,
+          "end": 10.089
+        },
+        {
+          "text": "in",
+          "start": 10.147,
+          "end": 10.217
+        },
+        {
+          "text": "mind",
+          "start": 10.298,
+          "end": 10.612
+        },
+        {
+          "text": "as",
+          "start": 10.67,
+          "end": 10.751
+        },
+        {
+          "text": "we",
+          "start": 10.797,
+          "end": 10.879
+        },
+        {
+          "text": "go",
+          "start": 10.937,
+          "end": 11.053
+        },
+        {
+          "text": "through",
+          "start": 11.111,
+          "end": 11.32
+        },
+        {
+          "text": "the",
+          "start": 11.343,
+          "end": 11.413
+        },
+        {
+          "text": "money.",
+          "start": 11.447,
+          "end": 12.446
+        }
+      ]
+    },
+    "dollar": {
+      "audio": "dollar.mp3",
+      "duration": 11.916,
+      "words": [
+        {
+          "text": "Next,",
+          "start": 0,
+          "end": 0.406
+        },
+        {
+          "text": "the",
+          "start": 0.464,
+          "end": 0.557
+        },
+        {
+          "text": "currency.",
+          "start": 0.615,
+          "end": 1.265
+        },
+        {
+          "text": "The",
+          "start": 1.509,
+          "end": 1.614
+        },
+        {
+          "text": "US",
+          "start": 1.695,
+          "end": 1.95
+        },
+        {
+          "text": "dollar",
+          "start": 2.009,
+          "end": 2.252
+        },
+        {
+          "text": "is",
+          "start": 2.299,
+          "end": 2.368
+        },
+        {
+          "text": "strong",
+          "start": 2.403,
+          "end": 2.682
+        },
+        {
+          "text": "right",
+          "start": 2.74,
+          "end": 2.926
+        },
+        {
+          "text": "now.",
+          "start": 2.961,
+          "end": 3.286
+        },
+        {
+          "text": "The",
+          "start": 3.495,
+          "end": 3.611
+        },
+        {
+          "text": "dollar",
+          "start": 3.657,
+          "end": 3.889
+        },
+        {
+          "text": "index",
+          "start": 3.947,
+          "end": 4.319
+        },
+        {
+          "text": "sits",
+          "start": 4.435,
+          "end": 4.69
+        },
+        {
+          "text": "near",
+          "start": 4.737,
+          "end": 4.899
+        },
+        {
+          "text": "104,",
+          "start": 4.969,
+          "end": 5.956
+        },
+        {
+          "text": "close",
+          "start": 6.2,
+          "end": 6.502
+        },
+        {
+          "text": "to",
+          "start": 6.536,
+          "end": 6.594
+        },
+        {
+          "text": "a",
+          "start": 6.676,
+          "end": 6.699
+        },
+        {
+          "text": "nineteen",
+          "start": 6.78,
+          "end": 7.14
+        },
+        {
+          "text": "month",
+          "start": 7.187,
+          "end": 7.396
+        },
+        {
+          "text": "high,",
+          "start": 7.465,
+          "end": 7.872
+        },
+        {
+          "text": "because",
+          "start": 8.197,
+          "end": 8.475
+        },
+        {
+          "text": "markets",
+          "start": 8.533,
+          "end": 8.951
+        },
+        {
+          "text": "expect",
+          "start": 8.998,
+          "end": 9.392
+        },
+        {
+          "text": "the",
+          "start": 9.427,
+          "end": 9.497
+        },
+        {
+          "text": "Federal",
+          "start": 9.555,
+          "end": 9.892
+        },
+        {
+          "text": "Reserve",
+          "start": 9.95,
+          "end": 10.391
+        },
+        {
+          "text": "to",
+          "start": 10.414,
+          "end": 10.472
+        },
+        {
+          "text": "keep",
+          "start": 10.53,
+          "end": 10.704
+        },
+        {
+          "text": "raising",
+          "start": 10.774,
+          "end": 11.076
+        },
+        {
+          "text": "rates.",
+          "start": 11.134,
+          "end": 11.796
+        }
+      ]
+    },
+    "why-dollar": {
+      "audio": "why-dollar.mp3",
+      "duration": 13.866,
+      "words": [
+        {
+          "text": "Why",
+          "start": 0,
+          "end": 0.232
+        },
+        {
+          "text": "does",
+          "start": 0.29,
+          "end": 0.441
+        },
+        {
+          "text": "the",
+          "start": 0.476,
+          "end": 0.546
+        },
+        {
+          "text": "dollar",
+          "start": 0.592,
+          "end": 0.848
+        },
+        {
+          "text": "stay",
+          "start": 0.894,
+          "end": 1.091
+        },
+        {
+          "text": "strong?",
+          "start": 1.161,
+          "end": 1.649
+        },
+        {
+          "text": "Because",
+          "start": 1.8,
+          "end": 2.09
+        },
+        {
+          "text": "US",
+          "start": 2.148,
+          "end": 2.392
+        },
+        {
+          "text": "markets",
+          "start": 2.473,
+          "end": 2.868
+        },
+        {
+          "text": "are",
+          "start": 2.902,
+          "end": 2.984
+        },
+        {
+          "text": "the",
+          "start": 3.007,
+          "end": 3.077
+        },
+        {
+          "text": "deepest",
+          "start": 3.111,
+          "end": 3.46
+        },
+        {
+          "text": "in",
+          "start": 3.506,
+          "end": 3.576
+        },
+        {
+          "text": "the",
+          "start": 3.611,
+          "end": 3.68
+        },
+        {
+          "text": "world,",
+          "start": 3.727,
+          "end": 4.214
+        },
+        {
+          "text": "and",
+          "start": 4.342,
+          "end": 4.481
+        },
+        {
+          "text": "most",
+          "start": 4.563,
+          "end": 4.772
+        },
+        {
+          "text": "global",
+          "start": 4.818,
+          "end": 5.132
+        },
+        {
+          "text": "trade",
+          "start": 5.19,
+          "end": 5.457
+        },
+        {
+          "text": "and",
+          "start": 5.492,
+          "end": 5.561
+        },
+        {
+          "text": "debt",
+          "start": 5.619,
+          "end": 5.851
+        },
+        {
+          "text": "is",
+          "start": 5.909,
+          "end": 6.002
+        },
+        {
+          "text": "priced",
+          "start": 6.06,
+          "end": 6.374
+        },
+        {
+          "text": "in",
+          "start": 6.42,
+          "end": 6.49
+        },
+        {
+          "text": "dollars.",
+          "start": 6.548,
+          "end": 7.129
+        },
+        {
+          "text": "A",
+          "start": 7.941,
+          "end": 8.022
+        },
+        {
+          "text": "rival",
+          "start": 8.115,
+          "end": 8.406
+        },
+        {
+          "text": "model",
+          "start": 8.464,
+          "end": 8.731
+        },
+        {
+          "text": "does",
+          "start": 8.8,
+          "end": 8.94
+        },
+        {
+          "text": "not",
+          "start": 8.986,
+          "end": 9.114
+        },
+        {
+          "text": "change",
+          "start": 9.16,
+          "end": 9.462
+        },
+        {
+          "text": "that",
+          "start": 9.497,
+          "end": 9.636
+        },
+        {
+          "text": "quickly.",
+          "start": 9.694,
+          "end": 10.298
+        },
+        {
+          "text": "It",
+          "start": 10.623,
+          "end": 10.762
+        },
+        {
+          "text": "takes",
+          "start": 10.785,
+          "end": 11.017
+        },
+        {
+          "text": "years",
+          "start": 11.076,
+          "end": 11.331
+        },
+        {
+          "text": "of",
+          "start": 11.377,
+          "end": 11.435
+        },
+        {
+          "text": "trust,",
+          "start": 11.493,
+          "end": 12.051
+        },
+        {
+          "text": "not",
+          "start": 12.167,
+          "end": 12.318
+        },
+        {
+          "text": "one",
+          "start": 12.387,
+          "end": 12.562
+        },
+        {
+          "text": "benchmark.",
+          "start": 12.608,
+          "end": 13.746
+        }
+      ]
+    },
+    "rupee": {
+      "audio": "rupee.mp3",
+      "duration": 8.154,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.163
+        },
+        {
+          "text": "rupee",
+          "start": 0.232,
+          "end": 0.569
+        },
+        {
+          "text": "trades",
+          "start": 0.615,
+          "end": 0.975
+        },
+        {
+          "text": "near",
+          "start": 1.045,
+          "end": 1.196
+        },
+        {
+          "text": "ninety",
+          "start": 1.265,
+          "end": 1.556
+        },
+        {
+          "text": "three",
+          "start": 1.614,
+          "end": 1.858
+        },
+        {
+          "text": "to",
+          "start": 1.892,
+          "end": 1.962
+        },
+        {
+          "text": "the",
+          "start": 2.02,
+          "end": 2.09
+        },
+        {
+          "text": "dollar.",
+          "start": 2.136,
+          "end": 2.635
+        },
+        {
+          "text": "Its",
+          "start": 3.077,
+          "end": 3.262
+        },
+        {
+          "text": "recent",
+          "start": 3.332,
+          "end": 3.634
+        },
+        {
+          "text": "record",
+          "start": 3.692,
+          "end": 4.029
+        },
+        {
+          "text": "low,",
+          "start": 4.098,
+          "end": 4.423
+        },
+        {
+          "text": "around",
+          "start": 4.447,
+          "end": 4.76
+        },
+        {
+          "text": "ninety",
+          "start": 4.83,
+          "end": 5.108
+        },
+        {
+          "text": "six",
+          "start": 5.166,
+          "end": 5.375
+        },
+        {
+          "text": "point",
+          "start": 5.445,
+          "end": 5.631
+        },
+        {
+          "text": "nine",
+          "start": 5.7,
+          "end": 5.909
+        },
+        {
+          "text": "six,",
+          "start": 5.968,
+          "end": 6.42
+        },
+        {
+          "text": "came",
+          "start": 6.49,
+          "end": 6.722
+        },
+        {
+          "text": "in",
+          "start": 6.757,
+          "end": 6.815
+        },
+        {
+          "text": "October.",
+          "start": 6.873,
+          "end": 8.034
+        }
+      ]
+    },
+    "rupee-forces": {
+      "audio": "rupee-forces.mp3",
+      "duration": 14.377,
+      "words": [
+        {
+          "text": "A",
+          "start": 0,
+          "end": 0.093
+        },
+        {
+          "text": "breakthrough",
+          "start": 0.174,
+          "end": 0.65
+        },
+        {
+          "text": "model",
+          "start": 0.685,
+          "end": 0.929
+        },
+        {
+          "text": "pulls",
+          "start": 0.998,
+          "end": 1.265
+        },
+        {
+          "text": "the",
+          "start": 1.312,
+          "end": 1.382
+        },
+        {
+          "text": "rupee",
+          "start": 1.428,
+          "end": 1.753
+        },
+        {
+          "text": "two",
+          "start": 1.8,
+          "end": 1.985
+        },
+        {
+          "text": "ways.",
+          "start": 2.055,
+          "end": 2.647
+        },
+        {
+          "text": "Foreign",
+          "start": 3.344,
+          "end": 3.715
+        },
+        {
+          "text": "money",
+          "start": 3.762,
+          "end": 3.982
+        },
+        {
+          "text": "chases",
+          "start": 4.04,
+          "end": 4.435
+        },
+        {
+          "text": "Indian",
+          "start": 4.516,
+          "end": 4.876
+        },
+        {
+          "text": "AI,",
+          "start": 4.957,
+          "end": 5.55
+        },
+        {
+          "text": "and",
+          "start": 5.642,
+          "end": 5.782
+        },
+        {
+          "text": "exporters",
+          "start": 5.863,
+          "end": 6.385
+        },
+        {
+          "text": "earn",
+          "start": 6.455,
+          "end": 6.664
+        },
+        {
+          "text": "more",
+          "start": 6.722,
+          "end": 6.896
+        },
+        {
+          "text": "dollars",
+          "start": 6.954,
+          "end": 7.291
+        },
+        {
+          "text": "from",
+          "start": 7.338,
+          "end": 7.477
+        },
+        {
+          "text": "software",
+          "start": 7.558,
+          "end": 8.046
+        },
+        {
+          "text": "and",
+          "start": 8.081,
+          "end": 8.162
+        },
+        {
+          "text": "services.",
+          "start": 8.231,
+          "end": 8.975
+        },
+        {
+          "text": "But",
+          "start": 9.485,
+          "end": 9.648
+        },
+        {
+          "text": "India",
+          "start": 9.706,
+          "end": 10.019
+        },
+        {
+          "text": "imports",
+          "start": 10.077,
+          "end": 10.495
+        },
+        {
+          "text": "chips",
+          "start": 10.553,
+          "end": 10.855
+        },
+        {
+          "text": "priced",
+          "start": 10.925,
+          "end": 11.262
+        },
+        {
+          "text": "in",
+          "start": 11.308,
+          "end": 11.389
+        },
+        {
+          "text": "dollars,",
+          "start": 11.447,
+          "end": 11.981
+        },
+        {
+          "text": "and",
+          "start": 12.109,
+          "end": 12.236
+        },
+        {
+          "text": "that",
+          "start": 12.283,
+          "end": 12.422
+        },
+        {
+          "text": "spending",
+          "start": 12.492,
+          "end": 12.921
+        },
+        {
+          "text": "pulls",
+          "start": 12.979,
+          "end": 13.235
+        },
+        {
+          "text": "the",
+          "start": 13.281,
+          "end": 13.351
+        },
+        {
+          "text": "other",
+          "start": 13.409,
+          "end": 13.583
+        },
+        {
+          "text": "way.",
+          "start": 13.63,
+          "end": 14.257
+        }
+      ]
+    },
+    "rupee-guess": {
+      "audio": "rupee-guess.mp3",
+      "duration": 11.684,
+      "words": [
+        {
+          "text": "Our",
+          "start": 0,
+          "end": 0.197
+        },
+        {
+          "text": "projection",
+          "start": 0.244,
+          "end": 0.743
+        },
+        {
+          "text": "is",
+          "start": 0.801,
+          "end": 0.871
+        },
+        {
+          "text": "that",
+          "start": 0.917,
+          "end": 1.033
+        },
+        {
+          "text": "the",
+          "start": 1.068,
+          "end": 1.138
+        },
+        {
+          "text": "rupee",
+          "start": 1.196,
+          "end": 1.556
+        },
+        {
+          "text": "gains",
+          "start": 1.614,
+          "end": 1.916
+        },
+        {
+          "text": "some",
+          "start": 1.962,
+          "end": 2.125
+        },
+        {
+          "text": "ground,",
+          "start": 2.171,
+          "end": 2.694
+        },
+        {
+          "text": "perhaps",
+          "start": 2.81,
+          "end": 3.123
+        },
+        {
+          "text": "a",
+          "start": 3.158,
+          "end": 3.181
+        },
+        {
+          "text": "few",
+          "start": 3.251,
+          "end": 3.402
+        },
+        {
+          "text": "percent",
+          "start": 3.46,
+          "end": 3.855
+        },
+        {
+          "text": "over",
+          "start": 3.913,
+          "end": 4.11
+        },
+        {
+          "text": "a",
+          "start": 4.168,
+          "end": 4.191
+        },
+        {
+          "text": "year.",
+          "start": 4.272,
+          "end": 4.772
+        },
+        {
+          "text": "The",
+          "start": 5.213,
+          "end": 5.329
+        },
+        {
+          "text": "dollar",
+          "start": 5.387,
+          "end": 5.654
+        },
+        {
+          "text": "index",
+          "start": 5.724,
+          "end": 6.118
+        },
+        {
+          "text": "stays",
+          "start": 6.235,
+          "end": 6.583
+        },
+        {
+          "text": "firm",
+          "start": 6.653,
+          "end": 6.966
+        },
+        {
+          "text": "while",
+          "start": 7.012,
+          "end": 7.187
+        },
+        {
+          "text": "the",
+          "start": 7.21,
+          "end": 7.279
+        },
+        {
+          "text": "Fed",
+          "start": 7.338,
+          "end": 7.57
+        },
+        {
+          "text": "tightens.",
+          "start": 7.616,
+          "end": 8.336
+        },
+        {
+          "text": "Treat",
+          "start": 8.777,
+          "end": 9.033
+        },
+        {
+          "text": "this",
+          "start": 9.067,
+          "end": 9.218
+        },
+        {
+          "text": "as",
+          "start": 9.276,
+          "end": 9.369
+        },
+        {
+          "text": "a",
+          "start": 9.416,
+          "end": 9.439
+        },
+        {
+          "text": "range,",
+          "start": 9.52,
+          "end": 10.008
+        },
+        {
+          "text": "not",
+          "start": 10.101,
+          "end": 10.252
+        },
+        {
+          "text": "a",
+          "start": 10.298,
+          "end": 10.321
+        },
+        {
+          "text": "forecast.",
+          "start": 10.379,
+          "end": 11.564
+        }
+      ]
+    },
+    "growth": {
+      "audio": "growth.mp3",
+      "duration": 12.845,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.174
+        },
+        {
+          "text": "IMF",
+          "start": 0.255,
+          "end": 0.673
+        },
+        {
+          "text": "says",
+          "start": 0.743,
+          "end": 0.964
+        },
+        {
+          "text": "global",
+          "start": 1.033,
+          "end": 1.382
+        },
+        {
+          "text": "growth",
+          "start": 1.44,
+          "end": 1.718
+        },
+        {
+          "text": "slows",
+          "start": 1.776,
+          "end": 2.125
+        },
+        {
+          "text": "to",
+          "start": 2.171,
+          "end": 2.229
+        },
+        {
+          "text": "about",
+          "start": 2.31,
+          "end": 2.531
+        },
+        {
+          "text": "three",
+          "start": 2.577,
+          "end": 2.798
+        },
+        {
+          "text": "percent",
+          "start": 2.833,
+          "end": 3.228
+        },
+        {
+          "text": "in",
+          "start": 3.274,
+          "end": 3.344
+        },
+        {
+          "text": "2026.",
+          "start": 3.402,
+          "end": 4.493
+        },
+        {
+          "text": "India",
+          "start": 4.934,
+          "end": 5.317
+        },
+        {
+          "text": "is",
+          "start": 5.375,
+          "end": 5.468
+        },
+        {
+          "text": "the",
+          "start": 5.515,
+          "end": 5.584
+        },
+        {
+          "text": "fastest",
+          "start": 5.642,
+          "end": 6.095
+        },
+        {
+          "text": "growing",
+          "start": 6.153,
+          "end": 6.432
+        },
+        {
+          "text": "major",
+          "start": 6.49,
+          "end": 6.78
+        },
+        {
+          "text": "economy,",
+          "start": 6.838,
+          "end": 7.477
+        },
+        {
+          "text": "with",
+          "start": 7.721,
+          "end": 7.895
+        },
+        {
+          "text": "7.0",
+          "start": 7.953,
+          "end": 8.638
+        },
+        {
+          "text": "percent",
+          "start": 8.707,
+          "end": 9.044
+        },
+        {
+          "text": "forecast",
+          "start": 9.114,
+          "end": 9.659
+        },
+        {
+          "text": "for",
+          "start": 9.718,
+          "end": 9.822
+        },
+        {
+          "text": "2026",
+          "start": 9.868,
+          "end": 10.774
+        },
+        {
+          "text": "and",
+          "start": 10.867,
+          "end": 11.006
+        },
+        {
+          "text": "2027.",
+          "start": 11.076,
+          "end": 12.725
+        }
+      ]
+    },
+    "rank": {
+      "audio": "rank.mp3",
+      "duration": 11.591,
+      "words": [
+        {
+          "text": "India",
+          "start": 0,
+          "end": 0.464
+        },
+        {
+          "text": "is",
+          "start": 0.522,
+          "end": 0.639
+        },
+        {
+          "text": "now",
+          "start": 0.697,
+          "end": 0.824
+        },
+        {
+          "text": "the",
+          "start": 0.882,
+          "end": 0.964
+        },
+        {
+          "text": "sixth",
+          "start": 1.022,
+          "end": 1.312
+        },
+        {
+          "text": "largest",
+          "start": 1.393,
+          "end": 1.788
+        },
+        {
+          "text": "economy,",
+          "start": 1.846,
+          "end": 2.426
+        },
+        {
+          "text": "according",
+          "start": 2.519,
+          "end": 2.914
+        },
+        {
+          "text": "to",
+          "start": 2.949,
+          "end": 2.995
+        },
+        {
+          "text": "the",
+          "start": 3.042,
+          "end": 3.111
+        },
+        {
+          "text": "IMF.",
+          "start": 3.193,
+          "end": 3.82
+        },
+        {
+          "text": "Its",
+          "start": 4.261,
+          "end": 4.435
+        },
+        {
+          "text": "projected",
+          "start": 4.481,
+          "end": 4.969
+        },
+        {
+          "text": "path",
+          "start": 5.039,
+          "end": 5.352
+        },
+        {
+          "text": "puts",
+          "start": 5.41,
+          "end": 5.619
+        },
+        {
+          "text": "it",
+          "start": 5.666,
+          "end": 5.735
+        },
+        {
+          "text": "fourth",
+          "start": 5.805,
+          "end": 6.107
+        },
+        {
+          "text": "by",
+          "start": 6.165,
+          "end": 6.293
+        },
+        {
+          "text": "2027,",
+          "start": 6.362,
+          "end": 7.465
+        },
+        {
+          "text": "with",
+          "start": 7.674,
+          "end": 7.825
+        },
+        {
+          "text": "about",
+          "start": 7.86,
+          "end": 8.069
+        },
+        {
+          "text": "four",
+          "start": 8.15,
+          "end": 8.348
+        },
+        {
+          "text": "point",
+          "start": 8.406,
+          "end": 8.603
+        },
+        {
+          "text": "five",
+          "start": 8.673,
+          "end": 8.986
+        },
+        {
+          "text": "two",
+          "start": 9.021,
+          "end": 9.207
+        },
+        {
+          "text": "trillion",
+          "start": 9.276,
+          "end": 9.66
+        },
+        {
+          "text": "dollars",
+          "start": 9.718,
+          "end": 10.054
+        },
+        {
+          "text": "of",
+          "start": 10.101,
+          "end": 10.147
+        },
+        {
+          "text": "GDP.",
+          "start": 10.217,
+          "end": 11.471
+        }
+      ]
+    },
+    "hardware": {
+      "audio": "hardware.mp3",
+      "duration": 12.845,
+      "words": [
+        {
+          "text": "Who",
+          "start": 0,
+          "end": 0.209
+        },
+        {
+          "text": "wins",
+          "start": 0.279,
+          "end": 0.569
+        },
+        {
+          "text": "the",
+          "start": 0.627,
+          "end": 0.697
+        },
+        {
+          "text": "hardware",
+          "start": 0.755,
+          "end": 1.149
+        },
+        {
+          "text": "race?",
+          "start": 1.196,
+          "end": 1.672
+        },
+        {
+          "text": "A",
+          "start": 2.113,
+          "end": 2.183
+        },
+        {
+          "text": "five",
+          "start": 2.276,
+          "end": 2.519
+        },
+        {
+          "text": "trillion",
+          "start": 2.554,
+          "end": 2.891
+        },
+        {
+          "text": "parameter",
+          "start": 2.961,
+          "end": 3.39
+        },
+        {
+          "text": "model",
+          "start": 3.437,
+          "end": 3.715
+        },
+        {
+          "text": "needs",
+          "start": 3.924,
+          "end": 4.168
+        },
+        {
+          "text": "huge",
+          "start": 4.226,
+          "end": 4.528
+        },
+        {
+          "text": "memory",
+          "start": 4.574,
+          "end": 4.865
+        },
+        {
+          "text": "and",
+          "start": 4.923,
+          "end": 5.004
+        },
+        {
+          "text": "fast",
+          "start": 5.085,
+          "end": 5.375
+        },
+        {
+          "text": "links",
+          "start": 5.445,
+          "end": 5.689
+        },
+        {
+          "text": "between",
+          "start": 5.735,
+          "end": 6.06
+        },
+        {
+          "text": "chips.",
+          "start": 6.118,
+          "end": 6.687
+        },
+        {
+          "text": "That",
+          "start": 7.198,
+          "end": 7.43
+        },
+        {
+          "text": "pulls",
+          "start": 7.488,
+          "end": 7.767
+        },
+        {
+          "text": "demand",
+          "start": 7.814,
+          "end": 8.197
+        },
+        {
+          "text": "toward",
+          "start": 8.266,
+          "end": 8.557
+        },
+        {
+          "text": "chip",
+          "start": 8.603,
+          "end": 8.8
+        },
+        {
+          "text": "makers,",
+          "start": 8.847,
+          "end": 9.346
+        },
+        {
+          "text": "data",
+          "start": 9.462,
+          "end": 9.776
+        },
+        {
+          "text": "centers",
+          "start": 9.81,
+          "end": 10.159
+        },
+        {
+          "text": "and",
+          "start": 10.217,
+          "end": 10.344
+        },
+        {
+          "text": "power",
+          "start": 10.414,
+          "end": 10.67
+        },
+        {
+          "text": "grids,",
+          "start": 10.716,
+          "end": 11.099
+        },
+        {
+          "text": "wherever",
+          "start": 11.134,
+          "end": 11.505
+        },
+        {
+          "text": "they",
+          "start": 11.552,
+          "end": 11.68
+        },
+        {
+          "text": "sit.",
+          "start": 11.738,
+          "end": 12.725
+        }
+      ]
+    },
+    "jobs": {
+      "audio": "jobs.mp3",
+      "duration": 13.634,
+      "words": [
+        {
+          "text": "For",
+          "start": 0,
+          "end": 0.174
+        },
+        {
+          "text": "India,",
+          "start": 0.244,
+          "end": 0.662
+        },
+        {
+          "text": "the",
+          "start": 0.708,
+          "end": 0.801
+        },
+        {
+          "text": "biggest",
+          "start": 0.859,
+          "end": 1.173
+        },
+        {
+          "text": "change",
+          "start": 1.219,
+          "end": 1.579
+        },
+        {
+          "text": "may",
+          "start": 1.614,
+          "end": 1.741
+        },
+        {
+          "text": "be",
+          "start": 1.8,
+          "end": 1.881
+        },
+        {
+          "text": "in",
+          "start": 1.939,
+          "end": 2.02
+        },
+        {
+          "text": "jobs.",
+          "start": 2.101,
+          "end": 2.647
+        },
+        {
+          "text": "IT",
+          "start": 3.344,
+          "end": 3.634
+        },
+        {
+          "text": "firms",
+          "start": 3.808,
+          "end": 4.145
+        },
+        {
+          "text": "that",
+          "start": 4.191,
+          "end": 4.319
+        },
+        {
+          "text": "sell",
+          "start": 4.365,
+          "end": 4.598
+        },
+        {
+          "text": "outsourced",
+          "start": 4.679,
+          "end": 5.19
+        },
+        {
+          "text": "coding",
+          "start": 5.248,
+          "end": 5.654
+        },
+        {
+          "text": "could",
+          "start": 5.863,
+          "end": 6.049
+        },
+        {
+          "text": "lose",
+          "start": 6.107,
+          "end": 6.327
+        },
+        {
+          "text": "clients",
+          "start": 6.362,
+          "end": 6.745
+        },
+        {
+          "text": "to",
+          "start": 6.78,
+          "end": 6.838
+        },
+        {
+          "text": "a",
+          "start": 6.931,
+          "end": 6.954
+        },
+        {
+          "text": "home-grown",
+          "start": 7.012,
+          "end": 7.488
+        },
+        {
+          "text": "model.",
+          "start": 7.546,
+          "end": 8.115
+        },
+        {
+          "text": "But",
+          "start": 8.359,
+          "end": 8.522
+        },
+        {
+          "text": "demand",
+          "start": 8.568,
+          "end": 8.928
+        },
+        {
+          "text": "for",
+          "start": 8.986,
+          "end": 9.079
+        },
+        {
+          "text": "people",
+          "start": 9.125,
+          "end": 9.404
+        },
+        {
+          "text": "who",
+          "start": 9.427,
+          "end": 9.543
+        },
+        {
+          "text": "build,",
+          "start": 9.613,
+          "end": 10.019
+        },
+        {
+          "text": "check",
+          "start": 10.112,
+          "end": 10.403
+        },
+        {
+          "text": "and",
+          "start": 10.461,
+          "end": 10.53
+        },
+        {
+          "text": "deploy",
+          "start": 10.577,
+          "end": 10.971
+        },
+        {
+          "text": "AI",
+          "start": 11.053,
+          "end": 11.552
+        },
+        {
+          "text": "could",
+          "start": 11.761,
+          "end": 11.947
+        },
+        {
+          "text": "rise",
+          "start": 11.993,
+          "end": 12.249
+        },
+        {
+          "text": "fast.",
+          "start": 12.295,
+          "end": 13.514
+        }
+      ]
+    },
+    "diplomacy": {
+      "audio": "diplomacy.mp3",
+      "duration": 9.454,
+      "words": [
+        {
+          "text": "Now",
+          "start": 0,
+          "end": 0.232
+        },
+        {
+          "text": "diplomacy.",
+          "start": 0.302,
+          "end": 1.091
+        },
+        {
+          "text": "A",
+          "start": 1.3,
+          "end": 1.37
+        },
+        {
+          "text": "sovereign",
+          "start": 1.463,
+          "end": 1.846
+        },
+        {
+          "text": "model",
+          "start": 1.892,
+          "end": 2.148
+        },
+        {
+          "text": "changes",
+          "start": 2.218,
+          "end": 2.624
+        },
+        {
+          "text": "how",
+          "start": 2.67,
+          "end": 2.786
+        },
+        {
+          "text": "countries",
+          "start": 2.856,
+          "end": 3.216
+        },
+        {
+          "text": "bargain.",
+          "start": 3.274,
+          "end": 3.878
+        },
+        {
+          "text": "A",
+          "start": 4.261,
+          "end": 4.342
+        },
+        {
+          "text": "government",
+          "start": 4.423,
+          "end": 4.807
+        },
+        {
+          "text": "that",
+          "start": 4.841,
+          "end": 4.969
+        },
+        {
+          "text": "does",
+          "start": 5.004,
+          "end": 5.132
+        },
+        {
+          "text": "not",
+          "start": 5.178,
+          "end": 5.294
+        },
+        {
+          "text": "need",
+          "start": 5.341,
+          "end": 5.503
+        },
+        {
+          "text": "to",
+          "start": 5.538,
+          "end": 5.584
+        },
+        {
+          "text": "rent",
+          "start": 5.654,
+          "end": 5.851
+        },
+        {
+          "text": "foreign",
+          "start": 5.921,
+          "end": 6.246
+        },
+        {
+          "text": "AI",
+          "start": 6.316,
+          "end": 6.769
+        },
+        {
+          "text": "can",
+          "start": 6.827,
+          "end": 6.954
+        },
+        {
+          "text": "refuse",
+          "start": 7.012,
+          "end": 7.396
+        },
+        {
+          "text": "conditions",
+          "start": 7.43,
+          "end": 7.941
+        },
+        {
+          "text": "it",
+          "start": 8.011,
+          "end": 8.104
+        },
+        {
+          "text": "dislikes.",
+          "start": 8.15,
+          "end": 9.334
+        }
+      ]
+    },
+    "us-trade": {
+      "audio": "us-trade.mp3",
+      "duration": 14.98,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.128
+        },
+        {
+          "text": "US",
+          "start": 0.197,
+          "end": 0.453
+        },
+        {
+          "text": "and",
+          "start": 0.511,
+          "end": 0.58
+        },
+        {
+          "text": "India",
+          "start": 0.65,
+          "end": 0.975
+        },
+        {
+          "text": "agreed",
+          "start": 1.033,
+          "end": 1.347
+        },
+        {
+          "text": "a",
+          "start": 1.382,
+          "end": 1.416
+        },
+        {
+          "text": "trade",
+          "start": 1.463,
+          "end": 1.753
+        },
+        {
+          "text": "framework",
+          "start": 1.788,
+          "end": 2.241
+        },
+        {
+          "text": "in",
+          "start": 2.299,
+          "end": 2.368
+        },
+        {
+          "text": "February,",
+          "start": 2.438,
+          "end": 3.065
+        },
+        {
+          "text": "with",
+          "start": 3.181,
+          "end": 3.344
+        },
+        {
+          "text": "an",
+          "start": 3.379,
+          "end": 3.437
+        },
+        {
+          "text": "eighteen",
+          "start": 3.506,
+          "end": 3.82
+        },
+        {
+          "text": "percent",
+          "start": 3.866,
+          "end": 4.203
+        },
+        {
+          "text": "tariff",
+          "start": 4.261,
+          "end": 4.621
+        },
+        {
+          "text": "on",
+          "start": 4.69,
+          "end": 4.795
+        },
+        {
+          "text": "Indian",
+          "start": 4.865,
+          "end": 5.19
+        },
+        {
+          "text": "goods.",
+          "start": 5.259,
+          "end": 5.817
+        },
+        {
+          "text": "The",
+          "start": 6.258,
+          "end": 6.385
+        },
+        {
+          "text": "Supreme",
+          "start": 6.432,
+          "end": 6.815
+        },
+        {
+          "text": "Court",
+          "start": 6.861,
+          "end": 7.117
+        },
+        {
+          "text": "then",
+          "start": 7.175,
+          "end": 7.361
+        },
+        {
+          "text": "struck",
+          "start": 7.442,
+          "end": 7.709
+        },
+        {
+          "text": "down",
+          "start": 7.767,
+          "end": 7.964
+        },
+        {
+          "text": "the",
+          "start": 8.011,
+          "end": 8.081
+        },
+        {
+          "text": "emergency",
+          "start": 8.127,
+          "end": 8.638
+        },
+        {
+          "text": "tariffs",
+          "start": 8.696,
+          "end": 9.091
+        },
+        {
+          "text": "that",
+          "start": 9.125,
+          "end": 9.253
+        },
+        {
+          "text": "framework",
+          "start": 9.311,
+          "end": 9.787
+        },
+        {
+          "text": "relied",
+          "start": 9.845,
+          "end": 10.182
+        },
+        {
+          "text": "on,",
+          "start": 10.228,
+          "end": 10.507
+        },
+        {
+          "text": "and",
+          "start": 10.751,
+          "end": 10.89
+        },
+        {
+          "text": "signing",
+          "start": 10.959,
+          "end": 11.319
+        },
+        {
+          "text": "is",
+          "start": 11.366,
+          "end": 11.435
+        },
+        {
+          "text": "on",
+          "start": 11.494,
+          "end": 11.586
+        },
+        {
+          "text": "hold",
+          "start": 11.656,
+          "end": 11.981
+        },
+        {
+          "text": "until",
+          "start": 12.155,
+          "end": 12.422
+        },
+        {
+          "text": "Washington",
+          "start": 12.48,
+          "end": 12.968
+        },
+        {
+          "text": "sets",
+          "start": 13.038,
+          "end": 13.27
+        },
+        {
+          "text": "a",
+          "start": 13.305,
+          "end": 13.34
+        },
+        {
+          "text": "new",
+          "start": 13.409,
+          "end": 13.537
+        },
+        {
+          "text": "tariff",
+          "start": 13.607,
+          "end": 13.932
+        },
+        {
+          "text": "structure.",
+          "start": 13.978,
+          "end": 14.86
+        }
+      ]
+    },
+    "export-rules": {
+      "audio": "export-rules.mp3",
+      "duration": 15.353,
+      "words": [
+        {
+          "text": "Export",
+          "start": 0,
+          "end": 0.522
+        },
+        {
+          "text": "controls",
+          "start": 0.569,
+          "end": 1.08
+        },
+        {
+          "text": "decide",
+          "start": 1.138,
+          "end": 1.591
+        },
+        {
+          "text": "who",
+          "start": 1.614,
+          "end": 1.718
+        },
+        {
+          "text": "can",
+          "start": 1.765,
+          "end": 1.869
+        },
+        {
+          "text": "buy",
+          "start": 1.927,
+          "end": 2.113
+        },
+        {
+          "text": "the",
+          "start": 2.171,
+          "end": 2.241
+        },
+        {
+          "text": "best",
+          "start": 2.287,
+          "end": 2.496
+        },
+        {
+          "text": "chips.",
+          "start": 2.543,
+          "end": 3.111
+        },
+        {
+          "text": "If",
+          "start": 3.553,
+          "end": 3.692
+        },
+        {
+          "text": "the",
+          "start": 3.738,
+          "end": 3.808
+        },
+        {
+          "text": "US",
+          "start": 3.878,
+          "end": 4.203
+        },
+        {
+          "text": "tightens",
+          "start": 4.261,
+          "end": 4.644
+        },
+        {
+          "text": "them,",
+          "start": 4.69,
+          "end": 5.027
+        },
+        {
+          "text": "India's",
+          "start": 5.178,
+          "end": 5.608
+        },
+        {
+          "text": "model",
+          "start": 5.677,
+          "end": 5.956
+        },
+        {
+          "text": "still",
+          "start": 6.026,
+          "end": 6.269
+        },
+        {
+          "text": "trains,",
+          "start": 6.327,
+          "end": 6.908
+        },
+        {
+          "text": "but",
+          "start": 6.943,
+          "end": 7.094
+        },
+        {
+          "text": "more",
+          "start": 7.14,
+          "end": 7.314
+        },
+        {
+          "text": "slowly.",
+          "start": 7.349,
+          "end": 7.964
+        },
+        {
+          "text": "If",
+          "start": 8.475,
+          "end": 8.615
+        },
+        {
+          "text": "Washington",
+          "start": 8.684,
+          "end": 9.16
+        },
+        {
+          "text": "eases",
+          "start": 9.242,
+          "end": 9.578
+        },
+        {
+          "text": "them,",
+          "start": 9.625,
+          "end": 9.985
+        },
+        {
+          "text": "India",
+          "start": 10.136,
+          "end": 10.484
+        },
+        {
+          "text": "gets",
+          "start": 10.542,
+          "end": 10.716
+        },
+        {
+          "text": "a",
+          "start": 10.751,
+          "end": 10.774
+        },
+        {
+          "text": "faster",
+          "start": 10.844,
+          "end": 11.215
+        },
+        {
+          "text": "path,",
+          "start": 11.262,
+          "end": 11.819
+        },
+        {
+          "text": "and",
+          "start": 12.098,
+          "end": 12.237
+        },
+        {
+          "text": "the",
+          "start": 12.272,
+          "end": 12.341
+        },
+        {
+          "text": "US",
+          "start": 12.411,
+          "end": 12.69
+        },
+        {
+          "text": "gains",
+          "start": 12.771,
+          "end": 13.05
+        },
+        {
+          "text": "a",
+          "start": 13.085,
+          "end": 13.119
+        },
+        {
+          "text": "partner",
+          "start": 13.178,
+          "end": 13.596
+        },
+        {
+          "text": "instead",
+          "start": 13.712,
+          "end": 14.06
+        },
+        {
+          "text": "of",
+          "start": 14.095,
+          "end": 14.141
+        },
+        {
+          "text": "a",
+          "start": 14.188,
+          "end": 14.211
+        },
+        {
+          "text": "rival.",
+          "start": 14.28,
+          "end": 15.233
+        }
+      ]
+    },
+    "china": {
+      "audio": "china.mp3",
+      "duration": 13.68,
+      "words": [
+        {
+          "text": "China",
+          "start": 0,
+          "end": 0.406
+        },
+        {
+          "text": "is",
+          "start": 0.464,
+          "end": 0.557
+        },
+        {
+          "text": "the",
+          "start": 0.604,
+          "end": 0.673
+        },
+        {
+          "text": "wild",
+          "start": 0.72,
+          "end": 0.987
+        },
+        {
+          "text": "card.",
+          "start": 1.045,
+          "end": 1.544
+        },
+        {
+          "text": "US",
+          "start": 1.985,
+          "end": 2.287
+        },
+        {
+          "text": "President",
+          "start": 2.357,
+          "end": 2.752
+        },
+        {
+          "text": "Donald",
+          "start": 2.81,
+          "end": 3.123
+        },
+        {
+          "text": "Trump",
+          "start": 3.17,
+          "end": 3.448
+        },
+        {
+          "text": "arrived",
+          "start": 3.518,
+          "end": 3.913
+        },
+        {
+          "text": "in",
+          "start": 3.947,
+          "end": 4.017
+        },
+        {
+          "text": "China",
+          "start": 4.087,
+          "end": 4.389
+        },
+        {
+          "text": "this",
+          "start": 4.435,
+          "end": 4.574
+        },
+        {
+          "text": "week",
+          "start": 4.644,
+          "end": 4.876
+        },
+        {
+          "text": "for",
+          "start": 5.05,
+          "end": 5.201
+        },
+        {
+          "text": "talks",
+          "start": 5.248,
+          "end": 5.55
+        },
+        {
+          "text": "with",
+          "start": 5.584,
+          "end": 5.712
+        },
+        {
+          "text": "Xi",
+          "start": 5.759,
+          "end": 5.898
+        },
+        {
+          "text": "Jinping.",
+          "start": 5.979,
+          "end": 6.687
+        },
+        {
+          "text": "A",
+          "start": 7.291,
+          "end": 7.372
+        },
+        {
+          "text": "capable",
+          "start": 7.454,
+          "end": 7.86
+        },
+        {
+          "text": "Indian",
+          "start": 7.906,
+          "end": 8.243
+        },
+        {
+          "text": "model",
+          "start": 8.313,
+          "end": 8.615
+        },
+        {
+          "text": "would",
+          "start": 8.789,
+          "end": 8.986
+        },
+        {
+          "text": "add",
+          "start": 9.021,
+          "end": 9.149
+        },
+        {
+          "text": "a",
+          "start": 9.183,
+          "end": 9.218
+        },
+        {
+          "text": "third",
+          "start": 9.276,
+          "end": 9.532
+        },
+        {
+          "text": "option",
+          "start": 9.578,
+          "end": 9.88
+        },
+        {
+          "text": "for",
+          "start": 9.938,
+          "end": 10.043
+        },
+        {
+          "text": "countries",
+          "start": 10.101,
+          "end": 10.53
+        },
+        {
+          "text": "that",
+          "start": 10.577,
+          "end": 10.704
+        },
+        {
+          "text": "want",
+          "start": 10.751,
+          "end": 10.983
+        },
+        {
+          "text": "AI",
+          "start": 11.041,
+          "end": 11.552
+        },
+        {
+          "text": "without",
+          "start": 11.633,
+          "end": 11.958
+        },
+        {
+          "text": "picking",
+          "start": 12.005,
+          "end": 12.283
+        },
+        {
+          "text": "a",
+          "start": 12.33,
+          "end": 12.353
+        },
+        {
+          "text": "side.",
+          "start": 12.423,
+          "end": 13.56
+        }
+      ]
+    },
+    "global-south": {
+      "audio": "global-south.mp3",
+      "duration": 14.377,
+      "words": [
+        {
+          "text": "Many",
+          "start": 0,
+          "end": 0.255
+        },
+        {
+          "text": "countries",
+          "start": 0.313,
+          "end": 0.697
+        },
+        {
+          "text": "in",
+          "start": 0.743,
+          "end": 0.801
+        },
+        {
+          "text": "Africa,",
+          "start": 0.859,
+          "end": 1.405
+        },
+        {
+          "text": "Southeast",
+          "start": 1.521,
+          "end": 1.997
+        },
+        {
+          "text": "Asia",
+          "start": 2.067,
+          "end": 2.322
+        },
+        {
+          "text": "and",
+          "start": 2.38,
+          "end": 2.473
+        },
+        {
+          "text": "Latin",
+          "start": 2.531,
+          "end": 2.786
+        },
+        {
+          "text": "America",
+          "start": 2.833,
+          "end": 3.32
+        },
+        {
+          "text": "need",
+          "start": 3.646,
+          "end": 3.866
+        },
+        {
+          "text": "affordable",
+          "start": 3.901,
+          "end": 4.365
+        },
+        {
+          "text": "AI",
+          "start": 4.412,
+          "end": 4.818
+        },
+        {
+          "text": "in",
+          "start": 4.876,
+          "end": 4.969
+        },
+        {
+          "text": "local",
+          "start": 5.039,
+          "end": 5.306
+        },
+        {
+          "text": "languages.",
+          "start": 5.364,
+          "end": 6.118
+        },
+        {
+          "text": "An",
+          "start": 6.56,
+          "end": 6.711
+        },
+        {
+          "text": "open",
+          "start": 6.769,
+          "end": 7.012
+        },
+        {
+          "text": "Indian",
+          "start": 7.07,
+          "end": 7.43
+        },
+        {
+          "text": "model",
+          "start": 7.488,
+          "end": 7.732
+        },
+        {
+          "text": "with",
+          "start": 7.79,
+          "end": 7.918
+        },
+        {
+          "text": "strong",
+          "start": 7.964,
+          "end": 8.255
+        },
+        {
+          "text": "Indic",
+          "start": 8.324,
+          "end": 8.638
+        },
+        {
+          "text": "language",
+          "start": 8.719,
+          "end": 9.137
+        },
+        {
+          "text": "skills",
+          "start": 9.16,
+          "end": 9.59
+        },
+        {
+          "text": "could",
+          "start": 9.764,
+          "end": 9.961
+        },
+        {
+          "text": "become",
+          "start": 9.996,
+          "end": 10.263
+        },
+        {
+          "text": "their",
+          "start": 10.298,
+          "end": 10.437
+        },
+        {
+          "text": "default.",
+          "start": 10.472,
+          "end": 11.122
+        },
+        {
+          "text": "That",
+          "start": 11.505,
+          "end": 11.738
+        },
+        {
+          "text": "shifts",
+          "start": 11.807,
+          "end": 12.121
+        },
+        {
+          "text": "influence",
+          "start": 12.179,
+          "end": 12.666
+        },
+        {
+          "text": "toward",
+          "start": 12.701,
+          "end": 12.992
+        },
+        {
+          "text": "New",
+          "start": 13.05,
+          "end": 13.166
+        },
+        {
+          "text": "Delhi.",
+          "start": 13.224,
+          "end": 14.257
+        }
+      ]
+    },
+    "losers": {
+      "audio": "losers.mp3",
+      "duration": 14.748,
+      "words": [
+        {
+          "text": "Every",
+          "start": 0,
+          "end": 0.313
+        },
+        {
+          "text": "shift",
+          "start": 0.372,
+          "end": 0.65
+        },
+        {
+          "text": "creates",
+          "start": 0.708,
+          "end": 1.057
+        },
+        {
+          "text": "losers.",
+          "start": 1.126,
+          "end": 1.695
+        },
+        {
+          "text": "Closed",
+          "start": 2.02,
+          "end": 2.392
+        },
+        {
+          "text": "model",
+          "start": 2.45,
+          "end": 2.682
+        },
+        {
+          "text": "sellers",
+          "start": 2.752,
+          "end": 3.088
+        },
+        {
+          "text": "would",
+          "start": 3.123,
+          "end": 3.286
+        },
+        {
+          "text": "face",
+          "start": 3.332,
+          "end": 3.587
+        },
+        {
+          "text": "price",
+          "start": 3.634,
+          "end": 3.913
+        },
+        {
+          "text": "pressure.",
+          "start": 3.947,
+          "end": 4.481
+        },
+        {
+          "text": "Countries",
+          "start": 4.923,
+          "end": 5.364
+        },
+        {
+          "text": "that",
+          "start": 5.399,
+          "end": 5.515
+        },
+        {
+          "text": "bet",
+          "start": 5.584,
+          "end": 5.782
+        },
+        {
+          "text": "heavily",
+          "start": 5.851,
+          "end": 6.165
+        },
+        {
+          "text": "on",
+          "start": 6.235,
+          "end": 6.327
+        },
+        {
+          "text": "one",
+          "start": 6.409,
+          "end": 6.606
+        },
+        {
+          "text": "supplier",
+          "start": 6.653,
+          "end": 7.082
+        },
+        {
+          "text": "would",
+          "start": 7.129,
+          "end": 7.279
+        },
+        {
+          "text": "need",
+          "start": 7.314,
+          "end": 7.477
+        },
+        {
+          "text": "to",
+          "start": 7.512,
+          "end": 7.558
+        },
+        {
+          "text": "rethink.",
+          "start": 7.628,
+          "end": 8.29
+        },
+        {
+          "text": "And",
+          "start": 8.673,
+          "end": 8.835
+        },
+        {
+          "text": "any",
+          "start": 8.916,
+          "end": 9.102
+        },
+        {
+          "text": "open",
+          "start": 9.183,
+          "end": 9.462
+        },
+        {
+          "text": "model",
+          "start": 9.52,
+          "end": 9.776
+        },
+        {
+          "text": "can",
+          "start": 9.845,
+          "end": 9.961
+        },
+        {
+          "text": "be",
+          "start": 10.008,
+          "end": 10.089
+        },
+        {
+          "text": "misused,",
+          "start": 10.147,
+          "end": 10.82
+        },
+        {
+          "text": "so",
+          "start": 10.937,
+          "end": 11.076
+        },
+        {
+          "text": "safety",
+          "start": 11.157,
+          "end": 11.493
+        },
+        {
+          "text": "rules",
+          "start": 11.563,
+          "end": 11.842
+        },
+        {
+          "text": "and",
+          "start": 11.877,
+          "end": 11.958
+        },
+        {
+          "text": "audits",
+          "start": 12.027,
+          "end": 12.411
+        },
+        {
+          "text": "become",
+          "start": 12.469,
+          "end": 12.771
+        },
+        {
+          "text": "a",
+          "start": 12.794,
+          "end": 12.817
+        },
+        {
+          "text": "diplomatic",
+          "start": 12.863,
+          "end": 13.409
+        },
+        {
+          "text": "topic.",
+          "start": 13.467,
+          "end": 14.628
+        }
+      ]
+    },
+    "reality": {
+      "audio": "reality.mp3",
+      "duration": 9.315,
+      "words": [
+        {
+          "text": "Now",
+          "start": 0,
+          "end": 0.186
+        },
+        {
+          "text": "the",
+          "start": 0.244,
+          "end": 0.313
+        },
+        {
+          "text": "reality",
+          "start": 0.372,
+          "end": 0.778
+        },
+        {
+          "text": "check.",
+          "start": 0.836,
+          "end": 1.254
+        },
+        {
+          "text": "EKA-1",
+          "start": 1.463,
+          "end": 2.252
+        },
+        {
+          "text": "is",
+          "start": 2.334,
+          "end": 2.415
+        },
+        {
+          "text": "announced,",
+          "start": 2.461,
+          "end": 3.019
+        },
+        {
+          "text": "but",
+          "start": 3.135,
+          "end": 3.274
+        },
+        {
+          "text": "its",
+          "start": 3.309,
+          "end": 3.425
+        },
+        {
+          "text": "weights",
+          "start": 3.483,
+          "end": 3.75
+        },
+        {
+          "text": "are",
+          "start": 3.785,
+          "end": 3.889
+        },
+        {
+          "text": "not",
+          "start": 3.924,
+          "end": 4.029
+        },
+        {
+          "text": "public",
+          "start": 4.087,
+          "end": 4.412
+        },
+        {
+          "text": "yet.",
+          "start": 4.458,
+          "end": 4.899
+        },
+        {
+          "text": "The",
+          "start": 5.283,
+          "end": 5.399
+        },
+        {
+          "text": "release",
+          "start": 5.457,
+          "end": 5.782
+        },
+        {
+          "text": "is",
+          "start": 5.817,
+          "end": 5.898
+        },
+        {
+          "text": "planned",
+          "start": 5.956,
+          "end": 6.293
+        },
+        {
+          "text": "within",
+          "start": 6.316,
+          "end": 6.536
+        },
+        {
+          "text": "a",
+          "start": 6.571,
+          "end": 6.594
+        },
+        {
+          "text": "month,",
+          "start": 6.653,
+          "end": 7.152
+        },
+        {
+          "text": "with",
+          "start": 7.326,
+          "end": 7.488
+        },
+        {
+          "text": "a",
+          "start": 7.523,
+          "end": 7.546
+        },
+        {
+          "text": "waitlist",
+          "start": 7.605,
+          "end": 8.057
+        },
+        {
+          "text": "first.",
+          "start": 8.115,
+          "end": 9.195
+        }
+      ]
+    },
+    "timeline": {
+      "audio": "timeline.mp3",
+      "duration": 21.018,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.29
+        },
+        {
+          "text": "is",
+          "start": 0.325,
+          "end": 0.418
+        },
+        {
+          "text": "one",
+          "start": 0.488,
+          "end": 0.639
+        },
+        {
+          "text": "way",
+          "start": 0.673,
+          "end": 0.801
+        },
+        {
+          "text": "the",
+          "start": 0.859,
+          "end": 0.929
+        },
+        {
+          "text": "timeline",
+          "start": 0.975,
+          "end": 1.405
+        },
+        {
+          "text": "could",
+          "start": 1.44,
+          "end": 1.591
+        },
+        {
+          "text": "run.",
+          "start": 1.637,
+          "end": 2.055
+        },
+        {
+          "text": "In",
+          "start": 2.334,
+          "end": 2.473
+        },
+        {
+          "text": "2027,",
+          "start": 2.531,
+          "end": 3.576
+        },
+        {
+          "text": "independent",
+          "start": 3.704,
+          "end": 4.307
+        },
+        {
+          "text": "labs",
+          "start": 4.354,
+          "end": 4.656
+        },
+        {
+          "text": "test",
+          "start": 4.714,
+          "end": 5.004
+        },
+        {
+          "text": "the",
+          "start": 5.05,
+          "end": 5.12
+        },
+        {
+          "text": "Indian",
+          "start": 5.201,
+          "end": 5.55
+        },
+        {
+          "text": "model",
+          "start": 5.608,
+          "end": 5.909
+        },
+        {
+          "text": "and",
+          "start": 5.991,
+          "end": 6.118
+        },
+        {
+          "text": "publish",
+          "start": 6.188,
+          "end": 6.536
+        },
+        {
+          "text": "scores.",
+          "start": 6.583,
+          "end": 7.233
+        },
+        {
+          "text": "In",
+          "start": 7.674,
+          "end": 7.814
+        },
+        {
+          "text": "2028,",
+          "start": 7.872,
+          "end": 8.835
+        },
+        {
+          "text": "open",
+          "start": 8.986,
+          "end": 9.288
+        },
+        {
+          "text": "weights",
+          "start": 9.358,
+          "end": 9.625
+        },
+        {
+          "text": "spread,",
+          "start": 9.648,
+          "end": 10.182
+        },
+        {
+          "text": "and",
+          "start": 10.333,
+          "end": 10.461
+        },
+        {
+          "text": "a",
+          "start": 10.519,
+          "end": 10.542
+        },
+        {
+          "text": "price",
+          "start": 10.6,
+          "end": 10.89
+        },
+        {
+          "text": "war",
+          "start": 10.925,
+          "end": 11.111
+        },
+        {
+          "text": "starts",
+          "start": 11.192,
+          "end": 11.598
+        },
+        {
+          "text": "among",
+          "start": 11.633,
+          "end": 11.854
+        },
+        {
+          "text": "API",
+          "start": 11.923,
+          "end": 12.318
+        },
+        {
+          "text": "sellers.",
+          "start": 12.411,
+          "end": 12.968
+        },
+        {
+          "text": "By",
+          "start": 13.479,
+          "end": 13.642
+        },
+        {
+          "text": "2030,",
+          "start": 13.711,
+          "end": 14.501
+        },
+        {
+          "text": "a",
+          "start": 14.594,
+          "end": 14.664
+        },
+        {
+          "text": "five",
+          "start": 14.757,
+          "end": 15.024
+        },
+        {
+          "text": "trillion",
+          "start": 15.058,
+          "end": 15.395
+        },
+        {
+          "text": "parameter",
+          "start": 15.465,
+          "end": 15.894
+        },
+        {
+          "text": "system",
+          "start": 15.941,
+          "end": 16.312
+        },
+        {
+          "text": "could",
+          "start": 16.521,
+          "end": 16.719
+        },
+        {
+          "text": "sit",
+          "start": 16.753,
+          "end": 16.951
+        },
+        {
+          "text": "inside",
+          "start": 17.009,
+          "end": 17.462
+        },
+        {
+          "text": "banks,",
+          "start": 17.508,
+          "end": 17.984
+        },
+        {
+          "text": "courts",
+          "start": 18.1,
+          "end": 18.449
+        },
+        {
+          "text": "and",
+          "start": 18.483,
+          "end": 18.565
+        },
+        {
+          "text": "classrooms",
+          "start": 18.623,
+          "end": 19.192
+        },
+        {
+          "text": "across",
+          "start": 19.226,
+          "end": 19.528
+        },
+        {
+          "text": "Asia.",
+          "start": 19.598,
+          "end": 20.898
+        }
+      ]
+    },
+    "myths": {
+      "audio": "myths.mp3",
+      "duration": 16.513,
+      "words": [
+        {
+          "text": "Three",
+          "start": 0,
+          "end": 0.302
+        },
+        {
+          "text": "myths",
+          "start": 0.36,
+          "end": 0.65
+        },
+        {
+          "text": "spread",
+          "start": 0.685,
+          "end": 0.975
+        },
+        {
+          "text": "fast",
+          "start": 1.045,
+          "end": 1.416
+        },
+        {
+          "text": "when",
+          "start": 1.451,
+          "end": 1.591
+        },
+        {
+          "text": "a",
+          "start": 1.625,
+          "end": 1.649
+        },
+        {
+          "text": "headline",
+          "start": 1.718,
+          "end": 2.101
+        },
+        {
+          "text": "like",
+          "start": 2.136,
+          "end": 2.299
+        },
+        {
+          "text": "this",
+          "start": 2.334,
+          "end": 2.531
+        },
+        {
+          "text": "lands.",
+          "start": 2.624,
+          "end": 3.228
+        },
+        {
+          "text": "Myth",
+          "start": 3.924,
+          "end": 4.168
+        },
+        {
+          "text": "one:",
+          "start": 4.249,
+          "end": 4.632
+        },
+        {
+          "text": "the",
+          "start": 4.748,
+          "end": 4.853
+        },
+        {
+          "text": "dollar",
+          "start": 4.911,
+          "end": 5.166
+        },
+        {
+          "text": "collapses",
+          "start": 5.201,
+          "end": 5.654
+        },
+        {
+          "text": "overnight.",
+          "start": 5.724,
+          "end": 6.478
+        },
+        {
+          "text": "Myth",
+          "start": 6.989,
+          "end": 7.256
+        },
+        {
+          "text": "two:",
+          "start": 7.314,
+          "end": 7.814
+        },
+        {
+          "text": "US",
+          "start": 8.022,
+          "end": 8.324
+        },
+        {
+          "text": "AI",
+          "start": 8.394,
+          "end": 8.661
+        },
+        {
+          "text": "companies",
+          "start": 8.731,
+          "end": 9.137
+        },
+        {
+          "text": "disappear.",
+          "start": 9.183,
+          "end": 9.996
+        },
+        {
+          "text": "Myth",
+          "start": 10.693,
+          "end": 10.971
+        },
+        {
+          "text": "three:",
+          "start": 11.018,
+          "end": 11.494
+        },
+        {
+          "text": "every",
+          "start": 11.587,
+          "end": 11.877
+        },
+        {
+          "text": "job",
+          "start": 11.935,
+          "end": 12.156
+        },
+        {
+          "text": "vanishes",
+          "start": 12.225,
+          "end": 12.701
+        },
+        {
+          "text": "next",
+          "start": 12.771,
+          "end": 13.003
+        },
+        {
+          "text": "year.",
+          "start": 13.061,
+          "end": 13.537
+        },
+        {
+          "text": "None",
+          "start": 13.978,
+          "end": 14.176
+        },
+        {
+          "text": "of",
+          "start": 14.199,
+          "end": 14.245
+        },
+        {
+          "text": "these",
+          "start": 14.292,
+          "end": 14.466
+        },
+        {
+          "text": "follows",
+          "start": 14.512,
+          "end": 14.838
+        },
+        {
+          "text": "from",
+          "start": 14.872,
+          "end": 15.012
+        },
+        {
+          "text": "a",
+          "start": 15.047,
+          "end": 15.07
+        },
+        {
+          "text": "single",
+          "start": 15.128,
+          "end": 15.441
+        },
+        {
+          "text": "model.",
+          "start": 15.476,
+          "end": 16.393
+        }
+      ]
+    },
+    "not-built": {
+      "audio": "not-built.mp3",
+      "duration": 12.427,
+      "words": [
+        {
+          "text": "I",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "found",
+          "start": 0.197,
+          "end": 0.43
+        },
+        {
+          "text": "no",
+          "start": 0.511,
+          "end": 0.615
+        },
+        {
+          "text": "announcement",
+          "start": 0.673,
+          "end": 1.173
+        },
+        {
+          "text": "of",
+          "start": 1.219,
+          "end": 1.277
+        },
+        {
+          "text": "a",
+          "start": 1.324,
+          "end": 1.358
+        },
+        {
+          "text": "five",
+          "start": 1.416,
+          "end": 1.683
+        },
+        {
+          "text": "trillion",
+          "start": 1.718,
+          "end": 2.078
+        },
+        {
+          "text": "parameter",
+          "start": 2.148,
+          "end": 2.659
+        },
+        {
+          "text": "Indian",
+          "start": 2.728,
+          "end": 3.077
+        },
+        {
+          "text": "model.",
+          "start": 3.135,
+          "end": 3.646
+        },
+        {
+          "text": "Building",
+          "start": 4.156,
+          "end": 4.551
+        },
+        {
+          "text": "one",
+          "start": 4.632,
+          "end": 4.795
+        },
+        {
+          "text": "would",
+          "start": 4.818,
+          "end": 4.981
+        },
+        {
+          "text": "take",
+          "start": 5.004,
+          "end": 5.19
+        },
+        {
+          "text": "many",
+          "start": 5.236,
+          "end": 5.445
+        },
+        {
+          "text": "months",
+          "start": 5.515,
+          "end": 5.805
+        },
+        {
+          "text": "of",
+          "start": 5.851,
+          "end": 5.909
+        },
+        {
+          "text": "training",
+          "start": 5.968,
+          "end": 6.351
+        },
+        {
+          "text": "on",
+          "start": 6.525,
+          "end": 6.664
+        },
+        {
+          "text": "a",
+          "start": 6.699,
+          "end": 6.722
+        },
+        {
+          "text": "very",
+          "start": 6.78,
+          "end": 7.001
+        },
+        {
+          "text": "large",
+          "start": 7.07,
+          "end": 7.361
+        },
+        {
+          "text": "number",
+          "start": 7.407,
+          "end": 7.639
+        },
+        {
+          "text": "of",
+          "start": 7.686,
+          "end": 7.732
+        },
+        {
+          "text": "top",
+          "start": 7.802,
+          "end": 8.011
+        },
+        {
+          "text": "chips,",
+          "start": 8.069,
+          "end": 8.533
+        },
+        {
+          "text": "and",
+          "start": 8.684,
+          "end": 8.835
+        },
+        {
+          "text": "funding",
+          "start": 8.916,
+          "end": 9.265
+        },
+        {
+          "text": "at",
+          "start": 9.311,
+          "end": 9.381
+        },
+        {
+          "text": "a",
+          "start": 9.416,
+          "end": 9.451
+        },
+        {
+          "text": "scale",
+          "start": 9.509,
+          "end": 10.031
+        },
+        {
+          "text": "India",
+          "start": 10.147,
+          "end": 10.53
+        },
+        {
+          "text": "has",
+          "start": 10.588,
+          "end": 10.693
+        },
+        {
+          "text": "not",
+          "start": 10.762,
+          "end": 10.902
+        },
+        {
+          "text": "yet",
+          "start": 10.948,
+          "end": 11.099
+        },
+        {
+          "text": "committed.",
+          "start": 11.146,
+          "end": 12.307
+        }
+      ]
+    },
+    "likely": {
+      "audio": "likely.mp3",
+      "duration": 13.262,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.313
+        },
+        {
+          "text": "is",
+          "start": 0.36,
+          "end": 0.441
+        },
+        {
+          "text": "the",
+          "start": 0.488,
+          "end": 0.557
+        },
+        {
+          "text": "most",
+          "start": 0.604,
+          "end": 0.778
+        },
+        {
+          "text": "likely",
+          "start": 0.848,
+          "end": 1.161
+        },
+        {
+          "text": "path.",
+          "start": 1.231,
+          "end": 1.718
+        },
+        {
+          "text": "Indian",
+          "start": 1.997,
+          "end": 2.368
+        },
+        {
+          "text": "models",
+          "start": 2.426,
+          "end": 2.752
+        },
+        {
+          "text": "get",
+          "start": 2.798,
+          "end": 2.949
+        },
+        {
+          "text": "better",
+          "start": 2.995,
+          "end": 3.274
+        },
+        {
+          "text": "each",
+          "start": 3.344,
+          "end": 3.541
+        },
+        {
+          "text": "year.",
+          "start": 3.599,
+          "end": 4.098
+        },
+        {
+          "text": "Open",
+          "start": 4.481,
+          "end": 4.795
+        },
+        {
+          "text": "models",
+          "start": 4.853,
+          "end": 5.178
+        },
+        {
+          "text": "narrow",
+          "start": 5.259,
+          "end": 5.55
+        },
+        {
+          "text": "the",
+          "start": 5.608,
+          "end": 5.677
+        },
+        {
+          "text": "gap",
+          "start": 5.724,
+          "end": 5.979
+        },
+        {
+          "text": "with",
+          "start": 6.037,
+          "end": 6.177
+        },
+        {
+          "text": "closed",
+          "start": 6.223,
+          "end": 6.548
+        },
+        {
+          "text": "ones.",
+          "start": 6.606,
+          "end": 7.07
+        },
+        {
+          "text": "Prices",
+          "start": 7.581,
+          "end": 8.022
+        },
+        {
+          "text": "fall.",
+          "start": 8.092,
+          "end": 8.615
+        },
+        {
+          "text": "The",
+          "start": 8.731,
+          "end": 8.847
+        },
+        {
+          "text": "rupee",
+          "start": 8.916,
+          "end": 9.253
+        },
+        {
+          "text": "and",
+          "start": 9.276,
+          "end": 9.346
+        },
+        {
+          "text": "the",
+          "start": 9.381,
+          "end": 9.451
+        },
+        {
+          "text": "dollar",
+          "start": 9.497,
+          "end": 9.764
+        },
+        {
+          "text": "move",
+          "start": 9.822,
+          "end": 10.17
+        },
+        {
+          "text": "with",
+          "start": 10.263,
+          "end": 10.449
+        },
+        {
+          "text": "interest",
+          "start": 10.495,
+          "end": 10.844
+        },
+        {
+          "text": "rates",
+          "start": 10.913,
+          "end": 11.157
+        },
+        {
+          "text": "more",
+          "start": 11.227,
+          "end": 11.436
+        },
+        {
+          "text": "than",
+          "start": 11.471,
+          "end": 11.575
+        },
+        {
+          "text": "with",
+          "start": 11.61,
+          "end": 11.738
+        },
+        {
+          "text": "AI.",
+          "start": 11.807,
+          "end": 13.142
+        }
+      ]
+    },
+    "watch": {
+      "audio": "watch.mp3",
+      "duration": 12.241,
+      "words": [
+        {
+          "text": "Watch",
+          "start": 0,
+          "end": 0.313
+        },
+        {
+          "text": "three",
+          "start": 0.36,
+          "end": 0.604
+        },
+        {
+          "text": "signals.",
+          "start": 0.662,
+          "end": 1.312
+        },
+        {
+          "text": "First,",
+          "start": 1.521,
+          "end": 1.95
+        },
+        {
+          "text": "independent",
+          "start": 1.997,
+          "end": 2.554
+        },
+        {
+          "text": "benchmarks",
+          "start": 2.601,
+          "end": 3.17
+        },
+        {
+          "text": "of",
+          "start": 3.204,
+          "end": 3.262
+        },
+        {
+          "text": "EKA-1.",
+          "start": 3.332,
+          "end": 4.331
+        },
+        {
+          "text": "Second,",
+          "start": 4.841,
+          "end": 5.329
+        },
+        {
+          "text": "the",
+          "start": 5.364,
+          "end": 5.468
+        },
+        {
+          "text": "signing",
+          "start": 5.526,
+          "end": 5.828
+        },
+        {
+          "text": "of",
+          "start": 5.875,
+          "end": 5.921
+        },
+        {
+          "text": "the",
+          "start": 5.956,
+          "end": 6.026
+        },
+        {
+          "text": "US",
+          "start": 6.107,
+          "end": 6.409
+        },
+        {
+          "text": "and",
+          "start": 6.467,
+          "end": 6.548
+        },
+        {
+          "text": "India",
+          "start": 6.618,
+          "end": 6.896
+        },
+        {
+          "text": "trade",
+          "start": 6.943,
+          "end": 7.221
+        },
+        {
+          "text": "deal.",
+          "start": 7.268,
+          "end": 7.732
+        },
+        {
+          "text": "Third,",
+          "start": 8.173,
+          "end": 8.603
+        },
+        {
+          "text": "the",
+          "start": 8.684,
+          "end": 8.8
+        },
+        {
+          "text": "dollar",
+          "start": 8.858,
+          "end": 9.102
+        },
+        {
+          "text": "index",
+          "start": 9.172,
+          "end": 9.567
+        },
+        {
+          "text": "and",
+          "start": 9.613,
+          "end": 9.694
+        },
+        {
+          "text": "the",
+          "start": 9.729,
+          "end": 9.799
+        },
+        {
+          "text": "Federal",
+          "start": 9.834,
+          "end": 10.147
+        },
+        {
+          "text": "Reserve's",
+          "start": 10.205,
+          "end": 10.646
+        },
+        {
+          "text": "next",
+          "start": 10.716,
+          "end": 10.96
+        },
+        {
+          "text": "decision.",
+          "start": 11.006,
+          "end": 12.121
+        }
+      ]
+    },
+    "you": {
+      "audio": "you.mp3",
+      "duration": 11.684,
+      "words": [
+        {
+          "text": "If",
+          "start": 0,
+          "end": 0.163
+        },
+        {
+          "text": "you",
+          "start": 0.209,
+          "end": 0.279
+        },
+        {
+          "text": "build",
+          "start": 0.348,
+          "end": 0.58
+        },
+        {
+          "text": "products,",
+          "start": 0.639,
+          "end": 1.161
+        },
+        {
+          "text": "your",
+          "start": 1.231,
+          "end": 1.37
+        },
+        {
+          "text": "costs",
+          "start": 1.428,
+          "end": 1.753
+        },
+        {
+          "text": "could",
+          "start": 1.8,
+          "end": 1.939
+        },
+        {
+          "text": "fall",
+          "start": 1.985,
+          "end": 2.183
+        },
+        {
+          "text": "fast.",
+          "start": 2.252,
+          "end": 2.775
+        },
+        {
+          "text": "If",
+          "start": 3.019,
+          "end": 3.146
+        },
+        {
+          "text": "you",
+          "start": 3.193,
+          "end": 3.262
+        },
+        {
+          "text": "work",
+          "start": 3.332,
+          "end": 3.529
+        },
+        {
+          "text": "in",
+          "start": 3.587,
+          "end": 3.657
+        },
+        {
+          "text": "services,",
+          "start": 3.727,
+          "end": 4.354
+        },
+        {
+          "text": "your",
+          "start": 4.47,
+          "end": 4.621
+        },
+        {
+          "text": "skills",
+          "start": 4.679,
+          "end": 5.039
+        },
+        {
+          "text": "need",
+          "start": 5.085,
+          "end": 5.236
+        },
+        {
+          "text": "to",
+          "start": 5.271,
+          "end": 5.317
+        },
+        {
+          "text": "move",
+          "start": 5.375,
+          "end": 5.561
+        },
+        {
+          "text": "up",
+          "start": 5.596,
+          "end": 5.689
+        },
+        {
+          "text": "the",
+          "start": 5.747,
+          "end": 5.817
+        },
+        {
+          "text": "stack.",
+          "start": 5.851,
+          "end": 6.467
+        },
+        {
+          "text": "If",
+          "start": 7.07,
+          "end": 7.198
+        },
+        {
+          "text": "you",
+          "start": 7.245,
+          "end": 7.314
+        },
+        {
+          "text": "save",
+          "start": 7.384,
+          "end": 7.628
+        },
+        {
+          "text": "in",
+          "start": 7.663,
+          "end": 7.709
+        },
+        {
+          "text": "rupees,",
+          "start": 7.767,
+          "end": 8.348
+        },
+        {
+          "text": "watch",
+          "start": 8.464,
+          "end": 8.719
+        },
+        {
+          "text": "the",
+          "start": 8.766,
+          "end": 8.847
+        },
+        {
+          "text": "exchange",
+          "start": 8.916,
+          "end": 9.369
+        },
+        {
+          "text": "rate,",
+          "start": 9.416,
+          "end": 9.764
+        },
+        {
+          "text": "not",
+          "start": 9.88,
+          "end": 10.043
+        },
+        {
+          "text": "the",
+          "start": 10.077,
+          "end": 10.147
+        },
+        {
+          "text": "headlines.",
+          "start": 10.205,
+          "end": 11.564
+        }
+      ]
+    },
+    "summary": {
+      "audio": "summary.mp3",
+      "duration": 14.331,
+      "words": [
+        {
+          "text": "So",
+          "start": 0,
+          "end": 0.186
+        },
+        {
+          "text": "what",
+          "start": 0.244,
+          "end": 0.372
+        },
+        {
+          "text": "happens",
+          "start": 0.418,
+          "end": 0.72
+        },
+        {
+          "text": "if",
+          "start": 0.766,
+          "end": 0.848
+        },
+        {
+          "text": "India",
+          "start": 0.917,
+          "end": 1.265
+        },
+        {
+          "text": "builds",
+          "start": 1.324,
+          "end": 1.614
+        },
+        {
+          "text": "a",
+          "start": 1.649,
+          "end": 1.672
+        },
+        {
+          "text": "five",
+          "start": 1.753,
+          "end": 2.009
+        },
+        {
+          "text": "trillion",
+          "start": 2.043,
+          "end": 2.415
+        },
+        {
+          "text": "parameter",
+          "start": 2.485,
+          "end": 2.972
+        },
+        {
+          "text": "model",
+          "start": 3.019,
+          "end": 3.274
+        },
+        {
+          "text": "that",
+          "start": 3.332,
+          "end": 3.471
+        },
+        {
+          "text": "tops",
+          "start": 3.506,
+          "end": 3.785
+        },
+        {
+          "text": "the",
+          "start": 3.831,
+          "end": 3.913
+        },
+        {
+          "text": "charts?",
+          "start": 3.971,
+          "end": 4.632
+        },
+        {
+          "text": "Prices",
+          "start": 5.236,
+          "end": 5.666
+        },
+        {
+          "text": "fall,",
+          "start": 5.735,
+          "end": 6.258
+        },
+        {
+          "text": "India",
+          "start": 6.385,
+          "end": 6.745
+        },
+        {
+          "text": "gains",
+          "start": 6.803,
+          "end": 7.105
+        },
+        {
+          "text": "leverage",
+          "start": 7.175,
+          "end": 7.546
+        },
+        {
+          "text": "in",
+          "start": 7.57,
+          "end": 7.628
+        },
+        {
+          "text": "diplomacy,",
+          "start": 7.674,
+          "end": 8.44
+        },
+        {
+          "text": "and",
+          "start": 8.499,
+          "end": 8.638
+        },
+        {
+          "text": "the",
+          "start": 8.673,
+          "end": 8.742
+        },
+        {
+          "text": "rupee",
+          "start": 8.789,
+          "end": 9.091
+        },
+        {
+          "text": "gets",
+          "start": 9.149,
+          "end": 9.323
+        },
+        {
+          "text": "some",
+          "start": 9.346,
+          "end": 9.497
+        },
+        {
+          "text": "support.",
+          "start": 9.532,
+          "end": 10.228
+        },
+        {
+          "text": "The",
+          "start": 10.832,
+          "end": 10.96
+        },
+        {
+          "text": "dollar",
+          "start": 11.018,
+          "end": 11.273
+        },
+        {
+          "text": "stays",
+          "start": 11.331,
+          "end": 11.622
+        },
+        {
+          "text": "strong",
+          "start": 11.657,
+          "end": 12.017
+        },
+        {
+          "text": "while",
+          "start": 12.086,
+          "end": 12.307
+        },
+        {
+          "text": "the",
+          "start": 12.342,
+          "end": 12.412
+        },
+        {
+          "text": "Fed",
+          "start": 12.47,
+          "end": 12.69
+        },
+        {
+          "text": "tightens.",
+          "start": 12.737,
+          "end": 14.211
+        }
+      ]
+    },
+    "close": {
+      "audio": "close.mp3",
+      "duration": 9.779,
+      "words": [
+        {
+          "text": "Facts",
+          "start": 0,
+          "end": 0.395
+        },
+        {
+          "text": "first,",
+          "start": 0.453,
+          "end": 0.882
+        },
+        {
+          "text": "projections",
+          "start": 0.94,
+          "end": 1.556
+        },
+        {
+          "text": "clearly",
+          "start": 1.625,
+          "end": 1.939
+        },
+        {
+          "text": "labelled.",
+          "start": 1.997,
+          "end": 2.519
+        },
+        {
+          "text": "If",
+          "start": 2.763,
+          "end": 2.879
+        },
+        {
+          "text": "you",
+          "start": 2.926,
+          "end": 2.995
+        },
+        {
+          "text": "want",
+          "start": 3.042,
+          "end": 3.193
+        },
+        {
+          "text": "the",
+          "start": 3.216,
+          "end": 3.286
+        },
+        {
+          "text": "next",
+          "start": 3.344,
+          "end": 3.576
+        },
+        {
+          "text": "scenario,",
+          "start": 3.599,
+          "end": 4.319
+        },
+        {
+          "text": "from",
+          "start": 4.365,
+          "end": 4.54
+        },
+        {
+          "text": "China",
+          "start": 4.598,
+          "end": 4.923
+        },
+        {
+          "text": "or",
+          "start": 4.992,
+          "end": 5.085
+        },
+        {
+          "text": "from",
+          "start": 5.12,
+          "end": 5.259
+        },
+        {
+          "text": "the",
+          "start": 5.294,
+          "end": 5.364
+        },
+        {
+          "text": "US,",
+          "start": 5.433,
+          "end": 5.979
+        },
+        {
+          "text": "tell",
+          "start": 6.153,
+          "end": 6.351
+        },
+        {
+          "text": "us",
+          "start": 6.409,
+          "end": 6.478
+        },
+        {
+          "text": "in",
+          "start": 6.536,
+          "end": 6.594
+        },
+        {
+          "text": "the",
+          "start": 6.629,
+          "end": 6.699
+        },
+        {
+          "text": "comments.",
+          "start": 6.734,
+          "end": 7.303
+        },
+        {
+          "text": "And",
+          "start": 7.384,
+          "end": 7.535
+        },
+        {
+          "text": "subscribe,",
+          "start": 7.605,
+          "end": 8.324
+        },
+        {
+          "text": "so",
+          "start": 8.382,
+          "end": 8.475
+        },
+        {
+          "text": "you",
+          "start": 8.545,
+          "end": 8.615
+        },
+        {
+          "text": "do",
+          "start": 8.673,
+          "end": 8.754
+        },
+        {
+          "text": "not",
+          "start": 8.812,
+          "end": 8.916
+        },
+        {
+          "text": "miss",
+          "start": 8.951,
+          "end": 9.137
+        },
+        {
+          "text": "it.",
+          "start": 9.195,
+          "end": 9.659
+        }
+      ]
+    }
+  }
+}
