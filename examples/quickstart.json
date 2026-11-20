@@ -1,0 +1,30 @@
+{
+  "title": "Quickstart: the cost of coffee",
+  "scenes": [
+    {
+      "id": "hook",
+      "narration": "A cup of coffee now costs $5.40 in America.",
+      "source": "Source: example data, not real statistics",
+      "elements": [
+        { "type": "typewriter", "text": "THE PRICE OF A CUP" },
+        { "type": "headline", "text": "A cup of coffee now ==costs==", "y": 128 },
+        { "type": "bigNumber", "text": "$5.40", "color": "red", "at": "$5.40", "y": 260, "size": 300 },
+        { "type": "cutout", "asset": "coin", "x": 1420, "y": 600, "w": 260, "h": 260, "at": "america" }
+      ]
+    },
+    {
+      "id": "trend",
+      "transition": "pushRight",
+      "narration": "Ten years ago it was $3.10. That is a rise of 74 percent.",
+      "elements": [
+        { "type": "headline", "text": "Ten years ago it was", "y": 62 },
+        { "type": "barChart", "at": "ago",
+          "bars": [
+            { "label": "2016", "value": 3.1, "color": "ink", "at": "$3.10" },
+            { "label": "2026", "value": 5.4, "color": "red", "at": "rise" }
+          ], "x": 560, "w": 800 },
+        { "type": "sticker", "top": "IN TEN YEARS", "main": "+74%", "x": 1330, "y": 320, "w": 360, "at": "74" }
+      ]
+    }
+  ]
+}

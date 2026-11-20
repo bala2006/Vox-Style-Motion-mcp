@@ -1,0 +1,39 @@
+{
+  "paperBackground": {
+    "base": "#EBE5DC",
+    "grid": "faint graph-paper grid, 40 px pitch, 1 px lines at ~7% opacity",
+    "vignette": "radial, warm grey-brown: #D4CEC2 at ~88% radius, #BDB5AA in the corners; static",
+    "noise": "light paper grain",
+    "black": "end section uses #000000 with no grid or vignette"
+  },
+  "blurOut": {
+    "use": "Old content leaving within the same page.",
+    "behaviour": "blur 0 -> 18 px and opacity 1 -> 0 over 2-3 frames",
+    "measured": [134, 136]
+  },
+  "pagePush": {
+    "use": "Scene change. A new paper page with a torn leading edge slides over the old scene.",
+    "directions": "alternate: right (A, C), bottom (B, D)",
+    "edge": "jagged torn edge with a white rim and a soft shadow on the old scene",
+    "old": "stays in place and blurs (0 -> 14 px) as it is covered",
+    "new": "content of the new page rides with it; the first headline word is already visible",
+    "easing": "ease-in-out",
+    "measured": {
+      "A_right": { "frames": [303, 313], "offset": { "303": 1830, "304": 1720, "306": 1195, "307": 800, "309": 295, "310": 142, "312": 13, "313": 0 } },
+      "B_bottom": { "frames": [486, 495], "offset": { "487": 1052, "489": 820, "490": 563, "492": 178, "493": 73, "495": 0 } },
+      "C_right": { "frames": [639, 646], "offset": { "639": 1800, "640": 1640, "642": 967, "643": 569, "645": 116, "646": 0 } },
+      "D_bottom_black": { "frames": [810, 819], "offset": { "811": 1004, "813": 710, "814": 465, "816": 159, "817": 40, "819": 0 } }
+    },
+    "overlay": "persistent corner tags stay on top and never move during a push"
+  },
+  "camera": {
+    "pushIn": "scale about a focus point, ease-out, 1x -> 3x in 6 frames",
+    "pullBack": "reverse, ease-out over ~15 frames",
+    "otherwise": "static; no drift, no shake"
+  },
+  "editing": {
+    "pace": "a new visual event every 0.3-0.6 s; holds never longer than ~1.2 s without at least the counter ticking",
+    "cuts": "no hard cuts; only blurOut within a page and pagePush between pages",
+    "cadence": "20 fps animation on a 30 fps timeline (hold every third frame)"
+  }
+}

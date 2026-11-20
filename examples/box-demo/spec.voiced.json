@@ -1,0 +1,1223 @@
+{
+  "title": "Box style demo: Chai Tapri order counter",
+  "cadence": "smooth",
+  "fade": {
+    "in": 12,
+    "out": 22
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "narration": "Every evening, Raju runs a chai stall in Bengaluru. Fifty orders an hour, all in his head. So we built him one small screen.",
+      "transition": "cut",
+      "elements": [
+        {
+          "at": 4,
+          "type": "typewriter",
+          "text": "BOX STYLE · A REAL APP, RECORDED START TO FINISH",
+          "y": 46,
+          "size": 26
+        },
+        {
+          "type": "headline",
+          "text": "Fifty orders an hour, / ==all in his head.==",
+          "y": 120,
+          "size": 84,
+          "lineHeight": 1.18
+        },
+        {
+          "at": "head",
+          "type": "paperCard",
+          "x": 300,
+          "y": 420,
+          "w": 560,
+          "h": 200,
+          "rotate": -3,
+          "fill": "white",
+          "kicker": "WHAT RAJU REMEMBERS",
+          "body": "“3 cutting, 2 ginger, one bun maska, no sugar in the second one…”"
+        },
+        {
+          "at": "head+8",
+          "type": "arrow",
+          "from": [
+            900,
+            560
+          ],
+          "to": [
+            1080,
+            600
+          ],
+          "bend": -0.3
+        },
+        {
+          "at": "screen",
+          "type": "tag",
+          "text": "ONE SMALL SCREEN",
+          "x": 1120,
+          "y": 560,
+          "size": 54,
+          "rotate": 4,
+          "color": "yellow"
+        },
+        {
+          "at": "built",
+          "type": "stamp",
+          "text": "NO NOTEBOOK",
+          "x": 760,
+          "y": 760,
+          "rotate": -6,
+          "size": 72
+        },
+        {
+          "at": "head",
+          "type": "tape",
+          "x": 520,
+          "y": 395,
+          "w": 130,
+          "rotate": -6
+        }
+      ]
+    },
+    {
+      "id": "order",
+      "narration": "This is the actual app, running in a browser. Raju taps three cutting chai and two ginger. The total updates as he taps. Eighty five rupees.",
+      "transition": "pushRight",
+      "elements": [
+        {
+          "at": 14,
+          "type": "typewriter",
+          "text": "STEP 1 · TAKE THE ORDER",
+          "y": 40,
+          "size": 24
+        },
+        {
+          "at": 4,
+          "type": "screen",
+          "url": "localhost · Chai Tapri order counter",
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 0.4
+                },
+                {
+                  "at": "taps",
+                  "t": 1.1
+                },
+                {
+                  "at": "ginger",
+                  "t": 3.4
+                },
+                {
+                  "at": "total",
+                  "t": 3.75
+                },
+                {
+                  "at": "Eighty",
+                  "t": 4.1
+                }
+              ],
+              "maxSec": 4.3
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "taps-6",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "taps+10",
+              "x": 700,
+              "y": 380,
+              "zoom": 1.45
+            },
+            {
+              "at": "total-8",
+              "x": 700,
+              "y": 380,
+              "zoom": 1.45
+            },
+            {
+              "at": "total+10",
+              "x": 1500,
+              "y": 380,
+              "zoom": 1.7
+            }
+          ],
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "overlays": [
+            {
+              "at": "three",
+              "exitAt": "total",
+              "type": "markerBox",
+              "box": [
+                48,
+                213,
+                640,
+                155
+              ]
+            },
+            {
+              "at": "ginger",
+              "exitAt": "total",
+              "type": "markerBox",
+              "box": [
+                713,
+                213,
+                642,
+                155
+              ]
+            },
+            {
+              "at": "updates",
+              "type": "highlight",
+              "box": [
+                1422,
+                252,
+                420,
+                96
+              ]
+            },
+            {
+              "at": "Eighty",
+              "type": "circle",
+              "box": [
+                1752,
+                386,
+                92,
+                54
+              ],
+              "pad": 16,
+              "color": "red"
+            }
+          ]
+        },
+        {
+          "at": "Eighty+6",
+          "type": "tag",
+          "text": "3 × ₹15 + 2 × ₹20 = ₹85",
+          "x": 1250,
+          "y": 900,
+          "size": 36,
+          "rotate": -3,
+          "color": "white",
+          "font": "typewriter"
+        }
+      ]
+    },
+    {
+      "id": "place",
+      "narration": "One tap places it. Order forty two, ready in four minutes.",
+      "transition": "pushBottom",
+      "elements": [
+        {
+          "at": 14,
+          "type": "typewriter",
+          "text": "STEP 2 · ONE TAP",
+          "y": 40,
+          "size": 24
+        },
+        {
+          "at": 4,
+          "type": "screen",
+          "enterFrom": "right",
+          "url": "localhost · Chai Tapri order counter",
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 4.4
+                },
+                {
+                  "at": "tap",
+                  "t": 4.8
+                },
+                {
+                  "at": "Order",
+                  "t": 5.4
+                }
+              ],
+              "maxSec": 6.3
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 1500,
+              "y": 380,
+              "zoom": 1.25
+            },
+            {
+              "at": "tap+12",
+              "x": 1630,
+              "y": 520,
+              "zoom": 1.75
+            }
+          ],
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "overlays": [
+            {
+              "at": "tap+4",
+              "type": "markerBox",
+              "box": [
+                1418,
+                466,
+                428,
+                88
+              ],
+              "color": "yellow"
+            }
+          ]
+        },
+        {
+          "at": "ready",
+          "type": "stamp",
+          "text": "ORDER #42 · 4 MIN",
+          "x": 380,
+          "y": 800,
+          "rotate": -7,
+          "size": 64
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "narration": "The settings page holds his payment key. We cover it before it ever reaches the video.",
+      "transition": "pushRight",
+      "elements": [
+        {
+          "at": 14,
+          "type": "typewriter",
+          "text": "STEP 3 · KEEP SECRETS OUT OF THE FRAME",
+          "y": 40,
+          "size": 24
+        },
+        {
+          "at": 4,
+          "type": "screen",
+          "url": "localhost · Settings",
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 7.4
+                },
+                {
+                  "at": "cover",
+                  "t": 9.6
+                }
+              ],
+              "maxSec": 10.4
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "key-4",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "key+14",
+              "x": 600,
+              "y": 330,
+              "zoom": 1.6
+            }
+          ],
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "overlays": [
+            {
+              "at": 0,
+              "type": "redact",
+              "box": [
+                70,
+                312,
+                1034,
+                72
+              ]
+            },
+            {
+              "at": "cover",
+              "type": "markerBox",
+              "box": [
+                60,
+                304,
+                1054,
+                88
+              ],
+              "color": "red",
+              "width": 6
+            }
+          ]
+        },
+        {
+          "at": "cover+4",
+          "type": "tag",
+          "text": "KEY HIDDEN · EVERY FRAME",
+          "x": 1240,
+          "y": 900,
+          "size": 46,
+          "rotate": -4,
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "id": "how",
+      "narration": "Here is how this video was made. A script clicks through the app. The recording is mapped onto this voice. And every frame is rendered from code.",
+      "transition": "pushBottom",
+      "elements": [
+        {
+          "at": 14,
+          "type": "typewriter",
+          "text": "HOW THIS VIDEO WAS MADE",
+          "x": 120,
+          "y": 46,
+          "size": 24
+        },
+        {
+          "at": "made",
+          "type": "headline",
+          "text": "No editor. / ==Just code.==",
+          "x": 120,
+          "y": 110,
+          "align": "left",
+          "size": 76,
+          "width": 700
+        },
+        {
+          "type": "steps",
+          "x": 120,
+          "y": 360,
+          "w": 620,
+          "items": [
+            {
+              "text": "app/index.html",
+              "tool": "capture_screen",
+              "at": "clicks"
+            },
+            {
+              "text": "recording -> narration words",
+              "tool": "timeMap",
+              "at": "mapped"
+            },
+            {
+              "text": "payment key, every frame",
+              "tool": "redact",
+              "at": "voice"
+            },
+            {
+              "text": "1920 × 1080 · 30 fps",
+              "tool": "render_video",
+              "at": "rendered",
+              "highlight": true
+            }
+          ]
+        },
+        {
+          "at": "script",
+          "type": "terminal",
+          "x": 900,
+          "y": 300,
+          "w": 900,
+          "title": "VOX-STYLE-MOTION-MCP",
+          "rotate": 1,
+          "size": 28,
+          "lines": [
+            {
+              "cmd": "capture_screen capture.json",
+              "at": "clicks",
+              "verdict": "13.5 S",
+              "ok": true
+            },
+            {
+              "cmd": "generate_voiceover --provider sarvam",
+              "at": "voice",
+              "verdict": "DONE",
+              "ok": true
+            },
+            {
+              "cmd": "render_video spec.voiced.json",
+              "at": "rendered",
+              "verdict": "MP4",
+              "ok": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "narration": "And on his phone, the same page fits in one hand.",
+      "transition": "pushRight",
+      "elements": [
+        {
+          "type": "headline",
+          "text": "Same page, / ==one hand.==",
+          "x": 150,
+          "y": 300,
+          "align": "left",
+          "size": 110,
+          "width": 900
+        },
+        {
+          "at": "hand",
+          "type": "label",
+          "text": "390 PX PHONE · FULL PAGE, SCROLLED",
+          "x": 156,
+          "y": 590,
+          "size": 22
+        },
+        {
+          "at": "phone-6",
+          "type": "phone",
+          "x": 1240,
+          "y": 60,
+          "w": 440,
+          "media": {
+            "src": "media/phone.full.png",
+            "scroll": [
+              {
+                "at": "same",
+                "y": 0
+              },
+              {
+                "at": "end-4",
+                "y": 419
+              }
+            ]
+          },
+          "label": "SAME CODE, NO APP STORE"
+        },
+        {
+          "at": "hand+2",
+          "type": "countUp",
+          "x": 470,
+          "y": 700,
+          "to": 85,
+          "prefix": "₹",
+          "size": 150,
+          "label": "SAME ORDER, SAME TOTAL"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "narration": "Real software, in a box, in your own voice.",
+      "background": "black",
+      "transition": "pushBottom",
+      "elements": [
+        {
+          "type": "headline",
+          "text": "Real software, / in a box, / ==in your own voice.==",
+          "x": 150,
+          "y": 250,
+          "align": "left",
+          "size": 96
+        },
+        {
+          "at": "voice",
+          "type": "typewriter",
+          "text": "MADE WITH VOX-STYLE-MOTION-MCP · BOX STYLE",
+          "x": 156,
+          "y": 760,
+          "size": 24
+        }
+      ]
+    }
+  ],
+  "voiceover": {
+    "hook": {
+      "audio": "voice/hook.wav",
+      "duration": 9.563,
+      "words": [
+        {
+          "text": "Every",
+          "start": 0,
+          "end": 0.572
+        },
+        {
+          "text": "evening,",
+          "start": 0.572,
+          "end": 1.171
+        },
+        {
+          "text": "Raju",
+          "start": 1.23,
+          "end": 1.621
+        },
+        {
+          "text": "runs",
+          "start": 1.621,
+          "end": 1.843
+        },
+        {
+          "text": "a",
+          "start": 1.843,
+          "end": 2.024
+        },
+        {
+          "text": "chai",
+          "start": 2.024,
+          "end": 2.247
+        },
+        {
+          "text": "stall",
+          "start": 2.247,
+          "end": 2.482
+        },
+        {
+          "text": "in",
+          "start": 2.482,
+          "end": 2.677
+        },
+        {
+          "text": "Bengaluru.",
+          "start": 2.677,
+          "end": 3.472
+        },
+        {
+          "text": "Fifty",
+          "start": 3.811,
+          "end": 4.323
+        },
+        {
+          "text": "orders",
+          "start": 4.323,
+          "end": 4.852
+        },
+        {
+          "text": "an",
+          "start": 4.852,
+          "end": 5.1
+        },
+        {
+          "text": "hour,",
+          "start": 5.1,
+          "end": 5.382
+        },
+        {
+          "text": "all",
+          "start": 5.457,
+          "end": 5.721
+        },
+        {
+          "text": "in",
+          "start": 5.721,
+          "end": 5.969
+        },
+        {
+          "text": "his",
+          "start": 5.969,
+          "end": 6.234
+        },
+        {
+          "text": "head.",
+          "start": 6.234,
+          "end": 6.515
+        },
+        {
+          "text": "So",
+          "start": 6.87,
+          "end": 7.156
+        },
+        {
+          "text": "we",
+          "start": 7.156,
+          "end": 7.443
+        },
+        {
+          "text": "built",
+          "start": 7.443,
+          "end": 7.788
+        },
+        {
+          "text": "him",
+          "start": 7.788,
+          "end": 8.094
+        },
+        {
+          "text": "one",
+          "start": 8.094,
+          "end": 8.647
+        },
+        {
+          "text": "small",
+          "start": 8.647,
+          "end": 8.992
+        },
+        {
+          "text": "screen.",
+          "start": 8.992,
+          "end": 9.357
+        }
+      ]
+    },
+    "order": {
+      "audio": "voice/order.wav",
+      "duration": 11.622,
+      "words": [
+        {
+          "text": "This",
+          "start": 0,
+          "end": 0.248
+        },
+        {
+          "text": "is",
+          "start": 0.248,
+          "end": 0.466
+        },
+        {
+          "text": "the",
+          "start": 0.466,
+          "end": 0.699
+        },
+        {
+          "text": "actual",
+          "start": 0.699,
+          "end": 1.165
+        },
+        {
+          "text": "app,",
+          "start": 1.165,
+          "end": 1.398
+        },
+        {
+          "text": "running",
+          "start": 1.464,
+          "end": 1.945
+        },
+        {
+          "text": "in",
+          "start": 1.945,
+          "end": 2.164
+        },
+        {
+          "text": "a",
+          "start": 2.164,
+          "end": 2.367
+        },
+        {
+          "text": "browser.",
+          "start": 2.367,
+          "end": 2.848
+        },
+        {
+          "text": "Raju",
+          "start": 3.194,
+          "end": 3.84
+        },
+        {
+          "text": "taps",
+          "start": 3.84,
+          "end": 4.208
+        },
+        {
+          "text": "three",
+          "start": 4.208,
+          "end": 4.599
+        },
+        {
+          "text": "cutting",
+          "start": 4.599,
+          "end": 5.312
+        },
+        {
+          "text": "chai",
+          "start": 5.312,
+          "end": 5.68
+        },
+        {
+          "text": "and",
+          "start": 5.68,
+          "end": 6.026
+        },
+        {
+          "text": "two",
+          "start": 6.026,
+          "end": 6.372
+        },
+        {
+          "text": "ginger.",
+          "start": 6.372,
+          "end": 7.063
+        },
+        {
+          "text": "The",
+          "start": 7.441,
+          "end": 7.739
+        },
+        {
+          "text": "total",
+          "start": 7.739,
+          "end": 8.316
+        },
+        {
+          "text": "updates",
+          "start": 8.316,
+          "end": 9.172
+        },
+        {
+          "text": "as",
+          "start": 9.172,
+          "end": 9.451
+        },
+        {
+          "text": "he",
+          "start": 9.451,
+          "end": 9.73
+        },
+        {
+          "text": "taps.",
+          "start": 9.73,
+          "end": 10.048
+        },
+        {
+          "text": "Eighty",
+          "start": 10.412,
+          "end": 10.766
+        },
+        {
+          "text": "five",
+          "start": 10.766,
+          "end": 11.098
+        },
+        {
+          "text": "rupees.",
+          "start": 11.098,
+          "end": 11.452
+        }
+      ]
+    },
+    "place": {
+      "audio": "voice/place.wav",
+      "duration": 4.558,
+      "words": [
+        {
+          "text": "One",
+          "start": 0,
+          "end": 0.419
+        },
+        {
+          "text": "tap",
+          "start": 0.419,
+          "end": 0.652
+        },
+        {
+          "text": "places",
+          "start": 0.652,
+          "end": 1.116
+        },
+        {
+          "text": "it.",
+          "start": 1.116,
+          "end": 1.333
+        },
+        {
+          "text": "Order",
+          "start": 1.679,
+          "end": 2.115
+        },
+        {
+          "text": "forty",
+          "start": 2.115,
+          "end": 2.551
+        },
+        {
+          "text": "two,",
+          "start": 2.551,
+          "end": 2.777
+        },
+        {
+          "text": "ready",
+          "start": 2.84,
+          "end": 3.276
+        },
+        {
+          "text": "in",
+          "start": 3.276,
+          "end": 3.487
+        },
+        {
+          "text": "four",
+          "start": 3.487,
+          "end": 3.727
+        },
+        {
+          "text": "minutes.",
+          "start": 3.727,
+          "end": 4.374
+        }
+      ]
+    },
+    "settings": {
+      "audio": "voice/settings.wav",
+      "duration": 5.566,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.257
+        },
+        {
+          "text": "settings",
+          "start": 0.257,
+          "end": 0.804
+        },
+        {
+          "text": "page",
+          "start": 0.804,
+          "end": 1.285
+        },
+        {
+          "text": "holds",
+          "start": 1.285,
+          "end": 1.575
+        },
+        {
+          "text": "his",
+          "start": 1.575,
+          "end": 1.832
+        },
+        {
+          "text": "payment",
+          "start": 1.832,
+          "end": 2.363
+        },
+        {
+          "text": "key.",
+          "start": 2.363,
+          "end": 2.62
+        },
+        {
+          "text": "We",
+          "start": 2.972,
+          "end": 3.13
+        },
+        {
+          "text": "cover",
+          "start": 3.13,
+          "end": 3.455
+        },
+        {
+          "text": "it",
+          "start": 3.455,
+          "end": 3.613
+        },
+        {
+          "text": "before",
+          "start": 3.613,
+          "end": 4.085
+        },
+        {
+          "text": "it",
+          "start": 4.085,
+          "end": 4.242
+        },
+        {
+          "text": "ever",
+          "start": 4.242,
+          "end": 4.557
+        },
+        {
+          "text": "reaches",
+          "start": 4.557,
+          "end": 4.905
+        },
+        {
+          "text": "the",
+          "start": 4.905,
+          "end": 5.073
+        },
+        {
+          "text": "video.",
+          "start": 5.073,
+          "end": 5.399
+        }
+      ]
+    },
+    "how": {
+      "audio": "voice/how.wav",
+      "duration": 11.692,
+      "words": [
+        {
+          "text": "Here",
+          "start": 0,
+          "end": 0.365
+        },
+        {
+          "text": "is",
+          "start": 0.365,
+          "end": 0.548
+        },
+        {
+          "text": "how",
+          "start": 0.548,
+          "end": 0.743
+        },
+        {
+          "text": "this",
+          "start": 0.743,
+          "end": 0.951
+        },
+        {
+          "text": "video",
+          "start": 0.951,
+          "end": 1.329
+        },
+        {
+          "text": "was",
+          "start": 1.329,
+          "end": 1.525
+        },
+        {
+          "text": "made.",
+          "start": 1.525,
+          "end": 1.89
+        },
+        {
+          "text": "A",
+          "start": 2.225,
+          "end": 2.542
+        },
+        {
+          "text": "script",
+          "start": 2.542,
+          "end": 2.976
+        },
+        {
+          "text": "clicks",
+          "start": 2.976,
+          "end": 3.41
+        },
+        {
+          "text": "through",
+          "start": 3.41,
+          "end": 3.867
+        },
+        {
+          "text": "the",
+          "start": 3.867,
+          "end": 4.231
+        },
+        {
+          "text": "app.",
+          "start": 4.231,
+          "end": 4.594
+        },
+        {
+          "text": "The",
+          "start": 4.977,
+          "end": 5.266
+        },
+        {
+          "text": "recording",
+          "start": 5.266,
+          "end": 6.134
+        },
+        {
+          "text": "is",
+          "start": 6.134,
+          "end": 6.405
+        },
+        {
+          "text": "mapped",
+          "start": 6.405,
+          "end": 6.983
+        },
+        {
+          "text": "onto",
+          "start": 6.983,
+          "end": 7.525
+        },
+        {
+          "text": "this",
+          "start": 7.525,
+          "end": 7.833
+        },
+        {
+          "text": "voice.",
+          "start": 7.833,
+          "end": 8.393
+        },
+        {
+          "text": "And",
+          "start": 8.754,
+          "end": 8.975
+        },
+        {
+          "text": "every",
+          "start": 8.975,
+          "end": 9.58
+        },
+        {
+          "text": "frame",
+          "start": 9.58,
+          "end": 10.007
+        },
+        {
+          "text": "is",
+          "start": 10.007,
+          "end": 10.214
+        },
+        {
+          "text": "rendered",
+          "start": 10.214,
+          "end": 10.862
+        },
+        {
+          "text": "from",
+          "start": 10.862,
+          "end": 11.097
+        },
+        {
+          "text": "code.",
+          "start": 11.097,
+          "end": 11.51
+        }
+      ]
+    },
+    "phone": {
+      "audio": "voice/phone.wav",
+      "duration": 3.925,
+      "words": [
+        {
+          "text": "And",
+          "start": 0,
+          "end": 0.253
+        },
+        {
+          "text": "on",
+          "start": 0.253,
+          "end": 0.489
+        },
+        {
+          "text": "his",
+          "start": 0.489,
+          "end": 0.742
+        },
+        {
+          "text": "phone,",
+          "start": 0.742,
+          "end": 1.232
+        },
+        {
+          "text": "the",
+          "start": 1.303,
+          "end": 1.556
+        },
+        {
+          "text": "same",
+          "start": 1.556,
+          "end": 2.029
+        },
+        {
+          "text": "page",
+          "start": 2.029,
+          "end": 2.502
+        },
+        {
+          "text": "fits",
+          "start": 2.502,
+          "end": 2.771
+        },
+        {
+          "text": "in",
+          "start": 2.771,
+          "end": 3.008
+        },
+        {
+          "text": "one",
+          "start": 3.008,
+          "end": 3.465
+        },
+        {
+          "text": "hand.",
+          "start": 3.465,
+          "end": 3.734
+        }
+      ]
+    },
+    "close": {
+      "audio": "voice/close.wav",
+      "duration": 4.057,
+      "words": [
+        {
+          "text": "Real",
+          "start": 0,
+          "end": 0.333
+        },
+        {
+          "text": "software,",
+          "start": 0.333,
+          "end": 1.251
+        },
+        {
+          "text": "in",
+          "start": 1.339,
+          "end": 1.632
+        },
+        {
+          "text": "a",
+          "start": 1.632,
+          "end": 1.904
+        },
+        {
+          "text": "box,",
+          "start": 1.904,
+          "end": 2.217
+        },
+        {
+          "text": "in",
+          "start": 2.305,
+          "end": 2.598
+        },
+        {
+          "text": "your",
+          "start": 2.598,
+          "end": 2.93
+        },
+        {
+          "text": "own",
+          "start": 2.93,
+          "end": 3.243
+        },
+        {
+          "text": "voice.",
+          "start": 3.243,
+          "end": 3.848
+        }
+      ]
+    }
+  }
+}

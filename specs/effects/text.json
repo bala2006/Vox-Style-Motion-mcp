@@ -1,0 +1,42 @@
+{
+  "typewriter": {
+    "use": "Top-of-frame kicker / topic label in caps.",
+    "font": "typewriter (Courier Prime 700, letter-spacing 0.12em, ~26 px, ink)",
+    "position": "centred, baseline y≈60 (shot 1 origin x≈650; shot 2 x≈700)",
+    "reveal": "1 character per shown frame (≈20 chars/s), no cursor, no fade per char",
+    "replace": "A new typewriter line types over the old one at the same origin; the old line disappears with the scene blur",
+    "measured": { "BEFORE THIS VIDEO ENDS,": [0, 27], "THE U.S. NATIONAL DEBT": [135, 153] }
+  },
+  "wordFadeHeadline": {
+    "use": "Narrated sentence fragment, synced word by word to the voice.",
+    "font": "headline (Playfair Display Italic 400, ~52 px); emphasis words Playfair Display Italic 900",
+    "layout": "Whole line is laid out at its final position from the first word; words appear in place (no reflow, no slide).",
+    "reveal": "each word: opacity 0 -> pale (#B9B2A8) on its first shown frame, then pale -> ink over 2-3 frames",
+    "measured": { "America": [49, 51], "will": [60, 63], "borrow": [69, 72], "it's": [315, 324], "real": [492, 495], "problem": [501, 502], "government's": [711, 714] },
+    "colors": { "onPaper": "ink #171310", "onBlack": "#F3F0EB", "subline": "greyText #8A847D" }
+  },
+  "highlighter": {
+    "use": "Behind emphasis words and table rows.",
+    "shape": "Yellow #F1D01A band, rough marker ends (slightly irregular top/bottom edge), extends ~8 px past the text, height ~0.85 of the cap+x height",
+    "reveal": "clip-path wipe left -> right over 3-4 frames, ease-out; stays on",
+    "multiWord": "extends word by word in sync with narration (biggest f727-729, then bill f732-733)",
+    "measured": { "borrow": [72, 75], "speeding up.": [330, 336], "INTEREST row": [580, 582], "SOCIAL SECURITY label": [778, 792] }
+  },
+  "maskRiseText": {
+    "use": "Huge key numbers and key words ($40 TRILLION, $117,000, THE INTEREST, FUTURE, PAST).",
+    "font": "number (Anton), caps; cap height 150-190 px",
+    "reveal": "each glyph slides up from below a baseline clip mask (translateY 100% -> 0) over 3-4 frames, ease-out; stagger 1 frame per glyph",
+    "exit": "blur + fade out over 3 frames when replaced",
+    "measured": { "$40 TRILLION": [177, 188], "$117,000": [225, 234], "THE INTEREST": [513, 525], "FUTURE": [846, 852], "PAST": [912, 916] }
+  },
+  "sourceLine": {
+    "position": "bottom-left x≈122, y≈1004",
+    "font": "source (Courier Prime 400 ~14 px, greyText)",
+    "behaviour": "fades in ~3 frames when the scene's first statistic appears; swaps text per scene"
+  },
+  "dimText": {
+    "use": "Push the previous statement back before the payoff line.",
+    "behaviour": "opacity/colour to ~45% over 6 frames (f861-867); strike strokes go to dark red",
+    "measured": [861, 867]
+  }
+}

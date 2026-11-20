@@ -1,0 +1,37 @@
+{
+  "liveCounter": {
+    "use": "Running total that ticks for the whole video (\"borrowed since you hit play\").",
+    "formula": "value = floor(shown * ratePerSecond / 30); ratePerSecond = 77105.04 (=2570.168 per frame)",
+    "checked": { "f64": 164490, "f127": 326411, "f915": 2351704, "f930": 2390256 },
+    "big": { "position": "centred (960, 430)", "capHeight": 140, "font": "number", "label": "typewriter label above at y≈300" },
+    "colorFlash": "turns red while the narration says the key verb (f69-87), back to ink after",
+    "flyToCorner": {
+      "frames": [133, 142],
+      "path": [[135, 1097, 363], [136, 1175, 323], [138, 1400, 210], [139, 1493, 167], [141, 1607, 113], [142, 1665, 78]],
+      "scale": "1.0 -> 0.3, ease-out; slight pre-scale to 1.05 at f133",
+      "tag": "white torn-paper tag x 1470-1861, y 15-122 grows in behind from f138 with tiny label over the value"
+    },
+    "endTotal": { "frames": [915, 942], "label": "BORROWED WHILE YOU WATCHED*", "position": "x≈171, y 864-952", "color": "red", "freezeFrame": 930, "cornerTagFadesOut": [910, 915] }
+  },
+  "yearFlip": {
+    "use": "Split-flap year counter for projections.",
+    "chip": "rough-edged black paper rectangle, white Anton digits, ~475x245 centred at (958, 592); tiny 'BY' typewriter above",
+    "behaviour": "steps through years with ease-out spacing; each step shows one frame with a horizontal split line and slightly wider flap edges",
+    "measured": { "2037": 643, "2039": 646, "2041": 649, "2042": 651, "2046": 658, "2047": 661, "2048": 663 }
+  },
+  "stamp": {
+    "use": "PROJECTED / ESTIMATE rubber stamp.",
+    "look": "red outlined box with red distressed caps, rotated -10°, multiply-ish opacity 0.9",
+    "slam": { "f691": 2.2, "f693": 1.4, "f694": 1.05, "f696": 0.85, "f699": 1.0 },
+    "opacity": "starts 0.35 at f691, full by f694"
+  },
+  "badge": {
+    "use": "#1 rank badge.",
+    "look": "red filled circle ~70 px, white Anton '#1'",
+    "pop": "scale 0.2 -> 1.25 -> 0.95 -> 1.0 over 4 shown frames (f768-772)"
+  },
+  "cornerDock": {
+    "rule": "The key number of a beat docks to a corner as a small persistent tag (debt counter -> top-right, 2048 chip -> top-left).",
+    "move": "ease-in-out ~10 frames, scale to 0.3-0.35, never rotates"
+  }
+}
