@@ -1,0 +1,23 @@
+{
+  "out_path": "media/order.mp4",
+  "viewport": { "width": 1440, "height": 810 },
+  "tail_ms": 1500,
+  "steps": [
+    { "do": "goto", "url": "app/index.html", "mark": "home" },
+    { "do": "wait", "ms": 1200 },
+    { "do": "click", "selector": "[data-test=plus-cutting]", "mark": "cutting1" },
+    { "do": "click", "selector": "[data-test=plus-cutting]" },
+    { "do": "click", "selector": "[data-test=plus-cutting]", "mark": "cutting3" },
+    { "do": "click", "selector": "[data-test=plus-ginger]", "mark": "ginger1" },
+    { "do": "click", "selector": "[data-test=plus-ginger]", "mark": "ginger2" },
+    { "do": "wait", "ms": 900, "mark": "total" },
+    { "do": "click", "selector": "[data-test=place]", "mark": "place" },
+    { "do": "wait", "ms": 1600, "mark": "placed" },
+    { "do": "click", "selector": "[data-test=tab-settings]", "mark": "settings" },
+    { "do": "wait", "ms": 1800 },
+    { "do": "hover", "selector": "[data-test=api-key]", "mark": "key" },
+    { "do": "wait", "ms": 1200 },
+    { "do": "click", "selector": "[data-test=tab-menu]", "mark": "back" },
+    { "do": "wait", "ms": 800 }
+  ]
+}

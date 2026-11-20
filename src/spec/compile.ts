@@ -41,6 +41,9 @@ export type ResolvedSpec = {
   height: number;
   cadence: "on-threes" | "smooth";
   durationInFrames: number;
+  fade: { in: number; out: number };
+  /** Set by the renderer: "html5" where Remotion's compositor cannot run (Linux glibc < 2.35). */
+  videoEngine?: "offthread" | "html5";
   counter?: ResolvedCounter;
   scenes: ResolvedScene[];
   warnings: string[];
@@ -48,11 +51,14 @@ export type ResolvedSpec = {
 
 export const normWord = (w: string) => w.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9%]/g, "");
 
-/** Strip **bold** and ==highlight== markers and split into words. */
-export function headlineWords(text: string): { word: string; bold: boolean; hl: boolean }[] {
-  const out: { word: string; bold: boolean; hl: boolean }[] = [];
+export type HeadlineWord = { word: string; bold: boolean; hl: boolean; br?: boolean };
+
+/** Strip **bold** and ==highlight== markers and split into words. A lone "/" is a line break. */
+export function headlineWords(text: string): HeadlineWord[] {
+  const out: HeadlineWord[] = [];
   let bold = false, hl = false;
   for (const raw of text.split(/\s+/).filter(Boolean)) {
+    if (raw === "/") { out.push({ word: "", bold: false, hl: false, br: true }); continue; }
     let w = raw;
     let b = bold, h = hl;
     // opening markers
@@ -100,7 +106,7 @@ export function estimateWords(text: string, wpm = 205): Word[] {
 
 const ANCHOR_KEYS = new Set([
   "at", "exitAt", "dimAt", "shrinkAt", "highlightAt", "focusAt", "circleAt", "pullBackAt",
-  "reorderAt", "dockAt", "freezeAt", "valueAt", "moveAt",
+  "reorderAt", "dockAt", "freezeAt", "valueAt", "moveAt", "endAt", "until",
 ]);
 
 type Resolver = (a: Anchor | undefined, fallback: number) => number;
@@ -181,7 +187,10 @@ export function compileSpec(input: unknown): CompileResult {
         const frames: number[] = [];
         let wi = 0;
         let last = el.at !== undefined ? r(el.at, leadIn) : leadIn;
-        hw.forEach((h, k) => {
+        let k = -1; // index among real words (line breaks are skipped)
+        hw.forEach((h) => {
+          if (h.br) { frames.push(last); return; }
+          k++;
           if (el.wordAt && el.wordAt[k] !== undefined) { last = r(el.wordAt[k], last); frames.push(last); return; }
           const n = normWord(h.word);
           let found = -1;
@@ -192,13 +201,30 @@ export function compileSpec(input: unknown): CompileResult {
         });
         res._words = hw;
         res._wordFrames = frames;
-        if (el.at === undefined) res.at = frames[0] ?? leadIn;
+        if (el.at === undefined) res.at = frames.find((_, i) => !hw[i].br) ?? leadIn;
       }
       if (el.type === "moneyStacks") res.rows = el.rows.map((a) => r(a, leadIn));
       if (res.at === undefined) res.at = leadIn;
+      // Nested layers and overlays start with their screen unless they have their own anchor.
+      if (el.type === "screen") {
+        res.media = res.media.map((m: any) => ({ ...m, at: m.at ?? res.at }));
+        res.overlays = (res.overlays ?? []).map((o: any) => ({ ...o, at: o.at ?? res.at }));
+        if (!res.camera?.length) res.camera = [{ at: res.at, x: 960, y: 540, zoom: 1 }];
+      }
+      if (el.type === "phone") res.media = { ...res.media, at: res.media.at ?? res.at };
+      for (const key of ["items", "lines"]) {
+        if (Array.isArray(res[key])) {
+          let prev = res.at;
+          res[key] = res[key].map((it: any, i: number) => {
+            const at = it.at ?? (key === "items" ? prev + (i ? 2 : 0) : prev + (i ? 30 : 0));
+            prev = at;
+            return { ...it, at };
+          });
+        }
+      }
       return res;
     });
-    const firstStat = elements.find((e) => e.type === "bigNumber" || e.type === "lineChart" || e.type === "card" || e.type === "hbarChart");
+    const firstStat = elements.find((e) => ["bigNumber", "lineChart", "card", "hbarChart", "countUp"].includes(e.type));
     scenes.push({
       id: sc.id, index, from: cursor, duration, overlap: 0,
       background: sc.background ?? "paper",
@@ -237,6 +263,7 @@ export function compileSpec(input: unknown): CompileResult {
       title: spec.title ?? "Untitled",
       fps, width: spec.width ?? 1920, height: spec.height ?? 1080,
       cadence: spec.cadence ?? "on-threes",
+      fade: { in: spec.fade?.in ?? 0, out: spec.fade?.out ?? 0 },
       durationInFrames, counter, scenes, warnings,
     },
   };

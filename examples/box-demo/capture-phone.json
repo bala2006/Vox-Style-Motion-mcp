@@ -1,0 +1,15 @@
+{
+  "out_path": "media/phone.mp4",
+  "viewport": { "width": 390, "height": 844 },
+  "cursor": false,
+  "tail_ms": 300,
+  "steps": [
+    { "do": "goto", "url": "app/index.html" },
+    { "do": "click", "selector": "[data-test=plus-cutting]" },
+    { "do": "click", "selector": "[data-test=plus-cutting]" },
+    { "do": "click", "selector": "[data-test=plus-cutting]" },
+    { "do": "click", "selector": "[data-test=plus-ginger]" },
+    { "do": "click", "selector": "[data-test=plus-ginger]" },
+    { "do": "screenshot", "name": "full", "fullPage": true }
+  ]
+}

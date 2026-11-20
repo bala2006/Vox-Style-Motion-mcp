@@ -22,7 +22,8 @@ export function kf(t: number, times: number[], values: number[], e: (x: number) 
 
 export const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 
-export type Ctx = { t: number; g: number; scene: ResolvedScene; spec: ResolvedSpec };
+/** t = scene frame on the motion cadence, g = global frame on the cadence, f = true scene frame (footage plays smooth). */
+export type Ctx = { t: number; g: number; f: number; scene: ResolvedScene; spec: ResolvedSpec };
 export const SceneCtx = createContext<Ctx | null>(null);
 export const useScene = () => {
   const c = useContext(SceneCtx);
@@ -56,6 +57,45 @@ export const TornPaper: React.FC<{ w: number; h: number; fill: string; seed?: nu
     <div style={{ position: "absolute", inset: 0 }}>{children}</div>
   </div>
 );
+
+/** Card pop used by the box style: ghost frame, rotated rise with 4% overshoot, settles in 10 frames. */
+export function popCard(lt: number, rotTo = 0): React.CSSProperties {
+  const rotFrom = rotTo - 9;
+  const scale = kf(lt, [0, 2, 5, 7, 10], [0.7, 0.88, 1.04, 0.99, 1.0], ease.out);
+  const rot = kf(lt, [0, 6, 10], [rotFrom, rotTo + (rotTo - rotFrom) * 0.06, rotTo], ease.out);
+  return { opacity: kf(lt, [0, 2], [0.3, 1]), transform: `scale(${scale}) rotate(${rot}deg)` };
+}
+
+export type CamKey = { at: number; x: number; y: number; zoom: number };
+
+/** Ease-in-out camera between keyframes in source pixels; zoom interpolates in log space so it feels even. */
+export function camAt(t: number, keys: CamKey[]) {
+  if (!keys.length) return { x: 960, y: 540, zoom: 1 };
+  const ks = [...keys].sort((a, b) => a.at - b.at);
+  if (t <= ks[0].at) return ks[0];
+  for (let i = 0; i < ks.length - 1; i++) {
+    const a = ks[i], b = ks[i + 1];
+    if (t < b.at) {
+      const p = ease.inOut(Math.min(1, Math.max(0, (t - a.at) / Math.max(1, b.at - a.at))));
+      const zoom = Math.exp(Math.log(a.zoom) + (Math.log(b.zoom) - Math.log(a.zoom)) * p);
+      return { x: a.x + (b.x - a.x) * p, y: a.y + (b.y - a.y) * p, zoom };
+    }
+  }
+  return ks[ks.length - 1];
+}
+
+/** Media time (s) at scene frame t from [{at, t}] pairs. Before the first pair it holds; after the last it plays at `rate` x real time. */
+export function remapTime(t: number, pairs: { at: number; t: number }[], fps: number, rate = 1) {
+  if (!pairs.length) return t / fps;
+  const ps = [...pairs].sort((a, b) => a.at - b.at);
+  if (t <= ps[0].at) return ps[0].t;
+  for (let i = 0; i < ps.length - 1; i++) {
+    const a = ps[i], b = ps[i + 1];
+    if (t < b.at) return a.t + ((t - a.at) / Math.max(1, b.at - a.at)) * (b.t - a.t);
+  }
+  const l = ps[ps.length - 1];
+  return l.t + ((t - l.at) / fps) * rate;
+}
 
 export const assetSrc = (src: string) => (/^(https?:|data:|blob:)/.test(src) ? src : staticFile(src));
 

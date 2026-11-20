@@ -7,6 +7,9 @@ import { BigNumber, Headline, Label, SourceLine, Typewriter } from "./components
 import { Arrow, Badge, Circle, Cutout, ProgressBar, Stamp, Sticker, Strike, Tag, TotalCounter } from "./components/objects";
 import { MoneyStacks, PersonGrid } from "./components/groups";
 import { BarChart, Card, HBarChart, LineChart, YearFlip } from "./components/charts";
+import { Phone, Polaroid, Screen, Tape } from "./components/screen";
+import { Cursor, Highlight, MarkerBox, Redact } from "./components/marks";
+import { CountUp, PaperCard, Steps, Terminal } from "./components/cards";
 
 export const PaperBackground: React.FC<{ kind: "paper" | "black" }> = ({ kind }) => {
   if (kind === "black") return <AbsoluteFill style={{ background: C.black }} />;
@@ -58,6 +61,20 @@ const ElementView: React.FC<{ el: any; t: number }> = ({ el, t }) => {
     case "stamp": body = <Stamp el={el} lt={lt} />; break;
     case "badge": body = <Badge el={el} lt={lt} />; break;
     case "totalCounter": body = <TotalCounter el={el} lt={lt} />; break;
+    case "markerBox": body = <MarkerBox el={el} lt={lt} />; break;
+    case "highlight": body = <Highlight el={el} lt={lt} />; break;
+    case "redact": body = <Redact el={el} lt={lt} />; break;
+    case "cursor": body = <Cursor el={el} lt={lt} />; break;
+    case "tape": body = <Tape el={el} lt={lt} />; break;
+    case "polaroid": body = <Polaroid el={el} lt={lt} />; break;
+    case "phone": body = <Phone el={el} lt={lt} />; break;
+    case "paperCard": body = <PaperCard el={el} lt={lt} />; break;
+    case "countUp": body = <CountUp el={el} lt={lt} />; break;
+    case "terminal": body = <Terminal el={el} lt={lt} />; break;
+    case "steps": body = <Steps el={el} lt={lt} />; break;
+    case "screen":
+      body = <Screen el={el} lt={lt}>{(el.overlays ?? []).map((o: any, i: number) => <ElementView key={i} el={o} t={t} />)}</Screen>;
+      break;
     default: return null;
   }
   let opacity = 1, blur = 0;
@@ -84,8 +101,9 @@ function tornEdge(transition: "pushRight" | "pushBottom", inset = 0) {
   return `polygon(${pts.join(", ")})`;
 }
 
-const SceneView: React.FC<{ scene: ResolvedScene; spec: ResolvedSpec; g: number }> = ({ scene, spec, g }) => {
+const SceneView: React.FC<{ scene: ResolvedScene; spec: ResolvedSpec; g: number; frame: number }> = ({ scene, spec, g, frame }) => {
   const t = g - scene.from;
+  const f = frame - scene.from;
   const next = spec.scenes[scene.index + 1];
   const pushing = (scene.transition === "pushRight" || scene.transition === "pushBottom") && t < scene.transitionFrames;
   const opaque = scene.index === 0 || scene.transition === "pushRight" || scene.transition === "pushBottom";
@@ -98,9 +116,11 @@ const SceneView: React.FC<{ scene: ResolvedScene; spec: ResolvedSpec; g: number 
     else if (next.transition === "cut") { leaveOpacity = 0; }
     else leaveBlur = p * 14;
   }
+  // The page underneath a push also darkens a little, like paper in the shadow of the new sheet.
+  const leaveDark = next && t >= scene.duration && (next.transition === "pushRight" || next.transition === "pushBottom") ? prog(t, scene.duration, Math.max(1, scene.overlap), ease.in) * 0.25 : 0;
 
   const content = (
-    <SceneCtx.Provider value={{ t, g, scene, spec }}>
+    <SceneCtx.Provider value={{ t, g, f, scene, spec }}>
       {opaque && <PaperBackground kind={scene.background} />}
       {scene.source && t >= scene.sourceAt && <SourceLine text={scene.source} lt={t - scene.sourceAt} dark={scene.background === "black"} />}
       {scene.elements.map((el, i) => <ElementView key={i} el={el} t={t} />)}
@@ -122,7 +142,8 @@ const SceneView: React.FC<{ scene: ResolvedScene; spec: ResolvedSpec; g: number 
     );
   }
   if (leaveBlur || leaveOpacity < 1) {
-    page = <AbsoluteFill style={{ filter: leaveBlur ? `blur(${leaveBlur}px)` : undefined, opacity: leaveOpacity }}>{page}</AbsoluteFill>;
+    const filter = [leaveBlur ? `blur(${leaveBlur}px)` : "", leaveDark ? `brightness(${1 - leaveDark})` : ""].filter(Boolean).join(" ");
+    page = <AbsoluteFill style={{ filter: filter || undefined, opacity: leaveOpacity }}>{page}</AbsoluteFill>;
   }
   return <AbsoluteFill>{page}</AbsoluteFill>;
 };
@@ -162,8 +183,14 @@ export const VoxVideo: React.FC<{ resolved: ResolvedSpec }> = ({ resolved }) => 
   return (
     <AbsoluteFill style={{ background: C.paper }}>
       <PaperBackground kind={bg} />
-      {resolved.scenes.map((s) => (g >= s.from && g < s.from + s.duration + s.overlap ? <SceneView key={s.id} scene={s} spec={resolved} g={g} /> : null))}
+      {resolved.scenes.map((s) => (g >= s.from && g < s.from + s.duration + s.overlap ? <SceneView key={s.id} scene={s} spec={resolved} g={g} frame={frame} /> : null))}
       {resolved.counter && <CounterOverlay spec={resolved} g={g} />}
+      {(resolved.fade.in > 0 || resolved.fade.out > 0) && (
+        <AbsoluteFill style={{
+          background: "#000", pointerEvents: "none",
+          opacity: Math.max(resolved.fade.in > 0 ? 1 - prog(frame, 0, resolved.fade.in) : 0, resolved.fade.out > 0 ? prog(frame, resolved.durationInFrames - resolved.fade.out - 2, resolved.fade.out) : 0),
+        }} />
+      )}
       {resolved.scenes.map((s) => s.audio && (
         <Sequence key={`a-${s.id}`} from={s.from + s.audio.from} layout="none">
           <Html5Audio src={assetSrc(s.audio.src)} />

@@ -32,7 +32,8 @@ export const Cutout: React.FC<{ el: El; lt: number }> = ({ el, lt }) => {
 
 export const Sticker: React.FC<{ el: El; lt: number }> = ({ el, lt }) => {
   const w = el.w ?? 490;
-  const h = el.top ? 140 : 110;
+  const size = el.size ?? 68;
+  const h = el.top ? size * 2 + 4 : size * 1.62;
   const rotTo = el.rotate ?? -2.5;
   const scale = kf(lt, [0, 2, 4, 5, 6], [0.7, 0.85, 0.98, 1.05, 1.0]);
   const rot = kf(lt, [0, 2, 4, 6], [-12, -8, -4, rotTo]);
@@ -42,8 +43,8 @@ export const Sticker: React.FC<{ el: El; lt: number }> = ({ el, lt }) => {
     <div style={{ position: "absolute", left: el.x, top: el.y, transform: `translate(${dx}px, ${dy}px) scale(${scale}) rotate(${rot}deg)`, transformOrigin: "center" }}>
       <TornPaper w={w} h={h} fill={col(el.color, C.red)} seed={11} amp={6}>
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#fff" }}>
-          {el.top && <div style={{ fontFamily: FONT.typewriter, fontWeight: 700, fontSize: 18, letterSpacing: "0.16em" }}>{el.top}</div>}
-          <div style={{ fontFamily: FONT.number, fontSize: 68, lineHeight: 1.05 }}>{el.main}</div>
+          {el.top && <div style={{ fontFamily: FONT.typewriter, fontWeight: 700, fontSize: Math.max(18, size * 0.27), letterSpacing: "0.16em" }}>{el.top}</div>}
+          <div style={{ fontFamily: FONT.number, fontSize: size, lineHeight: 1.05 }}>{el.main}</div>
         </div>
       </TornPaper>
     </div>
@@ -55,10 +56,11 @@ export const Tag: React.FC<{ el: El; lt: number; text?: string; style?: React.CS
   const bg = kind === "yellow" ? C.yellow : kind === "white" ? C.tag : kind === "red" ? C.red : C.ink;
   const fg = kind === "red" || kind === "ink" ? "#fff" : C.ink;
   const size = el.size ?? 34;
+  const font = (el.font ?? "number") as keyof typeof FONT;
   const s = kf(lt, [0, 2, 3], [1.35, 1.03, 1.0], ease.out);
   return (
-    <div style={{ position: "absolute", left: el.x, top: el.y, transform: `scale(${s}) rotate(${el.rotate ?? -5}deg)`, opacity: lt < 1 ? 0.6 : 1, ...style }}>
-      <div style={{ background: bg, color: fg, fontFamily: FONT.number, fontSize: size, lineHeight: 1.1, padding: `${size * 0.12}px ${size * 0.3}px`, border: kind === "yellow" ? `2.5px solid ${C.ink}` : undefined, borderRadius: 3, boxShadow: "0 4px 8px rgba(0,0,0,0.25)", whiteSpace: "nowrap" }}>
+    <div style={{ position: "absolute", left: el.x, top: el.y, transform: `scale(${s}) rotate(${el.rotate ?? -5}deg)`, opacity: lt < 1 ? 0.6 : 1, zIndex: 15, ...style }}>
+      <div style={{ background: bg, color: fg, fontFamily: FONT[font], fontWeight: font === "number" ? 400 : 700, letterSpacing: font === "typewriter" ? "0.06em" : undefined, fontSize: size, lineHeight: 1.1, padding: `${size * 0.12}px ${size * 0.3}px`, border: kind === "yellow" || kind === "white" ? `2.5px solid ${C.ink}` : undefined, borderRadius: 3, boxShadow: "0 4px 8px rgba(0,0,0,0.25)", whiteSpace: "nowrap" }}>
         {text ?? el.text}
       </div>
     </div>
@@ -66,7 +68,7 @@ export const Tag: React.FC<{ el: El; lt: number; text?: string; style?: React.CS
 };
 
 /** Hand-drawn stroke reveal: pathLength=1 so dashoffset is a 0..1 progress. */
-const Stroke: React.FC<{ d: string; p: number; color: string; width?: number }> = ({ d, p, color, width = 6 }) => (
+export const Stroke: React.FC<{ d: string; p: number; color: string; width?: number }> = ({ d, p, color, width = 6 }) => (
   <path d={d} pathLength={1} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1 1" strokeDashoffset={1 - p} />
 );
 
@@ -100,11 +102,18 @@ export function circlePath(cx: number, cy: number, rx: number, ry: number, seed 
   return "M" + pts.join(" L");
 }
 
-export const Circle: React.FC<{ el: El; lt: number }> = ({ el, lt }) => (
-  <svg width={1920} height={1080} style={{ position: "absolute", left: 0, top: 0 }}>
-    <Stroke d={circlePath(el.cx, el.cy, el.rx, el.ry ?? el.rx * 1.15)} p={prog(lt, 0, el.frames ?? 5)} color={col(el.color, C.red)} width={6} />
-  </svg>
-);
+export const Circle: React.FC<{ el: El; lt: number }> = ({ el, lt }) => {
+  let { cx, cy, rx, ry } = el;
+  if (el.box) {
+    const [x, y, w, h] = el.box, pad = el.pad ?? 14;
+    cx = x + w / 2; cy = y + h / 2; rx = w / 2 + pad; ry = h / 2 + pad * 0.9;
+  }
+  return (
+    <svg width={1920} height={1080} style={{ position: "absolute", left: 0, top: 0, overflow: "visible", pointerEvents: "none" }}>
+      <Stroke d={circlePath(cx, cy, rx, ry ?? rx * 1.15)} p={prog(lt, 0, el.frames ?? (el.box ? 9 : 5))} color={col(el.color, C.red)} width={el.width ?? 6} />
+    </svg>
+  );
+};
 
 export const Strike: React.FC<{ el: El; lt: number }> = ({ el, lt }) => {
   const { x1, x2, y } = el;
@@ -142,17 +151,17 @@ export function stampSlam(lt: number) {
   return { scale: kf(lt, [0, 2, 3, 5, 8], [2.2, 1.4, 1.05, 0.85, 1.0]), opacity: kf(lt, [0, 3], [0.35, 0.95]) };
 }
 
-export const StampView: React.FC<{ text: string; lt: number; rotate?: number; size?: number }> = ({ text, lt, rotate = -10, size = 40 }) => {
+export const StampView: React.FC<{ text: string; lt: number; rotate?: number; size?: number; color?: string }> = ({ text, lt, rotate = -10, size = 40, color = C.red }) => {
   const s = stampSlam(lt);
   return (
     <div style={{ transform: `scale(${s.scale}) rotate(${rotate}deg)`, opacity: s.opacity, transformOrigin: "center", display: "inline-block" }}>
-      <div style={{ border: `4px solid ${C.red}`, borderRadius: 6, padding: "2px 14px", fontFamily: FONT.number, fontSize: size, color: C.red, letterSpacing: "0.04em", background: "rgba(247,243,235,0.6)", maskImage: "radial-gradient(circle at 30% 40%, #000 60%, rgba(0,0,0,0.75) 100%)" }}>{text}</div>
+      <div style={{ border: `${size >= 50 ? 5 : 4}px solid ${color}`, borderRadius: 6, padding: `2px ${size >= 50 ? 18 : 14}px`, fontFamily: FONT.number, fontSize: size, color, letterSpacing: "0.04em", background: "rgba(247,243,235,0.7)", whiteSpace: "nowrap", maskImage: "radial-gradient(circle at 30% 40%, #000 60%, rgba(0,0,0,0.75) 100%)" }}>{text}</div>
     </div>
   );
 };
 
 export const Stamp: React.FC<{ el: El; lt: number }> = ({ el, lt }) => (
-  <div style={{ position: "absolute", left: el.x, top: el.y }}><StampView text={el.text} lt={lt} rotate={el.rotate} /></div>
+  <div style={{ position: "absolute", left: el.x, top: el.y, zIndex: 20 }}><StampView text={el.text} lt={lt} rotate={el.rotate} size={el.size} color={col(el.color, C.red)} /></div>
 );
 
 export function badgeScale(lt: number) { return kf(lt, [0, 1, 3, 4], [0.2, 1.25, 0.95, 1.0]); }

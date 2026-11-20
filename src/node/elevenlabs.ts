@@ -91,7 +91,7 @@ export async function voiceSpec(spec: VideoSpec, outDir: string, opts: { voiceId
     });
     const file = path.join(outDir, `${s.id.replace(/[^\w-]+/g, "_")}.mp3`);
     writeFileSync(file, r.audio);
-    voiceover[s.id] = { audio: file, duration: +r.duration.toFixed(3), words: r.words.map((w) => ({ text: w.text, start: +w.start.toFixed(3), end: +w.end.toFixed(3) })) };
+    voiceover[s.id] = { audio: path.basename(file), duration: +r.duration.toFixed(3), words: r.words.map((w) => ({ text: w.text, start: +w.start.toFixed(3), end: +w.end.toFixed(3) })) };
     done.push({ scene: s.id, file, duration: +r.duration.toFixed(2), words: r.words.length });
   }
   return { spec: { ...spec, voiceover }, done };

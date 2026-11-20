@@ -1,6 +1,6 @@
 {
   "name": "vox-style-motion-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "MCP server that turns a JSON scene spec into Vox-style explainer videos with Remotion and ElevenLabs.",
   "type": "module",
@@ -17,6 +17,7 @@
     "@remotion/cli": "^4.0.541",
     "@remotion/google-fonts": "^4.0.541",
     "@remotion/renderer": "^4.0.541",
+    "playwright-core": "^1.65.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "remotion": "^4.0.541",

@@ -34,7 +34,7 @@ const Marker: React.FC<{ p: number; seed: number; color?: string }> = ({ p, seed
 export const Headline: React.FC<{ el: El; t: number }> = ({ el, t }) => {
   const { scene } = useScene();
   const sub = el.variant === "subline";
-  const words: { word: string; bold: boolean; hl: boolean }[] = el._words ?? [];
+  const words: { word: string; bold: boolean; hl: boolean; br?: boolean }[] = el._words ?? [];
   const frames: number[] = el._wordFrames ?? [];
   const onBlack = scene.background === "black";
   const final = col(el.color, sub ? (onBlack ? C.onBlackDim : C.greyText) : onBlack ? C.onBlack : C.ink);
@@ -42,12 +42,15 @@ export const Headline: React.FC<{ el: El; t: number }> = ({ el, t }) => {
   const size = el.size ?? (sub ? 36 : 72);
   const align = el.align ?? "center";
   const x = el.x ?? (align === "center" ? 960 : 153);
+  const width = el.width ?? (align === "center" ? 1800 : 1700);
   return (
     <div style={{
-      position: "absolute", top: el.y ?? (sub ? 150 : 62), left: align === "center" ? x - 900 : x, width: align === "center" ? 1800 : 1700,
-      textAlign: align, fontFamily: FONT.headline, fontStyle: "italic", fontSize: size, lineHeight: 1.15, whiteSpace: "nowrap",
+      position: "absolute", top: el.y ?? (sub ? 150 : 62), left: align === "center" ? x - width / 2 : x, width,
+      textAlign: align, fontFamily: FONT.headline, fontStyle: "italic", fontSize: size, lineHeight: el.lineHeight ?? 1.15,
+      whiteSpace: el.width ? "normal" : "nowrap", zIndex: 8,
     }}>
       {words.map((w, i) => {
+        if (w.br) return <br key={i} />;
         const wf = frames[i] ?? 0;
         const visible = t >= wf;
         const c = interpolateColors(t, [wf, wf + 3], [pale, final]);
@@ -59,7 +62,7 @@ export const Headline: React.FC<{ el: El; t: number }> = ({ el, t }) => {
               {w.hl ? <span style={{ color: interpolateColors(t, [wf, wf + 3], [pale, C.ink]) }}>{w.word}</span> : w.word}
               {hlNext && <span style={{ position: "absolute", right: -16, width: 22, top: "18%", bottom: "4%", background: C.yellow, zIndex: -1, clipPath: `inset(0 ${(1 - prog(t, frames[i + 1] ?? wf, 2)) * 100}% 0 0)` }} />}
             </span>
-            {i < words.length - 1 ? " " : ""}
+            {i < words.length - 1 && !words[i + 1]?.br ? " " : ""}
           </React.Fragment>
         );
       })}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chai Tapri · Order counter</title>
+<style>
+  :root { --green: #234238; --gold: #D9992F; --milk: #F6EEDF; --ink: #1d1a16; --line: #e4d8c2; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--milk); color: var(--ink); }
+  header { display: flex; align-items: center; gap: 18px; padding: 18px 36px; background: var(--green); color: #fff; }
+  .logo { width: 40px; height: 40px; border-radius: 12px; background: var(--gold); display: grid; place-items: center; font-weight: 800; font-size: 20px; color: var(--green); }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: .01em; }
+  header small { opacity: .75; margin-left: 4px; }
+  nav { margin-left: auto; display: flex; gap: 6px; }
+  nav button { background: transparent; color: #fff; border: 0; padding: 8px 16px; border-radius: 99px; font: inherit; font-weight: 600; cursor: pointer; opacity: .8; }
+  nav button.on { background: rgba(255,255,255,.16); opacity: 1; }
+  main { display: grid; grid-template-columns: 1fr 360px; gap: 28px; padding: 30px 36px; }
+  h2 { margin: 0 0 16px; font-size: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .item { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; gap: 16px; align-items: center; }
+  .cup { width: 74px; height: 74px; border-radius: 16px; flex: none; display: grid; place-items: center; font-size: 34px; }
+  .item h3 { margin: 0; font-size: 19px; }
+  .item p { margin: 2px 0 0; color: #7a6e5d; font-size: 14px; }
+  .price { font-weight: 800; color: var(--green); margin-top: 6px; }
+  .qty { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .qty button { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--milk); font-size: 22px; font-weight: 700; cursor: pointer; color: var(--green); }
+  .qty span { min-width: 22px; text-align: center; font-weight: 800; font-size: 20px; }
+  aside { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px; align-self: start; }
+  .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .empty { color: #9a8f7e; padding: 10px 0 14px; }
+  .total { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 0; font-size: 18px; }
+  .total b { font-size: 38px; color: var(--green); }
+  .place { width: 100%; padding: 16px; border: 0; border-radius: 14px; background: var(--gold); color: var(--green); font: inherit; font-weight: 800; font-size: 18px; cursor: pointer; }
+  .place:disabled { opacity: .45; cursor: default; }
+  .toast { margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: #e3f0e6; color: #1f5131; font-weight: 700; display: none; }
+  .toast.show { display: block; }
+  .hours { margin-top: 18px; font-size: 14px; color: #7a6e5d; }
+  #settings { display: none; padding: 30px 36px; max-width: 880px; }
+  #settings.show { display: block; }
+  .field { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin-bottom: 16px; }
+  .field label { display: block; font-weight: 700; margin-bottom: 4px; }
+  .field p { margin: 0 0 10px; color: #7a6e5d; font-size: 14px; }
+  .field input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); font: 15px ui-monospace, Menlo, Consolas, monospace; background: var(--milk); }
+  @media (max-width: 700px) {
+    header { padding: 14px 18px; } nav { display: none; }
+    main { grid-template-columns: 1fr; padding: 18px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ct</div>
+  <h1>Chai Tapri <small>· Order counter</small></h1>
+  <nav>
+    <button class="on" data-test="tab-menu" onclick="show('menu')">Menu</button>
+    <button data-test="tab-orders">Orders</button>
+    <button data-test="tab-settings" onclick="show('settings')">Settings</button>
+  </nav>
+</header>
+
+<main id="menu">
+  <section>
+    <h2>Today's menu</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+  <aside>
+    <h2>This order</h2>
+    <div id="lines"><div class="empty">Tap + to add something.</div></div>
+    <div class="total"><span>Total</span><b data-test="total">₹0</b></div>
+    <button class="place" data-test="place" disabled onclick="place()">Place order</button>
+    <div class="toast" data-test="toast" id="toast"></div>
+    <div class="hours">Open 6:30 am – 11 pm · Indiranagar, Bengaluru</div>
+  </aside>
+</main>
+
+<section id="settings">
+  <h2>Settings</h2>
+  <div class="field">
+    <label>Payment API key</label>
+    <p>Used to collect UPI payments. Keep it private.</p>
+    <input data-test="api-key" value="sk_live_DEMO_ONLY_not_a_real_key_7f3a9c2e1b" readonly>
+  </div>
+  <div class="field">
+    <label>Shop name</label>
+    <p>Shown on receipts.</p>
+    <input value="Chai Tapri, Indiranagar" readonly>
+  </div>
+</section>
+
+<script>
+  const MENU = [
+    { id: "cutting", name: "Cutting chai", note: "Half glass, strong", price: 15, bg: "#F1DDB8", tea: "#B9772F" },
+    { id: "ginger", name: "Ginger chai", note: "Adrak, fresh crushed", price: 20, bg: "#F4D7A8", tea: "#9C5E22" },
+    { id: "bun", name: "Bun maska", note: "Soft bun, salted butter", price: 30, bg: "#F3E6C9", tea: "#E2B866" },
+    { id: "samosa", name: "Samosa", note: "Aloo, green chutney", price: 18, bg: "#EFD3A9", tea: "#C98A3A" },
+  ];
+  const cup = (c) => `<svg width="44" height="44" viewBox="0 0 44 44"><path d="M9 14h22l-3 22H12z" fill="#fff" stroke="#234238" stroke-width="2.5" stroke-linejoin="round"/><path d="M10.4 22h19.2l-1.9 14H12.3z" fill="${c}"/><path d="M31 18h3a4 4 0 0 1 0 8h-3.6" fill="none" stroke="#234238" stroke-width="2.5"/><path d="M16 9c0-2 2-2 2-4M22 9c0-2 2-2 2-4" stroke="#234238" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
+  const qty = Object.fromEntries(MENU.map((m) => [m.id, 0]));
+  const grid = document.getElementById("grid");
+  for (const m of MENU) {
+    grid.insertAdjacentHTML("beforeend", `
+      <div class="item">
+        <div class="cup" style="background:${m.bg}">${cup(m.tea)}</div>
+        <div><h3>${m.name}</h3><p>${m.note}</p><div class="price">₹${m.price}</div></div>
+        <div class="qty">
+          <button data-test="minus-${m.id}" onclick="add('${m.id}',-1)">−</button>
+          <span id="q-${m.id}">0</span>
+          <button data-test="plus-${m.id}" onclick="add('${m.id}',1)">+</button>
+        </div>
+      </div>`);
+  }
+  function add(id, d) {
+    qty[id] = Math.max(0, qty[id] + d);
+    document.getElementById("q-" + id).textContent = qty[id];
+    render();
+  }
+  function render() {
+    const picked = MENU.filter((m) => qty[m.id] > 0);
+    document.getElementById("lines").innerHTML = picked.length
+      ? picked.map((m) => `<div class="row"><span>${qty[m.id]} × ${m.name}</span><span>₹${qty[m.id] * m.price}</span></div>`).join("")
+      : '<div class="empty">Tap + to add something.</div>';
+    const total = picked.reduce((a, m) => a + qty[m.id] * m.price, 0);
+    document.querySelector("[data-test=total]").textContent = "₹" + total;
+    document.querySelector("[data-test=place]").disabled = total === 0;
+  }
+  function place() {
+    const t = document.getElementById("toast");
+    t.textContent = "Order #42 placed · ready in 4 min";
+    t.classList.add("show");
+  }
+  function show(view) {
+    document.getElementById("menu").style.display = view === "menu" ? "" : "none";
+    document.getElementById("settings").classList.toggle("show", view === "settings");
+    document.querySelectorAll("nav button").forEach((b) => b.classList.toggle("on", b.dataset.test === "tab-" + view));
+  }
+</script>
+</body>
+</html>

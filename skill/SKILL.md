@@ -1,12 +1,14 @@
 ---
 name: vox-style-motion
-description: Write, time and render Vox-style explainer videos (paper texture, typewriter kickers, italic serif headlines synced word-by-word to narration, giant condensed numbers, torn-paper cutouts and charts) with Remotion and ElevenLabs only. Use with the vox-style-motion MCP server.
+description: Write, time and render Vox-style explainer videos (paper texture, typewriter kickers, italic serif headlines synced word-by-word to narration, giant condensed numbers, torn-paper cutouts and charts) with Remotion and ElevenLabs or Sarvam voices. Also box style: product demos with real software recorded into framed screen boxes, camera pushes, marker marks and redaction. Use with the vox-style-motion MCP server.
 ---
 
 # Vox-style motion: skill
 
 This style was measured frame by frame from a 31.4 s reference (943 frames, 1920×1080, 30 fps).
-Everything is drawn with code: Remotion renders the visuals, ElevenLabs reads the narration. No video-generation models.
+Everything is drawn with code: Remotion renders the visuals, ElevenLabs or Sarvam reads the narration. No video-generation models.
+
+**Demoing software?** Read `get_style_guide` with `section: "box"` as well. It covers recording the app (`capture_screen`), the screen box, time remapping, camera, marks, redaction and the box-demo example.
 
 ## Workflow with the MCP tools
 
@@ -15,8 +17,9 @@ Everything is drawn with code: Remotion renders the visuals, ElevenLabs reads th
 3. Write a spec (see `get_spec_schema` for the schema and two full examples). Anchor every element to a narration word.
 4. `validate_spec`. It shows the frame of every word and element and warns about anchors that matched nothing. Fix warnings.
 5. `render_still` on 2–3 frames per scene (`scene` + `offset`) and look at the image. Fix overlaps.
-6. `generate_voiceover` (needs `ELEVENLABS_API_KEY`). It writes `spec.voiced.json` with real word timings. Without a key, skip this: timing is estimated at 205 words per minute and the video renders silent.
-7. `render_video` on the voiced spec. Use `from_frame`/`to_frame` for a quick partial check first.
+6. `generate_voiceover` with `provider: "elevenlabs"` (needs `ELEVENLABS_API_KEY`, exact word timings) or `provider: "sarvam"` (needs `SARVAM_API_KEY`, Indian-English voices, word timings estimated per sentence; add `check: true` for a speech-to-text check). It writes `spec.voiced.json`. Without a key, skip this: timing is estimated at 205 words per minute and the video renders silent.
+7. `render_stills` with `scene` and `step` to sweep each scene of the voiced spec, and fix what you see.
+8. `render_video` on the voiced spec. Use `from_frame`/`to_frame` for a quick partial check first.
 
 ## Writing the narration
 
@@ -73,6 +76,13 @@ Keep 120 px side margins. Centre-align by default; left-align only on the black 
 | `yearFlip` | Projections | Split-flap year count, PROJECTED stamp slam, docks to the corner |
 | `tag`, `stamp`, `badge`, `label` | Small callouts | Pop-ins |
 | `totalCounter` | Closing "while you watched" total | Freezes; corner counter fades out |
+| `screen` | Real software (recording or screenshot) | Torn mat, window bar, tape. `timeMap` freezes / plays / time-lapses footage on words, `camera` pushes in, `overlays` mark it. See section "box" |
+| `markerBox`, `highlight`, `redact`, `cursor` | Marks on footage | Hand-drawn box, multiply highlighter, opaque striped cover, gliding pointer with click pulse |
+| `paperCard` | Prompt, quote, checklist, verdict list | Torn card with kicker, title, quote, body and rows that fade in on their words |
+| `steps` | A pipeline or an agent's tool calls | Numbered strips slide in one by one |
+| `terminal` | Commands and results | Typed commands, green or red verdict pills |
+| `countUp` | A total or duration | Anton number counts up, label under it |
+| `phone`, `polaroid`, `tape` | Mobile view, still of a result, pinning | Device frame with scroll; tilted print; masking tape |
 
 Element options: `at` (start), `exitAt` (blur out), `dimAt` (drop to 45%).
 
@@ -87,7 +97,8 @@ Matching ignores case and punctuation, and words of 4+ letters also match by pre
 - Within a page: old content blurs out over 3 frames (`exitAt`, or `transition: "blur"` for the next scene).
 - Between pages: a new torn-edge page slides over the old one, which blurs underneath. Alternate `pushRight` and `pushBottom` (the default). ~10 frames, ease-in-out.
 - The last beat pushes a black page from the bottom.
-- No hard cuts, no camera drift, no shake.
+- No hard cuts between pages (except a `cut` into the first scene), no page drift, no shake. A `screen` may move its camera with keyframes (hold, push, hold); keep the page itself still.
+- `fade: { in, out }` fades from and to black at the very start and end.
 
 ## Persistence
 
@@ -105,3 +116,6 @@ There are built-in drawn stand-ins (`capitol`, `hourglass`, `jet`, `moneyStack`,
 - [ ] A source line on every scene that shows a statistic.
 - [ ] `validate_spec` returns no warnings.
 - [ ] Stills checked: no overlap between headline, big number and the visual.
+- [ ] No `×`, `+` or `=` in Anton text (use `font: "typewriter"`); no `→`, `▌` or emoji (they can render as empty boxes).
+- [ ] Every on-screen claim is true of the data or the software shown.
+- [ ] Screen recordings: every secret covered with `redact` on every frame (see section "box").

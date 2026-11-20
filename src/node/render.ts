@@ -84,9 +84,20 @@ export function compileOrThrow(spec: unknown): ResolvedSpec {
   return r.resolved;
 }
 
+/** OffthreadVideo needs Remotion's compositor binary, which needs glibc 2.35+ on Linux. VOX_VIDEO_ENGINE overrides. */
+function videoEngine(): "offthread" | "html5" {
+  const forced = process.env.VOX_VIDEO_ENGINE;
+  if (forced === "html5" || forced === "offthread") return forced;
+  if (process.platform !== "linux") return "offthread";
+  const glibc = String((process.report?.getReport() as any)?.header?.glibcVersionRuntime ?? "");
+  const [maj, min] = glibc.split(".").map(Number);
+  if (!glibc || (maj === 2 && min < 35)) { log(`glibc ${glibc || "unknown"}: using Html5Video for screen recordings`); return "html5"; }
+  return "offthread";
+}
+
 async function prepare(input: SpecInput) {
   const { spec, baseDir } = loadSpec(input);
-  const resolved = compileOrThrow(spec);
+  const resolved = { ...compileOrThrow(spec), videoEngine: videoEngine() };
   await ensureBrowser();
   const serveUrl = await getBundle();
   const staged = stageAssets(resolved, serveUrl, baseDir);
@@ -108,8 +119,33 @@ export async function renderStillFrame(input: SpecInput & { frame?: number; scen
   frame = Math.max(0, Math.min(resolved.durationInFrames - 1, Math.round(frame)));
   const output = path.resolve(input.out_path ?? path.join(OUT, "stills", `still-${stamp()}-f${frame}.png`));
   mkdirSync(path.dirname(output), { recursive: true });
-  await renderStill({ composition, serveUrl, inputProps, frame, output, imageFormat: "png", scale: input.scale ?? 1, logLevel: "error" });
+  await renderStill({ composition, serveUrl, inputProps, frame, output, imageFormat: "png", scale: input.scale ?? 1, logLevel: "error", offthreadVideoCacheSizeInBytes: 512 * 1024 ** 2 });
   return { output, frame, durationInFrames: resolved.durationInFrames };
+}
+
+/** Render many frames with one bundle/composition: an explicit list, or every `step` frames across a scene. */
+export async function renderStillSweep(input: SpecInput & { frames?: number[]; scene?: string; step?: number; out_dir?: string; scale?: number }) {
+  const { resolved, serveUrl, composition, inputProps } = await prepare(input);
+  let frames = input.frames ?? [];
+  if (!frames.length) {
+    const s = input.scene ? resolved.scenes.find((x) => x.id === input.scene) : undefined;
+    if (input.scene && !s) throw new Error(`No scene with id "${input.scene}". Scenes: ${resolved.scenes.map((x) => x.id).join(", ")}`);
+    const from = s ? s.from : 0, to = s ? s.from + s.duration - 1 : resolved.durationInFrames - 1;
+    const step = Math.max(1, input.step ?? (s ? 45 : 90));
+    for (let fr = from; fr <= to; fr += step) frames.push(fr);
+    if (frames[frames.length - 1] !== to) frames.push(to);
+  }
+  frames = frames.map((fr) => Math.max(0, Math.min(resolved.durationInFrames - 1, Math.round(fr))));
+  const dir = path.resolve(input.out_dir ?? path.join(OUT, "stills", `sweep-${stamp()}`));
+  mkdirSync(dir, { recursive: true });
+  const outputs: { frame: number; scene: string; output: string }[] = [];
+  for (const frame of frames) {
+    const output = path.join(dir, `f${String(frame).padStart(5, "0")}.png`);
+    await renderStill({ composition, serveUrl, inputProps, frame, output, imageFormat: "png", scale: input.scale ?? 0.3, logLevel: "error", offthreadVideoCacheSizeInBytes: 512 * 1024 ** 2 });
+    const sc = [...resolved.scenes].reverse().find((x) => x.from <= frame);
+    outputs.push({ frame, scene: sc?.id ?? "", output });
+  }
+  return { dir, stills: outputs, durationInFrames: resolved.durationInFrames };
 }
 
 export async function renderVideoFile(input: SpecInput & { out_path?: string; from_frame?: number; to_frame?: number; concurrency?: number; crf?: number }) {
@@ -122,8 +158,10 @@ export async function renderVideoFile(input: SpecInput & { out_path?: string; fr
   let lastPct = -10;
   const started = Date.now();
   await renderMedia({
-    composition, serveUrl, inputProps, codec: "h264", audioCodec: "aac", crf: input.crf ?? 18, outputLocation: output,
+    composition, serveUrl, inputProps, codec: "h264", audioCodec: "aac", audioBitrate: "192k", crf: input.crf ?? 17,
+    x264Preset: "medium", pixelFormat: "yuv420p", outputLocation: output,
     frameRange: range, concurrency: input.concurrency ?? null, logLevel: "error",
+    offthreadVideoCacheSizeInBytes: 2 * 1024 ** 3,
     onProgress: ({ progress }) => {
       const pct = Math.floor(progress * 100);
       if (pct >= lastPct + 10) { lastPct = pct; log(`render ${pct}%`); }

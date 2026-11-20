@@ -1,0 +1,559 @@
+{
+  "title": "Box style demo: Chai Tapri order counter",
+  "cadence": "smooth",
+  "fade": {
+    "in": 12,
+    "out": 22
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "transition": "cut",
+      "narration": "Every evening, Raju runs a chai stall in Bengaluru. Fifty orders an hour, all in his head. So we built him one small screen.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "BOX STYLE · A REAL APP, RECORDED START TO FINISH",
+          "at": 4,
+          "y": 46,
+          "size": 26
+        },
+        {
+          "type": "headline",
+          "text": "Fifty orders an hour, / ==all in his head.==",
+          "y": 120,
+          "size": 84,
+          "lineHeight": 1.18
+        },
+        {
+          "type": "paperCard",
+          "at": "head",
+          "x": 300,
+          "y": 420,
+          "w": 560,
+          "h": 200,
+          "rotate": -3,
+          "fill": "white",
+          "kicker": "WHAT RAJU REMEMBERS",
+          "body": "“3 cutting, 2 ginger, one bun maska, no sugar in the second one…”"
+        },
+        {
+          "type": "arrow",
+          "at": "head+8",
+          "from": [
+            900,
+            560
+          ],
+          "to": [
+            1080,
+            600
+          ],
+          "bend": -0.3
+        },
+        {
+          "type": "tag",
+          "at": "screen",
+          "x": 1120,
+          "y": 560,
+          "text": "ONE SMALL SCREEN",
+          "color": "yellow",
+          "size": 54,
+          "rotate": 4
+        },
+        {
+          "type": "stamp",
+          "at": "built",
+          "x": 760,
+          "y": 760,
+          "text": "NO NOTEBOOK",
+          "size": 72,
+          "rotate": -6
+        },
+        {
+          "type": "tape",
+          "at": "head",
+          "x": 520,
+          "y": 395,
+          "w": 130,
+          "rotate": -6
+        }
+      ]
+    },
+    {
+      "id": "order",
+      "transition": "pushRight",
+      "narration": "This is the actual app, running in a browser. Raju taps three cutting chai and two ginger. The total updates as he taps. Eighty five rupees.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "STEP 1 · TAKE THE ORDER",
+          "at": 14,
+          "y": 40,
+          "size": 24
+        },
+        {
+          "type": "screen",
+          "at": 4,
+          "url": "localhost · Chai Tapri order counter",
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 0.4
+                },
+                {
+                  "at": "taps",
+                  "t": 1.1
+                },
+                {
+                  "at": "ginger",
+                  "t": 3.4
+                },
+                {
+                  "at": "total",
+                  "t": 3.75
+                },
+                {
+                  "at": "Eighty",
+                  "t": 4.1
+                }
+              ],
+              "maxSec": 4.3
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "taps-6",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "taps+10",
+              "x": 700,
+              "y": 380,
+              "zoom": 1.45
+            },
+            {
+              "at": "total-8",
+              "x": 700,
+              "y": 380,
+              "zoom": 1.45
+            },
+            {
+              "at": "total+10",
+              "x": 1500,
+              "y": 380,
+              "zoom": 1.7
+            }
+          ],
+          "overlays": [
+            {
+              "type": "markerBox",
+              "at": "three",
+              "box": [
+                48,
+                213,
+                640,
+                155
+              ],
+              "exitAt": "total"
+            },
+            {
+              "type": "markerBox",
+              "at": "ginger",
+              "box": [
+                713,
+                213,
+                642,
+                155
+              ],
+              "exitAt": "total"
+            },
+            {
+              "type": "highlight",
+              "at": "updates",
+              "box": [
+                1422,
+                252,
+                420,
+                96
+              ]
+            },
+            {
+              "type": "circle",
+              "at": "Eighty",
+              "box": [
+                1752,
+                386,
+                92,
+                54
+              ],
+              "color": "red",
+              "pad": 16
+            }
+          ]
+        },
+        {
+          "type": "tag",
+          "at": "Eighty+6",
+          "x": 1250,
+          "y": 900,
+          "text": "3 × ₹15 + 2 × ₹20 = ₹85",
+          "color": "white",
+          "size": 36,
+          "rotate": -3,
+          "font": "typewriter"
+        }
+      ]
+    },
+    {
+      "id": "place",
+      "transition": "pushBottom",
+      "narration": "One tap places it. Order forty two, ready in four minutes.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "STEP 2 · ONE TAP",
+          "at": 14,
+          "y": 40,
+          "size": 24
+        },
+        {
+          "type": "screen",
+          "at": 4,
+          "enterFrom": "right",
+          "url": "localhost · Chai Tapri order counter",
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 4.4
+                },
+                {
+                  "at": "tap",
+                  "t": 4.8
+                },
+                {
+                  "at": "Order",
+                  "t": 5.4
+                }
+              ],
+              "maxSec": 6.3
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 1500,
+              "y": 380,
+              "zoom": 1.25
+            },
+            {
+              "at": "tap+12",
+              "x": 1630,
+              "y": 520,
+              "zoom": 1.75
+            }
+          ],
+          "overlays": [
+            {
+              "type": "markerBox",
+              "at": "tap+4",
+              "box": [
+                1418,
+                466,
+                428,
+                88
+              ],
+              "color": "yellow"
+            }
+          ]
+        },
+        {
+          "type": "stamp",
+          "at": "ready",
+          "x": 380,
+          "y": 800,
+          "text": "ORDER #42 · 4 MIN",
+          "size": 64,
+          "rotate": -7
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "transition": "pushRight",
+      "narration": "The settings page holds his payment key. We cover it before it ever reaches the video.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "STEP 3 · KEEP SECRETS OUT OF THE FRAME",
+          "at": 14,
+          "y": 40,
+          "size": 24
+        },
+        {
+          "type": "screen",
+          "at": 4,
+          "url": "localhost · Settings",
+          "badge": {
+            "text": "LIVE",
+            "speed": "1×"
+          },
+          "media": [
+            {
+              "src": "media/order.mp4",
+              "timeMap": [
+                {
+                  "at": "start",
+                  "t": 7.4
+                },
+                {
+                  "at": "cover",
+                  "t": 9.6
+                }
+              ],
+              "maxSec": 10.4
+            }
+          ],
+          "camera": [
+            {
+              "at": "start",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "key-4",
+              "x": 960,
+              "y": 540,
+              "zoom": 1
+            },
+            {
+              "at": "key+14",
+              "x": 600,
+              "y": 330,
+              "zoom": 1.6
+            }
+          ],
+          "overlays": [
+            {
+              "type": "redact",
+              "at": 0,
+              "box": [
+                70,
+                312,
+                1034,
+                72
+              ]
+            },
+            {
+              "type": "markerBox",
+              "at": "cover",
+              "box": [
+                60,
+                304,
+                1054,
+                88
+              ],
+              "color": "red",
+              "width": 6
+            }
+          ]
+        },
+        {
+          "type": "tag",
+          "at": "cover+4",
+          "x": 1240,
+          "y": 900,
+          "text": "KEY HIDDEN · EVERY FRAME",
+          "color": "yellow",
+          "size": 46,
+          "rotate": -4
+        }
+      ]
+    },
+    {
+      "id": "how",
+      "transition": "pushBottom",
+      "narration": "Here is how this video was made. A script clicks through the app. The recording is mapped onto this voice. And every frame is rendered from code.",
+      "elements": [
+        {
+          "type": "typewriter",
+          "text": "HOW THIS VIDEO WAS MADE",
+          "at": 14,
+          "x": 120,
+          "y": 46,
+          "size": 24
+        },
+        {
+          "type": "headline",
+          "text": "No editor. / ==Just code.==",
+          "align": "left",
+          "x": 120,
+          "y": 110,
+          "size": 76,
+          "width": 700,
+          "at": "made"
+        },
+        {
+          "type": "steps",
+          "x": 120,
+          "y": 360,
+          "w": 620,
+          "items": [
+            {
+              "tool": "capture_screen",
+              "text": "app/index.html",
+              "at": "clicks"
+            },
+            {
+              "tool": "timeMap",
+              "text": "recording -> narration words",
+              "at": "mapped"
+            },
+            {
+              "tool": "redact",
+              "text": "payment key, every frame",
+              "at": "voice"
+            },
+            {
+              "tool": "render_video",
+              "text": "1920 × 1080 · 30 fps",
+              "at": "rendered",
+              "highlight": true
+            }
+          ]
+        },
+        {
+          "type": "terminal",
+          "at": "script",
+          "x": 900,
+          "y": 300,
+          "w": 900,
+          "title": "VOX-STYLE-MOTION-MCP",
+          "rotate": 1,
+          "size": 28,
+          "lines": [
+            {
+              "cmd": "capture_screen capture.json",
+              "at": "clicks",
+              "verdict": "13.5 S",
+              "ok": true
+            },
+            {
+              "cmd": "generate_voiceover --provider sarvam",
+              "at": "voice",
+              "verdict": "DONE",
+              "ok": true
+            },
+            {
+              "cmd": "render_video spec.voiced.json",
+              "at": "rendered",
+              "verdict": "MP4",
+              "ok": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "transition": "pushRight",
+      "narration": "And on his phone, the same page fits in one hand.",
+      "elements": [
+        {
+          "type": "headline",
+          "text": "Same page, / ==one hand.==",
+          "align": "left",
+          "x": 150,
+          "y": 300,
+          "size": 110,
+          "width": 900
+        },
+        {
+          "type": "label",
+          "at": "hand",
+          "x": 156,
+          "y": 590,
+          "text": "390 PX PHONE · FULL PAGE, SCROLLED",
+          "size": 22
+        },
+        {
+          "type": "phone",
+          "at": "phone-6",
+          "x": 1240,
+          "y": 60,
+          "w": 440,
+          "label": "SAME CODE, NO APP STORE",
+          "media": {
+            "src": "media/phone.full.png",
+            "scroll": [
+              {
+                "at": "same",
+                "y": 0
+              },
+              {
+                "at": "end-4",
+                "y": 419
+              }
+            ]
+          }
+        },
+        {
+          "type": "countUp",
+          "at": "hand+2",
+          "x": 470,
+          "y": 700,
+          "to": 85,
+          "prefix": "₹",
+          "size": 150,
+          "label": "SAME ORDER, SAME TOTAL"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "transition": "pushBottom",
+      "background": "black",
+      "narration": "Real software, in a box, in your own voice.",
+      "elements": [
+        {
+          "type": "headline",
+          "text": "Real software, / in a box, / ==in your own voice.==",
+          "align": "left",
+          "x": 150,
+          "y": 250,
+          "size": 96
+        },
+        {
+          "type": "typewriter",
+          "text": "MADE WITH VOX-STYLE-MOTION-MCP · BOX STYLE",
+          "at": "voice",
+          "x": 156,
+          "y": 760,
+          "size": 24
+        }
+      ]
+    }
+  ]
+}
